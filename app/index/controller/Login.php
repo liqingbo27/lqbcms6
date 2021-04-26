@@ -21,7 +21,7 @@ class Login extends BaseController
     public function verify()
     {
 
-        //'myverify'
+        //'myverify'1
         return Captcha::create();
     }
 	
