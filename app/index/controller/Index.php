@@ -11,6 +11,17 @@ use think\facade\View;
 
 class Index extends Common
 {
+	/**
+	 * Created by LQBCSM.
+	 * Site：https://www.liqingbo.cn
+	 * Author: 李清波
+	 * Date: 2021-4-26 19:32
+	 *
+	 * @return \think\response\View
+	 * @throws \think\db\exception\DataNotFoundException
+	 * @throws \think\db\exception\DbException
+	 * @throws \think\db\exception\ModelNotFoundException
+	 */
     public function index()
     {
 
