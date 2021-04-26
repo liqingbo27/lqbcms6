@@ -1,0 +1,182 @@
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list"
+  style="padding: 20px 30px 0 0;">
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-inline" style="width: 450px;">
+      <script type="text/html" template>
+        <input type="text" name="title" value="{{ d.params.title || '' }}" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">待遇</label>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_min" id="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid">-</div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_max" id="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">工作经验</label>
+      <div class="layui-input-inline">
+        <select name="experience" id="experience" lay-filter="aihao">
+          <option value=""></option>
+          <option value="实习">实习</option>
+          <option value="一年以上">一年以上</option>
+          <option value="两年以上">两年以上</option>
+          <option value="三年以上">三年以上</option>
+          <option value="四年以上">四年以上</option>
+          <option value="五年以上">五年以上</option>
+          <option value="六年以上">六年以上</option>
+          <option value="七年以上">七年以上</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">学历</label>
+      <div class="layui-input-inline">
+        <select name="education" id="education" lay-filter="aihao">
+          <option value=""></option>
+          <option value="初中">初中</option>
+          <option value="中专">中专</option>
+          <option value="大专以上">大专以上</option>
+          <option value="本科以上">本科以上</option>
+          <option value="研究生以上">研究生以上</option>
+          <option value="博士以上">博士以上</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">到岗</label>
+      <div class="layui-input-inline">
+        <select name="arrival" id="arrival" lay-filter="aihao">
+          <option value=""></option>
+          <option value="一个月内">一个月内</option>
+          <option value="两个月内">两个月内</option>
+          <option value="三个月内">三个月内</option>
+          <option value="不限到岗">不限到岗</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">年龄</label>
+      <div class="layui-input-inline">
+        <script type="text/html" template>
+          <input type="text" name="age" id="age" value="{{ d.params.age || '' }}" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">婚姻</label>
+      <div class="layui-input-inline">
+        <select name="marital" id="marital" lay-filter="aihao">
+          <option value=""></option>
+          <option value="未婚">未婚</option>
+          <option value="已婚">已婚</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">内容</label>
+    <div class="layui-input-inline" style="margin-bottom: 20px; width: 80%;">
+      <script id="editor" type="text/plain"></script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="sort" value="{{ d.params.sort || 0 }}" placeholder="排序" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="checkbox" lay-filter="status" name="status" lay-skin="switch" lay-text="显示|隐藏" {{ d.params.status !== 0 ? 'checked' : '' }} >
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">时间</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+          <input type="text" name="create_time" value="{{ d.params.create_time || '' }}" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input"  id="test5" onclick="createTime()">
+        </script>
+    </div>
+  </div>
+
+  <script type="text/html" template>
+    <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+  </script>
+
+  <script type="text/html" template>
+    <input type="hidden" name="lang" value="zh">
+  </script>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/static/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="/static/ueditor/index.js"></script>
+<script>
+  layui.use(['admin', 'form', 'upload', 'laydate'], function () {
+    var $ = layui.$
+      , form = layui.form
+      , upload = layui.upload;
+    var laydate = layui.laydate;
+
+    //上传头像
+    upload.render({
+      elem: '#layuiadmin-upload-useradmin'
+      , url: './json/upload/demo.js'
+      , accept: 'images'
+      , method: 'get'
+      , acceptMime: 'image/*'
+      , done: function (res) {
+        $(this.item).prev("div").children("input").val(res.data.src)
+      }
+    });
+
+    form.on('radio(status)', function (data) {
+      // console.log(data.elem); //得到radio原始DOM对象
+      console.log(data.value); //被点击的radio的value值
+    });
+
+  })
+
+  function createTime() {
+    var laydate = layui.laydate;
+
+    laydate.render({
+      elem: '#test5'
+      , type: 'datetime'
+      , show: true
+    });
+  }
+</script>

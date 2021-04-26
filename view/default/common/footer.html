@@ -1,0 +1,58 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-24 16:03:16
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-06-15 09:12:50
+ -->
+<div class="footer">
+  <div class="container">
+    <div class="logo">
+      <img src="__STATIC__/img/0logo.png" alt="">
+    </div>
+    <div class="links">
+      <ul>
+        <li><a href="/about/">研究院概况</a></li>
+        <!-- <li><a href="/about/">党群工作</a></li> -->
+        <li><a href="/news/index/cid/1">新闻动态</a></li>
+        <li><a href="/news/index/cid/6">成果展示</a></li>
+        <li><a href="/news/index/cid/12">交流合作</a></li>
+        <li><a href="/notice/">研究院公告</a></li>
+        <li><a href="/recruit/">招贤纳士</a></li>
+        <li><a href="/about/contact/">联系我们</a></li>
+      </ul>
+    </div>
+    <div class="contact">
+      <p>地址：{$config.address}</p>
+      <p>电话：{$config.tel}</p>
+      <p>邮编：{$config.postcode}</p>
+      <div class="image">
+        <img src="__STATIC__/img/wx.png" alt="" class="image-logo">
+        <img src="{$config.qrcode}" alt="" class="image-code">
+      </div>
+      <div class="image">
+        <img src="__STATIC__/img/wb.png" alt="" class="imagelogo">
+        <img src="{$config.microblog}" alt="" class="image-code">
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="container">
+      <script
+        type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278992385'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278992385%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+      <p>Copyright © 2020 {$config.company}</p>
+      <p>地址：{$config.address}</p>
+      <p>备案号：<a href="http://www.beian.miit.gov.cn/" target="_blank">{$config.beianhao}</a></p>
+      <!-- <p><a href="javascript:;">技术支持：待君科技</a></p> -->
+    </div>
+  </div>
+</div>
+<div class="footer-mobile">
+  <div>
+    <p>联系人：{$config.linkman}</p>
+    <a href="tel:{$config.tel}">电话：{$config.tel}</a>
+    <p>公司地址：{$config.address}</p>
+  </div>
+</div>

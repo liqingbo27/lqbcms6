@@ -1,0 +1,54 @@
+﻿/*基础样式*/
+
+html,body,div,p,h1,h2,h3,h4,h5,h6,header,footer,section,article,span,img,ul,ol,table,nav{
+	margin: 0;
+	padding: 0;
+	border:none;
+}
+body{
+	font-family: 微软雅黑;
+	font-size: 16px;
+}
+a{
+	text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0px auto;
+  font-size: 14px;
+}
+.clearfloat:after{
+	display:block;
+	clear:both;
+	content:"";
+	visibility:hidden;
+	height:0
+}
+.clearfloat{
+	zoom:1
+}
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}

@@ -1,0 +1,163 @@
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list"
+  style="padding: 20px 30px 0 0;">
+
+  <!-- <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-inline" style="width: 450px;">
+      <script type="text/html" template lay-url="/api/singlepage/getVarList" lay-done="layui.form.render('select');"
+        lay-data="{'lang': layui.data('lang').lang}">
+        <select name="title"  required  lay-filter="newsTitle">
+          <option value="">请选择</option>
+          {{# layui.each(d.data,function(index,item){ }}
+          <option value="{{ item }}" {{ index == d.params.varname ? 'selected' : '' }} data-varname="{{ index }}">{{ item }}</option>
+          {{# }); }}
+        </select>
+       </script>
+    </div>
+  </div> -->
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">关键词</label>
+    <div class="layui-input-inline" style="width: 350px;">
+      <script type="text/html" template>
+        <input type="text" name="keywords" value="{{ d.params.keywords || '' }}" lay-verify="required" placeholder="关键词" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <textarea name="description" lay-verify="required" style="width: 600px; height: 120px;" autocomplete="off" class="layui-textarea">{{ d.params.description || '' }}</textarea>
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">缩略图</label>
+    <div class="layui-input-inline" style="width: 345px;">
+      <script type="text/html" template>
+        <input type="text" name="thumb" id="thumb" value="{{ d.params.thumb || '' }}"  placeholder="请上传图片" autocomplete="off" class="layui-input" >
+      </script>
+    </div>
+    <button style="float: left;" type="button" class="layui-btn" id="layuiadmin-upload-thumb">上传图片</button>
+  </div>
+
+  <script type="text/html" template>
+    {{#
+      if(d.params.thumb!=''&&d.params.thumb!=undefined){
+    }}
+      <div class="layui-form-item">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-inline" style="width: 345px;">
+          <img src="{{ d.params.thumb }}" height="260">
+        </div>
+      </div>
+    {{#
+      }
+    }}
+  </script>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">文章内容</label>
+    <div class="layui-input-inline" style="margin-bottom: 20px; width: 80%;">
+      <script id="editor" type="text/plain"></script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+      <input type="checkbox" lay-verify="required" lay-filter="status" name="status" lay-skin="switch" lay-text="显示|隐藏" {{ d.params.status === 1 ? 'checked' : '' }} >
+    </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline" style="width: 150px;">
+      <script type="text/html" template>
+        <input type="text" name="sort" value="{{ d.params.sort || '' }}" placeholder="0" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <!-- <div class="layui-form-item">
+    <label class="layui-form-label">时间</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="create_time" value="{{ d.params.create_time || '' }}" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input"  id="test5" onclick="createTime()">
+      </script>
+    </div>
+  </div> -->
+
+  <!-- <div class="layui-form-item">
+    <label class="layui-form-label">发布人</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        
+      </script>
+    </div>
+  </div> -->
+
+  <script type="text/html" template>
+    <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+  </script>
+
+  <script type="text/html" template>
+    <input type="hidden" name="lang" value="{{ layui.data('lang').lang }}">
+  </script>
+
+  <script type="text/html" template>
+    <input type="hidden" name="varname" value="{{ d.params.varname || '' }}">
+  </script>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/static/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="/static/ueditor/index.js"></script>
+<script>
+  layui.use(['admin', 'form', 'upload', 'layedit', 'laydate'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , form = layui.form
+      , layedit = layui.layedit
+      , upload = layui.upload;
+    var laydate = layui.laydate;
+
+    upload.render({
+      elem: '#layuiadmin-upload-thumb'
+      , url: '/api/uploads/thumb/column/news'
+      , accept: 'file'
+      , method: 'get'
+      // ,acceptMime: 'image/*'
+      , done: function (res) {
+        $(this.item).prev("div").children("input").val(res.data.src)
+        // console.log(res)
+      }
+    });
+
+    form.on('radio(status)', function (data) {
+      // console.log(data.elem); //得到radio原始DOM对象
+      console.log(data.value); //被点击的radio的value值
+    });
+
+  })
+  function createTime() {
+    var laydate = layui.laydate;
+
+    laydate.render({
+      elem: '#test5'
+      , type: 'datetime'
+      , show: true
+    });
+  }
+</script>

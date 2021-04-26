@@ -1,0 +1,144 @@
+
+
+<title>分类管理</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>应用</cite></a>
+    <a><cite>分类管理</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-card-header layuiadmin-card-header-auto">
+      <button class="layui-btn layuiadmin-btn-tags" data-type="add">添加</button>
+    </div>
+    <div class="layui-card-body">    
+      <table id="LAY-app-content-tags" lay-filter="LAY-app-content-tags"></table>  
+      <script type="text/html" id="layuiadmin-app-cont-tagsbar">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+        <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a> -->
+      </script>
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use(['admin', 'contlist', 'table'], function(){
+  var $ = layui.$
+  ,admin = layui.admin
+  ,view = layui.view
+  ,table = layui.table
+  ,form = layui.form;
+
+  //分类管理
+  table.render({
+    elem: '#LAY-app-content-tags'
+    ,url: '/api/notice/getCategoryList' //模拟接口
+    ,cols: [[
+
+      {field: 'id', width: 100, title: 'ID', sort: true}
+      ,{field: 'fullname', title: '分类名', minWidth: 100}
+      ,{field: 'ename', title: 'Category Name', minWidth: 100}
+      ,{field: 'sort', title: '排序', minWidth: 100}
+      ,{title: '操作', width: 150, align: 'center', fixed: 'right', toolbar: '#layuiadmin-app-cont-tagsbar'}
+    ]]
+    ,text: '对不起，加载出现异常！'
+  });
+
+  //监听工具条
+  table.on('tool(LAY-app-content-tags)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'del'){
+      layer.confirm('确定删除此分类？', function(index){
+        obj.del();
+        layer.close(index);
+        admin.req({
+          type: "POST",
+          url: '/api/notice/categoryDel',
+          data: { ids: data.id },
+          dataType: "json",
+          success: function (res) {
+            layer.msg(res.msg);
+          }
+        });
+        
+
+      });
+    } else if(obj.event === 'edit'){
+      admin.popup({
+        title: '编辑分类'
+        ,area: ['450px', '300px']
+        ,id: 'LAY-popup-content-tags'
+        ,success: function(layero, index){
+          view(this.id).render('notice/categoryadd', data).done(function(){
+            form.render(null, 'layuiadmin-form-tags');
+            
+            //监听提交
+            form.on('submit(layuiadmin-app-tags-submit)', function(data){
+              var field = data.field; //获取提交的字段
+
+              //提交 Ajax 成功后，关闭当前弹层并重载表格
+              admin.req({
+                type: "POST",
+                url: '/api/notice/categoryAdd',
+                data: field,
+                dataType: "json",
+                success: function (res) {
+                  layer.msg(res.msg);
+                }
+              });
+              table.reload('LAY-app-content-tags');
+
+              layui.table.reload('LAY-app-content-tags'); //重载表格
+              layer.close(index); //执行关闭 
+            });
+          });
+        }
+      });
+    }
+  });
+
+  
+  var active = {
+    add: function(){
+      admin.popup({
+        title: '添加分类'
+        ,area: ['450px', '300px']
+        ,id: 'LAY-popup-content-tags'
+        ,success: function(layero, index){
+          view(this.id).render('notice/categoryadd').done(function(){
+            form.render(null, 'layuiadmin-form-tags');
+            
+            //监听提交
+            form.on('submit(layuiadmin-app-tags-submit)', function(data){
+              var field = data.field; //获取提交的字段
+
+              //提交 Ajax 成功后，关闭当前弹层并重载表格
+              //提交 Ajax 成功后，关闭当前弹层并重载表格
+              admin.req({
+                type: "POST",
+                url: '/api/notice/categoryAdd',
+                data: field,
+                dataType: "json",
+                success: function (res) {
+                  layer.msg(res.msg);
+                }
+              });
+              table.reload('LAY-app-content-tags');
+
+              layer.close(index); //执行关闭 
+            });
+          });
+        }
+      });
+    }
+  }  
+  $('.layui-btn.layuiadmin-btn-tags').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+</script>

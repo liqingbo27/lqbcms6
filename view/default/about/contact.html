@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="all">
+  <meta name="author" content="Tencent-CP">
+  <meta name="Copyright" content="Tencent">
+  <meta name="Description" content="{$config.system_name}">
+  <meta name="Keywords" content="联系我们,{$config.system_name}">
+  <title>联系我们 - {$config.system_name}</title>
+  <link rel="stylesheet" href="/static/layui/css/modules/layer/default/layer.css">
+  <link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
+  <link rel="stylesheet" href="__STATIC__/css/animate.css">
+  <link rel="stylesheet" href="__STATIC__/css/base.css">
+  <link rel="stylesheet" href="__STATIC__/css/main.css">
+</head>
+
+<body>
+  {include file="common:header" /}
+  <div class="box-main">
+    <div class="container">
+      <div class="wrapper box-wrapper">
+        <div class="head">
+          <img src="__STATIC__/img/home.png" alt="">
+          <p>当前位置：</p>
+          <p><a href="/">首页&gt;</a></p>
+          <p>联系我们</p>
+        </div>
+        <div class="contact">
+          <div class="map-wrapper">
+            <div id="map"></div>
+          </div>
+          <div class="info">
+            <h5>联系我们</h5>
+            <p>地址：{$config.address}</p>
+            <p>EMAIL：{$config.email}</p>
+            <p>电话：{$config.tel}</p>
+            <p>邮编：{$config.postcode}</p>
+            <!-- <form method="post" class="contact-form">
+              <div class="item">
+                <label for="">联系人</label>
+                <input type="text" name="nickname" placeholder="请输入您的姓名">
+              </div>
+              <div class="item">
+                <label for="">手机号码</label>
+                <input type="text" name="phone" placeholder="请输入您的手机号码">
+              </div>
+              <div class="item" style="height: 142px;">
+                <label for="">留言内容</label>
+                <textarea id="content" name="content" placeholder="请输入您要留言的内容"></textarea>
+              </div>
+              <div class="item">
+                <label for="" style="flex: 0 1 83px;">验证码</label>
+                <input type="text" name="verify" placeholder="验证码" style="max-width: 173px;">
+                <img src="/index/login/verify" alt="" class="canvas" onclick="this.src=this.src+'?'+Math.random()">
+              </div>
+              <p>我们将在第一时间及时回复您的反馈，如您的问题比较紧急，请致电服务热线 ：{$config.tel}</p>
+              <a class="submit_btn">提&nbsp;&nbsp;&nbsp;&nbsp;交</a>
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {include file="common:footer" /}
+</body>
+<script src="__STATIC__/js/jquery-3.4.1.min.js"></script>
+<script src="__STATIC__/js/swiper.min.js"></script>
+<script src="__STATIC__/js/main.js"></script>
+<script src="/static/layui/lay/modules/layer.js"></script>
+<script src="https://api.map.baidu.com/api?key=&v=1.1&services=true" type="text/javascript"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kZi3zOOLjXw2IdsPqVZg4hoSBHbecpgV"></script>
+<script type="text/javascript">
+
+  var longitude = {$config.longitude};
+  var latitude = {$config.latitude};
+  //创建和初始化地图函数：
+  function initMap() {
+    createMap();//创建地图
+    setMapEvent();//设置地图事件
+    addMapControl();//向地图添加控件
+    addMapOverlay();//向地图添加覆盖物
+  }
+  function createMap() {
+    map = new BMap.Map("map");
+    map.centerAndZoom(new BMap.Point(longitude, latitude), 15);
+  }
+  function setMapEvent() {
+    map.enableScrollWheelZoom();
+    map.enableKeyboard();
+    map.enableDragging();
+    map.enableDoubleClickZoom()
+  }
+  function addClickHandler(target, window) {
+    target.addEventListener("click", function () {
+      target.openInfoWindow(window);
+    });
+  }
+  function addMapOverlay() {
+    var markers = [
+      { content: "电 话：{$config.tel}", title: "{$config.company}", imageOffset: { width: -46, height: -21 }, position: { lat: latitude, lng:longitude } }
+    ];
+    for (var index = 0; index < markers.length; index++) {
+      var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+      var marker = new BMap.Marker(point, {
+        icon: new BMap.Icon("https://api.map.baidu.com/lbsapi/createmap/images/icon.png", new BMap.Size(20, 25), {
+          imageOffset: new BMap.Size(markers[index].imageOffset.width, markers[index].imageOffset.height)
+        })
+      });
+      var label = new BMap.Label(markers[index].title, { offset: new BMap.Size(25, 5) });
+      var opts = {
+        width: 200,
+        title: markers[index].title,
+        enableMessage: false
+      };
+      var infoWindow = new BMap.InfoWindow(markers[index].content, opts);
+      marker.setLabel(label);
+      addClickHandler(marker, infoWindow);
+      map.addOverlay(marker);
+    };
+  }
+  //向地图添加控件
+  function addMapControl() {
+    var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+    scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+    map.addControl(scaleControl);
+    // var navControl = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+    // map.addControl(navControl);
+    // var overviewControl = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: true });
+    // map.addControl(overviewControl);
+  }
+  var map;
+  initMap();
+</script>
+
+</html>

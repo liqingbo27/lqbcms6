@@ -1,0 +1,216 @@
+<div class="header">
+  <div class="hea-title">
+    <div class="container">
+      <a href="/" class="logo">
+        <h1>{$config.system_name}</h1>
+      </a>
+      <div class="right">
+        <form class="search" action="/news/search" method="GET">
+          <div class="search_input">
+            <input name="keyword" type="text" placeholder="search">
+          </div>
+          <div class="search_btn"><button type="submit"></button></div>
+        </form>
+        <a href="/?lang={$switchLang}">
+          中文
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a href="/" {:setNavAvctive('index',$controllerName)}>Home</a>
+        </li>
+        <li>
+          <a>About HINP</a>
+          <div class="nav_list">
+            <ul>
+              <li>
+                <a href="/about/">Introduction</a>
+              </li>
+              <li>
+                <a href="/about/show/var/zhici/">{$singlepageArr['zhici']}</a>
+              </li>
+              <li>
+                <a href="/about/show/var/jiyu/">{$singlepageArr['jiyu']}</a>
+              </li>
+              <li> <a href="/team/lishihui/">Board Members</a> </li>
+              <li> <a href="/team/zhuanjia">Experts</a> </li>
+              <li>
+                <a href="/about/show/var/dashiji/">{$singlepageArr['dashiji']}</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a>{$newsCategoryArr[1]}</a>
+          <div class="nav_list">
+            <ul>
+              {volist name=":news_category_list(1)" id="vo"}
+              <li><a href="/news/index/cid/{$vo.id}">
+                  <p>{$vo.ename}</p>
+                </a></li>
+              {/volist}
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a>{$newsCategoryArr[6]}</a>
+          <div class="nav_list">
+            <ul>
+              {volist name=":news_category_list(6)" id="vo"}
+              <li><a href="/news/index/cid/{$vo.id}">
+                  <p>{$vo.ename}</p>
+                </a></li>
+              {/volist}
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a>{$newsCategoryArr[12]}</a>
+          <div class="nav_list">
+            <ul>
+              {volist name=":news_category_list(12)" id="vo"}
+              <li><a href="/news/index/cid/{$vo.id}">
+                  <p>{$vo.ename}</p>
+                </a></li>
+              {/volist}
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a {:setNavAvctive('notice',$controllerName)}>Announcements</a>
+          <div class="nav_list">
+            <ul>
+              {volist name=":notice_category_list(3)" id="vo"}
+              <li><a href="/notice/index/cid/{$vo.id}">
+                  <p>{$vo.ename}</p>
+                </a></li>
+              {/volist}
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="/recruit/" {:setNavAvctive('recruit',$controllerName)}>Careers at HINP</a>
+        </li>
+        <li>
+          <a href="/about/contact/" {:setNavAvctive('contact',$controllerName)}>Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="header-mobile">
+  <h3><img src="__STATIC__/img/logo.png" alt=""></h3>
+  <a href="javascript:;" class="right_btn click-sidebar">
+    <img src="__STATIC__/img/icons-dark-menu.png" alt=""></a>
+  <div class="menu_box">
+    <div class="mask2"></div>
+    <div class="sidebar">
+      <a href="/" class="mobile-logo">
+        <h1>{$config.system_name}</h1>
+      </a>
+      <a href="javascript:;" class="close-btn">
+        <img src="__STATIC__/img/close_icon.png" alt=""></a>
+      <div class="menu-list">
+        <ul>
+          <li>
+            <a href="/" {:setNavAvctive('index',$controllerName)}>Home</a>
+          </li>
+          <li>
+            <a>About HINP </a>
+            <div class="nav_list">
+              <ul>
+                <li>
+                  <a href="/about/">Survey HINP </a>
+                </li>
+                <li>
+                  <a href="/about/show/var/zhici/">{$singlepageArr['zhici']}</a>
+                </li>
+                <li>
+                  <a href="/about/show/var/jiyu/">{$singlepageArr['jiyu']}</a>
+                </li>
+                <li> <a href="/team/lishihui/">Board Members</a> </li>
+                <li> <a href="/team/zhuanjia">Experts</a> </li>
+                <li>
+                  <a href="/about/show/var/dashiji/">{$singlepageArr['dashiji']}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a>{$newsCategoryArr[1]}</a>
+            <div class="nav_list">
+              <ul>
+                {volist name=":news_category_list(1)" id="vo"}
+                <li><a href="/news/index/cid/{$vo.id}">
+                    <p>{$vo.ename}</p>
+                  </a></li>
+                {/volist}
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a>{$newsCategoryArr[6]}</a>
+            <div class="nav_list">
+              <ul>
+                {volist name=":news_category_list(6)" id="vo"}
+                <li><a href="/news/index/cid/{$vo.id}">
+                    <p>{$vo.ename}</p>
+                  </a></li>
+                {/volist}
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a>{$newsCategoryArr[12]}</a>
+            <div class="nav_list">
+              <ul>
+                {volist name=":news_category_list(12)" id="vo"}
+                <li><a href="/news/index/cid/{$vo.id}">
+                    <p>{$vo.ename}</p>
+                  </a></li>
+                {/volist}
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a {:setNavAvctive('notice',$controllerName)}>Announcements</a>
+            <div class="nav_list">
+              <ul>
+                {volist name=":notice_category_list(3)" id="vo"}
+                <li><a href="/notice/index/cid/{$vo.id}">
+                    <p>{$vo.ename}</p>
+                  </a></li>
+                {/volist}
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="/recruit/" {:setNavAvctive('recruit',$controllerName)}>Careers at HINP</a>
+          </li>
+          <li>
+            <a href="/about/contact/" {:setNavAvctive('contact',$controllerName)}>Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <a href="/?lang={$switchLang}">
+          中文
+        </a>
+        <form class="search" action="/news/search" method="GET">
+          <div class="search_input">
+            <input name="keyword" type="text" placeholder="search">
+          </div>
+          <div class="search_btn"><button type="submit"></button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

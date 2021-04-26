@@ -1,0 +1,12 @@
+<div class="swiper">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {volist name="advertList2" id="vo"}
+      <div class="swiper-slide">
+        <img src="{$vo.filepath}" alt="">
+        <p>{$vo.name}</p>
+      </div>
+      {/volist}
+    </div>
+  </div>
+</div>

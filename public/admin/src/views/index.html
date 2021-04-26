@@ -1,0 +1,170 @@
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">快捷方式</div>
+            <div class="layui-card-body">
+
+              <div class="layui-carousel layadmin-carousel layadmin-shortcut">
+                <div carousel-item>
+                  <ul class="layui-row layui-col-space10">
+                    <li class="layui-col-xs3">
+                      <a lay-href="set/user/info">
+                        <i class="layui-icon layui-icon-console"></i>
+                        <cite>个人信息</cite>
+                      </a>
+                    </li>
+
+                    <li class="layui-col-xs3">
+                      <a lay-href="set/user/password">
+                        <i class="layui-icon layui-icon-template-1"></i>
+                        <cite>修改密码</cite>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">快捷入口</div>
+            <div class="layui-card-body">
+
+              <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                <div carousel-item>
+                  <ul class="layui-row layui-col-space10">
+                    <li class="layui-col-xs6">
+                      <a lay-href="news/list" class="layadmin-backlog-body">
+                        <h3>资讯管理</h3>
+                        <!-- <p><cite>66</cite></p> -->
+                      </a>
+                    </li>
+                    <li class="layui-col-xs6">
+                      <a lay-href="singlepage/list" class="layadmin-backlog-body">
+                        <h3>单页管理</h3>
+                        <!-- <p><cite>12</cite></p> -->
+                      </a>
+                    </li>
+
+                    <!-- <li class="layui-col-xs6">
+                      <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
+                        <h3>待发货</h3>
+                        <p><cite>20</cite></p>
+                      </a> -->
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="layui-col-md12">
+          
+          <div class="layui-card">
+            <div class="layui-tab layui-tab-brief layadmin-latestData">
+              <ul class="layui-tab-title">
+                <li class="layui-this">今日资讯</li>
+              </ul>
+              <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                  <table id="LAY-index-topSearch"></table>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">版本信息</div>
+        <div class="layui-card-body layui-text">
+          <table class="layui-table">
+            <colgroup>
+              <col width="100">
+              <col>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>当前版本</td>
+                <td>
+                  <script type="text/html" template>
+                    v{{ layui.admin.v }}
+                    <!-- <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 15px;">更新日志</a> -->
+                  </script>
+                </td>
+              </tr>
+              <tr>
+                <td>基于框架</td>
+                <td>
+                  <script type="text/html" template>
+                    layui-v{{ layui.v }}
+                  </script>
+                </td>
+              </tr>
+              <tr>
+                <td>主要特色</td>
+                <td>单页面 / 响应式 / 清爽 / 极简</td>
+              </tr>
+              <tr>
+                <td>技术支持</td>
+                <td style="padding-bottom: 0;">
+                  <div class="layui-btn-container">
+                    <!-- <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a> -->
+                    <a href="javascript:update();" onclick="update();" class="layui-btn">更新版本</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+      <div class="layui-card">
+        <div class="layui-card-header">
+          温馨提示
+          <i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
+        </div>
+        <div class="layui-card-body layui-text layadmin-text">
+          <p>遇到技术问题，请联系待君科技</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  //加载 controller 目录下的对应模块
+  /*
+  
+    小贴士：
+      这里 console 模块对应 的 console.js 并不会重复加载，
+      然而该页面的视图则是重新插入到容器，那如何保证能重新来控制视图？有两种方式：
+        1): 借助 layui.factory 方法获取 console 模块的工厂（回调函数）给 layui.use
+        2): 直接在 layui.use 方法的回调中书写业务代码，即:
+            layui.use('console', function(){ 
+              //同 console.js 中的 layui.define 回调中的代码 
+            });
+            
+    这里我们采用的是方式1。其它很多视图中采用的其实都是方式2，因为更简单些，也减少了一个请求数。
+    
+  */
+  layui.use('console', layui.factory('console'));
+
+  function update() {
+    layer.msg('已是最新版本');
+    return false;
+  }
+</script>

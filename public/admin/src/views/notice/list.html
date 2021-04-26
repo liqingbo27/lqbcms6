@@ -1,0 +1,174 @@
+<title>文章列表</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>公告管理</cite></a>
+    <a><cite>招标公告</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="app-content-list">
+      <div class="layui-form-item">
+        <div class="layui-inline">
+          <label class="layui-form-label">搜索</label>
+          <div class="layui-input-inline">
+            <input type="text" name="keyword" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-inline">
+          <label class="layui-form-label">所属分类</label>
+          <div class="layui-input-inline">
+            <script type="text/html" template lay-url="/api/notice/getCategoryList"
+              lay-done="layui.form.render('select');">
+                <select name="category_id" id="category_id" required>
+                     <option value="">请选择</option>
+                     {{# layui.each(d.data,function(index,item){ }}
+                       <option value="{{ item.id }}" {{ item.name === d.params.category_name ? 'selected' : '' }}>{{ item.name }}</option>
+                     {{# }); }}
+                </select>
+              </script>
+          </div>
+        </div>
+
+        <div class="layui-inline">
+          <button class="layui-btn layuiadmin-btn-list" lay-submit lay-filter="LAY-app-contlist-search">
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-card-body">
+      <div style="padding-bottom: 10px;">
+        <button class="layui-btn layuiadmin-btn-list" data-type="batchdel">删除</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="add">添加</button>
+      </div>
+      <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
+      <script type="text/html" id="buttonTpl">
+          {{#  if(d.status){ }}
+            <button class="layui-btn layui-btn-xs" lay-event="toggle">显示</button>
+          {{#  } else { }}
+            <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="toggle">隐藏</button>
+          {{#  } }}
+        </script>
+      <script type="text/html" id="table-content-list">
+         <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="show"><i class="layui-icon layui-icon-show"></i>预览</a>
+          <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+          <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+        </script>
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use('notice', layui.factory('notice')).use(['admin', 'notice', 'table', 'form', 'layedit'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , view = layui.view
+      , table = layui.table
+      , layedit = layui.layedit
+      , form = layui.form;
+
+    form.render(null, 'app-content-list');
+
+    //监听搜索
+    form.on('submit(LAY-app-contlist-search)', function (data) {
+      var field = data.field;
+
+      console.log(field);
+      console.log(11);
+
+      //执行重载
+      table.reload('LAY-app-content-list', {
+        where: field
+      });
+    });
+
+    var active = {
+      batchdel: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        var ids = [];   //声明数组
+        for (var i = 0; i < checkData.length; i++) {
+          ids.push(checkData[i].id);
+        }
+
+
+        layer.confirm('确定要删除所选数据?', function (index) {
+          // console.log(ids);
+          admin.req({
+            type: "POST",
+            url: '/api/notice/del',
+            data: { ids: ids },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              table.reload('LAY-app-content-list');
+            }
+          });
+
+        });
+
+      }
+
+      //添加
+      , add: function (othis) {
+        admin.popup({
+          title: '添加文章'
+          , area: ['1000px', '800px']
+          , id: 'LAY-popup-content-add'
+          , success: function (layero, index) {
+            view(this.id).render('/notice/add').done(function () {
+
+
+
+              form.render(null, 'layuiadmin-app-form-list');
+
+              //监听提交
+              form.on('submit(layuiadmin-app-form-submit)', function (data) {
+                var field = data.field; //获取提交的字段
+                field.lang = lang
+
+                if (field.status == 'on') {
+                  field.status = 1;
+                } else {
+                  field.status = 0;
+                }
+                var content = ue.getContent();
+                field.content = content;
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                admin.req({
+                  type: "POST",
+                  url: '/api/notice/add',
+                  data: { data: field },
+                  dataType: "json",
+                  success: function (res) {
+                    layer.msg(res.msg, { time: 800 });
+
+                    layui.table.reload('LAY-app-content-list'); //重载表格
+                    layer.close(index); //执行关闭
+                  }
+                });
+              });
+            });
+          }
+        });
+      }
+    };
+
+    $('.layui-btn.layuiadmin-btn-list').on('click', function () {
+      var type = $(this).data('type');
+      active[type] ? active[type].call(this) : '';
+    });
+
+  });
+</script>

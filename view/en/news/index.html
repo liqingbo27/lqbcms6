@@ -1,0 +1,75 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-23 09:58:00
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-06-05 17:24:38
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="all">
+  <meta name="author" content="Tencent-CP">
+  <meta name="Copyright" content="Tencent">
+  <meta name="Description" content="{$config.system_name}">
+  <meta name="Keywords" content="{$config.system_name}">
+  <title>{notempty name="currentCategoryName"}{$currentCategoryName}_{/notempty}{$config.system_name}</title>
+  <link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
+  <link rel="stylesheet" href="__STATIC__/css/animate.css">
+  <link rel="stylesheet" href="__STATIC__/css/base.css">
+  <link rel="stylesheet" href="__STATIC__/css/main.css">
+</head>
+
+<body>
+  {include file="common:header" /}
+  <div class="box-main">
+    <div class="container">
+      {include file="news:news_column" /}
+      <div class="wrapper">
+        <div class="head">
+          <img src="__STATIC__/img/home.png" alt="">
+          <p>Current Loaction：</p>
+          <p><a href="/">Home&gt;</a></p>
+          <p>{$currentCategoryName}</p>
+        </div>
+        <div class="news-wrapper ">
+          <!-- <h3>{$currentCategoryName}</h3> -->
+          <ul>
+            {volist name="list" id="vo"}
+            <li>
+              <a href="{$vo.url}">
+                {neq name="vo.category_id" value="3"}
+                <img src="{$vo.thumb}" alt="">
+                {/neq}
+                <div class="content">
+                  <div class="info">
+                    <h5>{$vo.title}</h5>
+                    <p>{$vo.description|cut_str=52}</p>
+                  </div>
+                </div>
+                <span>{$vo.create_time|dates_to_date}</span>
+              </a>
+            </li>
+            {/volist}
+          </ul>
+        </div>
+        {$page|raw}
+      </div>
+    </div>
+  </div>
+  {include file="common:footer" /}
+</body>
+<script src="__STATIC__/js/jquery-3.4.1.min.js"></script>
+<script src="__STATIC__/js/swiper.min.js"></script>
+<script src="__STATIC__/js/main.js"></script>
+
+</html>

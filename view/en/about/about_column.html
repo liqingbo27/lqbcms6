@@ -1,0 +1,52 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-24 16:08:36
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-07-30 16:53:00
+ -->
+<div class="column">
+  <ul>
+
+    <li {eq name="info.varname" value="about" } class="active" {/eq}>
+      <a>
+        <p>About HINP</p>
+      </a>
+    </li>
+    <li {eq name="info.varname" value="intro" } class="active" {/eq}>
+      <a href="/about/">
+        <p>Introduction</p>
+      </a>
+    </li>
+    <li {eq name="info.varname" value="zhici" } class="active" {/eq}>
+      <a href="/about/show/var/zhici">
+        <p>{$singlepageArr['zhici']}</p>
+      </a>
+    </li>
+    <li {eq name="info.varname" value="jiyu" } class="active" {/eq}>
+      <a href="/about/show/var/jiyu">
+        <p>{$singlepageArr['jiyu']}</p>
+      </a>
+    </li>
+    <li {eq name="actionName" value="lishihui" } class="active" {/eq}>
+      <a href="/team/lishihui/">
+        <p>Board Members</p>
+      </a>
+    </li>
+    <li {eq name="actionName" value="zhuanjia" } class="active" {/eq}>
+      <a href="/team/zhuanjia">
+        <p>Experts</p>
+      </a>
+    </li>
+    <li {eq name="info.varname" value="dashiji" } class="active" {/eq}>
+      <a href="/about/show/var/dashiji">
+        <p>{$singlepageArr['dashiji']}</p>
+      </a>
+    </li>
+  </ul>
+  <div class="column-img">
+    {include file="common:column" /}
+  </div>
+</div>

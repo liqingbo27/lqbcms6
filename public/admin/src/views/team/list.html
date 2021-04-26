@@ -1,0 +1,91 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-24 16:03:15
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-06-10 10:23:58
+-->
+<title>文章列表</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>科研团队</cite></a>
+    <a><cite>团队列表</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="app-content-list">
+      <div class="layui-form-item">
+        <div class="layui-inline">
+          <label class="layui-form-label">搜索</label>
+          <div class="layui-input-inline">
+            <input type="text" name="keyword" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <button class="layui-btn layuiadmin-btn-list" lay-submit lay-filter="LAY-app-contlist-search">
+            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-card-body">
+      <div style="padding-bottom: 10px;">
+        <button class="layui-btn layuiadmin-btn-list" data-type="batchdel">删除</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="add">添加</button>
+      </div>
+      <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
+      <script type="text/html" id="category_id">
+        {{#  if(d.category_id == 1){ }}
+          <p>专家团队</p>
+        {{#  } else { }}
+          <p>理事会成员</p>
+        {{#  } }}
+      </script>
+      <script type="text/html" id="thumb">
+        <div class="layer-photos-demo" onclick="thumb()">
+          <img layer-pid="" layer-src="{{ d.thumb }}" src="{{ d.thumb }}" alt="图片名">
+        </div>
+      </script>
+
+      <script type="text/html" id="buttonTpl">
+        {{#  if(d.status){ }}
+          <button class="layui-btn layui-btn-xs">显示</button>
+        {{#  } else { }}
+          <button class="layui-btn layui-btn-primary layui-btn-xs">隐藏</button>
+        {{#  } }}
+      </script>
+      <script type="text/html" id="table-content-list">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+        <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a> -->
+      </script>
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use('team', layui.factory('team')).use(['admin', 'team', 'table', 'form', 'layedit'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , view = layui.view
+      , table = layui.table
+      , layedit = layui.layedit
+      , form = layui.form;
+
+    form.render(null, 'app-content-list');
+
+  });
+
+  function thumb() {
+    layer.photos({
+      photos: '.layer-photos-demo'
+      , anim: 5
+    });
+  }
+</script>

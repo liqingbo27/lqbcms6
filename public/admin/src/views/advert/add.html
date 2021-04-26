@@ -1,0 +1,135 @@
+<div class="layui-form" lay-filter="layuiadmin-form-tags" id="layuiadmin-app-form-tags">
+  <div class="layui-form-item">
+    <label class="layui-form-label">名称</label>
+    <div class="layui-input-inline" style="width: 450px;">
+      <script type="text/html" template>
+        <input type="text" name="title" value="{{ d.params.title || '' }}" placeholder="请输入名称" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">广告位</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <select name="place" lay-verify="required">
+          <option value="">请选择广告位</option>
+          <option value="1" {{ d.params.place === 1 ? 'selected' : '' }}>首页幻灯片</option>
+          <option value="2" {{ d.params.place === 2 ? 'selected' : '' }}>侧栏幻灯片</option>
+        </select>
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">URL</label>
+    <div class="layui-input-inline" style="width: 450px;">
+      <script type="text/html" template>
+        <input type="text" name="url" value="{{ d.params.url || '' }}"  placeholder="请输入跳转URL链接" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">图片</label>
+    <div class="layui-input-inline" style="width: 245px;">
+      <script type="text/html" template>
+        <input type="text" name="filepath" id="filepath" value="{{ d.params.filepath || '' }}" lay-verify="required" placeholder="请上传图片" autocomplete="off" class="layui-input" >
+      </script>
+    </div>
+    <button style="float: left;" type="button" class="layui-btn" id="layuiadmin-upload-useradmin">上传图片</button>
+    <button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview" style="margin-left: 10px;">查看图片</button>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="sort" value="{{ d.params.sort || '' }}" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-block" style="width: 450px;">
+      <script type="text/html" template>
+      <textarea name="remark" placeholder="" class="layui-textarea">{{ d.params.remark || '' }}</textarea>
+      </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+      <input type="checkbox" lay-filter="status" name="status" lay-skin="switch" lay-text="显示|隐藏" {{ d.params.status != 0 ? 'checked' : '' }} >
+    </script>
+    </div>
+  </div>
+
+  <script type="text/html" template>
+    <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+  </script>
+
+  <script type="text/html" template>
+    <input type="hidden" name="lang" value="{{ layui.data('lang').lang }}">
+  </script>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="layuiadmin-app-tags-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use(['admin', 'form', 'upload'], function () {
+    var $ = layui.$
+      , form = layui.form
+      , layer = layui.layer
+      , laytpl = layui.laytpl
+      , setter = layui.setter
+      , view = layui.view
+      , admin = layui.admin
+      , upload = layui.upload;
+
+
+
+    //上传头像
+    var avatarSrc = $('#filepath');
+    upload.render({
+      elem: '#layuiadmin-upload-useradmin'
+      , url: '/api/advert/upload'
+      , accept: 'images'
+      , method: 'get'
+      , acceptMime: 'image/*'
+      , done: function (res) {
+        $(this.item).prev("div").children("input").val(res.data.src)
+      }
+    });
+
+    //查看头像
+    admin.events.avartatPreview = function (othis) {
+      var src = avatarSrc.val();
+      layer.photos({
+        photos: {
+          "title": "查看头像" //相册标题
+          , "data": [{
+            "src": src //原图地址
+          }]
+        }
+        , shade: 0.01
+        , closeBtn: 1
+        , anim: 5
+      });
+    };
+
+    form.on('radio(status)', function (data) {
+      // console.log(data.elem); //得到radio原始DOM对象
+      console.log(data.value); //被点击的radio的value值
+    });
+
+  })
+</script>

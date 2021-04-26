@@ -1,0 +1,214 @@
+
+<title>设置我的资料</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>设置</cite></a>
+    <a><cite>我的资料</cite></a>
+  </div>
+</div>
+  
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">设置我的资料</div>
+        <div class="layui-card-body" pad15>
+          
+          <div class="layui-form" lay-filter="adminInfo">
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户名</label>
+              <div class="layui-input-inline">
+                <input type="text" name="username" value="" readonly class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">昵称</label>
+              <div class="layui-input-inline">
+                <input type="text" name="nickname" value="" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+              </div>
+            </div>
+            <!-- <div class="layui-form-item">
+              <label class="layui-form-label">性别</label>
+              <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">头像</label>
+              <div class="layui-input-inline">
+                <input name="avatar" lay-verify="required" id="LAY_avatarSrc" placeholder="图片地址" value="http://cdn.layui.com/avatar/168.jpg" class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primary" id="LAY_avatarUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview">查看图片</button >
+              </div>
+           </div> -->
+            <div class="layui-form-item">
+              <label class="layui-form-label">手机</label>
+              <div class="layui-input-inline">
+                <input type="text" name="phone" value="" lay-verify="phone" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮箱</label>
+              <div class="layui-input-inline">
+                <input type="text" name="email" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">备注</label>
+              <div class="layui-input-block">
+                <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="setmyinfo">确认修改</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use(['form', 'upload'], function(exports){
+  var $ = layui.$
+  ,layer = layui.layer
+  ,laytpl = layui.laytpl
+  ,setter = layui.setter
+  ,view = layui.view
+  ,admin = layui.admin
+  ,form = layui.form
+  ,upload = layui.upload;
+
+  var $body = $('body');
+
+  var tableData = layui.data(setter.tableName);
+ 
+  /**
+   *  为form表单初始赋值
+   */
+   var index = layer.load({shade: [0.4,'#def'], icon :'&#xe63d'});
+   $(".layui-form").hide();
+
+  $.ajax({
+    url: '/api/admin/getInfoBySession',
+    type: "GET",
+    dataType: 'json',
+    data: {
+      group: 'base',
+    },
+    headers:{
+      "token": 1
+    },
+    success: function (res) {
+      if (res.code == 0) {
+        form.val("adminInfo", res.data);
+        // form.render();
+        $(".layui-form").show();
+        layer.close(index); 
+      }
+    }
+  });
+
+  form.render();
+  
+  //自定义验证
+  form.verify({
+    nickname: function(value, item){ //value：表单的值、item：表单的DOM对象
+      if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+        return '用户名不能有特殊字符';
+      }
+      if(/(^\_)|(\__)|(\_+$)/.test(value)){
+        return '用户名首尾不能出现下划线\'_\'';
+      }
+      if(/^\d+\d+\d$/.test(value)){
+        return '用户名不能全为数字';
+      }
+    }
+    
+    //我们既支持上述函数式的方式，也支持下述数组的形式
+    //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    
+    //确认密码
+    ,repass: function(value){
+      if(value !== $('#LAY_password').val()){
+        return '两次密码输入不一致';
+      }
+    }
+  });
+
+  
+  //设置我的资料
+  form.on('submit(setmyinfo)', function(obj){
+    // layer.msg(JSON.stringify(obj.field));
+    
+    //提交修改
+    console.log(obj.field);
+    console.log(JSON.stringify(obj.field));
+    
+    admin.req({
+      url: '/api/admin/saveInfoBySession'
+      ,data: { data: obj.field}
+      ,success: function(res){
+        layer.msg(res.msg, {icon: 1,time: 800});
+        if(res.code == 0){
+        } else {
+          
+        }
+      }
+    });
+    
+    return false;
+  });
+
+  //上传头像
+  var avatarSrc = $('#LAY_avatarSrc');
+  upload.render({
+    url: '/api/Setting/uploadQrcode'
+    ,elem: '#LAY_avatarUpload'
+    ,done: function(res){
+      console.log(res);
+      if(res.code == 0){
+        avatarSrc.val(res.data.url);
+      } else {
+        layer.msg(res.msg, {icon: 5});
+      }
+    }
+  });
+  
+  //查看头像
+  admin.events.avartatPreview = function(othis){
+    var src = avatarSrc.val();
+    layer.photos({
+      photos: {
+        "title": "查看头像" //相册标题
+        ,"data": [{
+          "src": src //原图地址
+        }]
+      }
+      ,shade: 0.01
+      ,closeBtn: 1
+      ,anim: 5
+    });
+  };
+
+
+});
+</script>

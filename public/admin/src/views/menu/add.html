@@ -1,0 +1,83 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-10 16:51:46
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-04-17 09:58:50
+ -->
+<div class="layui-form" lay-filter="layuiadmin-form-tags" id="layuiadmin-app-form-tags">
+  <script type="text/html" template>
+    <input type="hidden" name="id" value="{{ d.params.id || '' }}">
+  </script>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属分类</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template lay-url="/api/menu/getAllList/pid/0" lay-done="layui.form.render('select');">
+        <select name="pid" id="pid" required>
+             <option value="0">上级分类</option>
+              {{# layui.each(d.data,function(index,item){ }}
+             <option value="{{ item.id }}" {{ item.id === d.params.pid ? 'selected' : '' }}>{{ item.fullname }}</option>
+              {{# }); }}
+        </select>
+       </script>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">分类名</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="title" value="{{ d.params.title || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">name</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="name" value="{{ d.params.name || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">icon</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="icon" value="{{ d.params.icon || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">jump</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="jump" value="{{ d.params.jump || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">spread</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="spread" value="{{ d.params.spread || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="sort" value="{{ d.params.sort || '' }}" placeholder="请输入..." autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="layuiadmin-app-tags-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,212 @@
+<title>广告管理</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>应用</cite></a>
+    <a><cite>广告管理</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-card-header layuiadmin-card-header-auto">
+      <button class="layui-btn layuiadmin-btn-tags" data-type="add">添加</button>
+    </div>
+    <div class="layui-card-body">
+      <table id="LAY-app-content-tags" lay-filter="LAY-app-content-tags"></table>
+      <script type="text/html" id="buttonTpl">
+        {{#  if(d.status){ }}
+          <button class="layui-btn layui-btn-xs" lay-event="toggle">显示</button>
+        {{#  } else { }}
+          <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="toggle">隐藏</button>
+        {{#  } }}
+      </script>
+      <script type="text/html" id="layuiadmin-app-cont-tagsbar">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+      </script>
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use(['admin', 'contlist', 'table'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , view = layui.view
+      , table = layui.table
+      , form = layui.form;
+
+    //标题内容模板
+    var tplTitle = function (d) {
+      return '<a href="' + d.url + '" target="_blank">预览';
+    };
+
+    var tplImg = function (d) {
+      return '<div><img src="' + d.filepath + '" ></div>';
+    };
+
+    //广告管理
+    table.render({
+      elem: '#LAY-app-content-tags'
+      , url: '/api/advert/getList' //模拟接口
+      , cols: [[
+
+        { field: 'id', width: 100, title: 'ID', sort: true }
+        , { field: 'title', title: '名称', width: 100 }
+        , { field: 'filepath', title: '缩略图', width: 260, templet: tplImg }
+        , { field: 'remark', title: '说明', minWidth: 100 }
+        , { field: 'url', title: '预览', width: 180, templet: tplTitle }
+        , { field: 'sort', title: '排序', width: 120, edit: 'text' }
+        , { field: 'status', title: '发布状态', templet: '#buttonTpl', width: 100, align: 'center' }
+        , { title: '操作', width: 240, align: 'center', fixed: 'right', toolbar: '#layuiadmin-app-cont-tagsbar' }
+      ]]
+      , text: '暂无数据'
+      , response: {
+        // statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+      }
+      , parseData: function (res) { //res 即为原始返回的数据
+        return {
+          "code": res.code, //解析接口状态
+          "msg": res.msg, //解析提示文本
+          "count": res.data.total, //解析数据长度
+          "data": res.data.data //解析数据列表
+        };
+      }
+    });
+
+
+    table.on('edit(LAY-app-content-tags)', function (obj) { //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+      /*console.log(obj); //得到修改后的值
+      console.log(obj.value); //得到修改后的值
+      console.log(obj.field); //当前编辑的字段名
+      console.log(obj.data); //所在行的所有相关数据*/
+
+      admin.req({
+        type: "POST",
+        url: '/api/advert/changeField',
+        data: { id: obj.data.id, value: obj.value, field: obj.field },
+        dataType: "json",
+        success: function (res) {
+          console.log(res);
+          layer.msg(res.msg);
+          if (res.code == 0) {
+
+          }
+        }
+      });
+
+    });
+
+    //监听工具条
+    table.on('tool(LAY-app-content-tags)', function (obj) {
+      var data = obj.data;
+      if (obj.event === 'del') {
+        layer.confirm('确定删除此广告？', function (index) {
+
+          admin.req({
+            type: "POST",
+            url: '/api/advert/del',
+            data: { ids: data.id },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              if (res.code == 0) {
+                obj.del();
+                layer.close(index);
+              }
+            }
+          });
+
+
+        });
+      } else if (obj.event === 'edit') {
+        admin.popup({
+          title: '编辑广告'
+          , area: ['650px', '600px']
+          , id: 'LAY-popup-content-tags'
+          , success: function (layero, index) {
+            view(this.id).render('advert/add', data).done(function () {
+              form.render(null, 'layuiadmin-form-tags');
+
+              //监听提交
+              form.on('submit(layuiadmin-app-tags-submit)', function (data) {
+                var field = data.field; //获取提交的字段
+                console.log(field);
+
+                if (field.status == 'on') {
+                  field.status = 1;
+                } else {
+                  field.status = 0;
+                }
+
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                admin.req({
+                  type: "POST",
+                  url: '/api/advert/add',
+                  data: field,
+                  dataType: "json",
+                  success: function (res) {
+                    layer.msg(res.msg);
+                  }
+                });
+                table.reload('LAY-app-content-tags');
+
+                layui.table.reload('LAY-app-content-tags'); //重载表格
+                layer.close(index); //执行关闭 
+              });
+            });
+          }
+        });
+      }
+    });
+
+
+    var active = {
+      add: function () {
+        admin.popup({
+          title: '添加广告'
+          , area: ['650px', '600px']
+          , id: 'LAY-popup-content-tags'
+          , success: function (layero, index) {
+            view(this.id).render('advert/add').done(function () {
+              form.render(null, 'layuiadmin-form-tags');
+
+              //监听提交
+              form.on('submit(layuiadmin-app-tags-submit)', function (data) {
+                var field = data.field; //获取提交的字段
+                field.lang = lang
+
+                if (field.status == 'on') {
+                  field.status = 1;
+                } else {
+                  field.status = 0;
+                }
+
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                admin.req({
+                  type: "POST",
+                  url: '/api/advert/add',
+                  data: field,
+                  dataType: "json",
+                  success: function (res) {
+                    layer.msg(res.msg);
+                  }
+                });
+                table.reload('LAY-app-content-tags');
+
+                layer.close(index); //执行关闭 
+              });
+            });
+          }
+        });
+      }
+    }
+    $('.layui-btn.layuiadmin-btn-tags').on('click', function () {
+      var type = $(this).data('type');
+      active[type] ? active[type].call(this) : '';
+    });
+
+  });
+</script>

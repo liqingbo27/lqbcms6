@@ -1,0 +1,258 @@
+<title>文章列表</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>应用</cite></a>
+    <a><cite>单页列表</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+
+    <div class="layui-card-body">
+      <!-- <div style="padding-bottom: 10px;">
+        <button class="layui-btn layuiadmin-btn-list" data-type="add">添加</button>
+      </div> -->
+      <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
+      <script type="text/html" id="buttonTpl">
+          {{#  if(d.status){ }}
+            <button class="layui-btn layui-btn-xs">已发布</button>
+          {{#  } else { }}
+            <button class="layui-btn layui-btn-primary layui-btn-xs">待修改</button>
+          {{#  } }}
+        </script>
+      <script type="text/html" id="table-content-list">
+          <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+          <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a> -->
+        </script>
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use(['admin', 'table', 'layedit'], function () {
+    var $ = layui.$
+      , admin = layui.admin
+      , view = layui.view
+      , table = layui.table
+      , layedit = layui.layedit
+      , form = layui.form
+      , lang = layui.data('lang').lang;
+
+    table.set({
+      where: {
+        lang: lang
+      }
+    })
+
+    //文章管理
+    table.render({
+      elem: '#LAY-app-content-list'
+      , url: '/api/singlepage/getList' //模拟接口
+      , cols: [[
+        { type: 'checkbox', fixed: 'left' }
+        , { field: 'id', width: 80, title: 'ID' }
+        , { field: 'title', title: '标题', minWidth: 100 }
+        , { field: 'varname', title: '变量' }
+        , { field: 'admin_name', title: '创建人' }
+        , { field: 'update_time', title: '更新时间', sort: true }
+        , { field: 'sort', title: '排序', sort: true, width: 80, align: 'center' }
+        , { field: 'status', title: '状态', templet: '#buttonTpl', minWidth: 80, align: 'center' }
+        , { title: '操作', minWidth: 150, align: 'center', fixed: 'right', toolbar: '#table-content-list' }
+      ]]
+      , page: true
+      , limit: 10
+      , limits: [10, 15, 20, 25, 30]
+      , text: '对不起，加载出现异常！'
+      , parseData: function (res) { //res 即为原始返回的数据
+        return {
+          "code": res.code, //解析接口状态
+          "msg": res.msg, //解析提示文本
+          "count": res.data.total, //解析数据长度
+          "data": res.data.data //解析数据列表
+        };
+      }
+    });
+
+    //监听工具条
+    table.on('tool(LAY-app-content-list)', function (obj) {
+      var data = obj.data;
+      var h = $(window).height() - 60;
+      var w = $(window).width() - 10;
+
+      if (obj.event === 'del') {
+        layer.confirm('确定删除此文章？', function (index) {
+          obj.del();
+          layer.close(index);
+
+          admin.req({
+            type: "POST",
+            url: '/api/Singlepage/del',
+            data: { ids: data.id },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              layui.table.reload('LAY-app-content-list'); //重载表格
+            }
+          });
+        });
+      } else if (obj.event === 'edit') {
+
+        admin.popup({
+          title: '编辑'
+          , area: ['860px', h + 'px']
+          , id: 'LAY-popup-content-edit'
+          , success: function (layero, index) {
+            view(this.id).render('singlepage/add', data).done(function () {
+
+              layedit.set({
+                uploadImage: {
+                  url: '/api/uploads/edit' //接口url
+                  , type: 'post' //默认post
+                }
+              });
+
+              // $("#content").val(data.content); //先赋值
+              // var editIndex = layedit.build('content'); //建立编辑器
+              ue.ready(function () {
+                ue.setContent(data.content);
+              });
+
+              form.render(null, 'layuiadmin-app-form-list');
+
+              //监听提交
+              form.on('submit(layuiadmin-app-form-submit)', function (data) {
+                var field = data.field; //获取提交的字段
+                field.lang = lang
+
+                if (field.status == 'on') {
+                  field.status = 1;
+                } else {
+                  field.status = 0;
+                }
+                // var content = layedit.getContent(editIndex);
+                // field.content = content;
+                // console.log(content);
+                var content = ue.getContent();
+                field.content = content;
+
+                console.log(field)
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                admin.req({
+                  type: "POST",
+                  url: '/api/singlepage/add',
+                  data: { data: field },
+                  dataType: "json",
+                  success: function (res) {
+                    layer.msg(res.msg, { time: 800 });
+
+                    if (res.code == 0) {
+                      setTimeout(function () {
+                        layui.table.reload('LAY-app-content-list'); //重载表格
+                        layer.close(index); //执行关闭 
+                      }, 1000);
+                    }
+                  }
+                });
+
+              });
+
+            });
+          }
+        });
+      }
+    });
+
+    //监听搜索
+    form.on('submit(LAY-app-contlist-search)', function (data) {
+      var field = data.field;
+
+      //执行重载
+      table.reload('LAY-app-content-list', {
+        where: field
+      });
+    });
+
+    //下拉选择公司 
+    form.on('select(newsTitle)', function (data) {
+      var varname = $(data.elem).find("option:selected").attr("data-varname");
+      $('input[name=varname]').val(varname)
+    });
+    var active = {
+      batchdel: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        layer.confirm('确定删除吗？', function (index) {
+
+          //执行 Ajax 后重载
+          /*
+          admin.req({
+            url: 'xxx'
+            //,……
+          });
+          */
+          table.reload('LAY-app-content-list');
+          layer.msg('已删除');
+        });
+      }
+
+      //添加
+      , add: function (othis) {
+        admin.popup({
+          title: '添加'
+          , area: ['800px', '600px']
+          , id: 'LAY-popup-content-add'
+          , success: function (layero, index) {
+            view(this.id).render('singlepage/add').done(function () {
+              form.render(null, 'layuiadmin-app-form-list');
+
+              //监听提交
+              form.on('submit(layuiadmin-app-form-submit)', function (data) {
+                var field = data.field; //获取提交的字段
+                field.lang = lang;
+
+                if (field.status == 'on') {
+                  field.status = 1;
+                } else {
+                  field.status = 0;
+                }
+
+                var content = ue.getContent();
+                field.content = content;
+                console.log(field)
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                admin.req({
+                  type: "POST",
+                  url: '/api/singlepage/add',
+                  data: { data: field },
+                  dataType: "json",
+                  success: function (res) {
+                    layer.msg(res.msg, { time: 800 });
+
+                    layui.table.reload('LAY-app-content-list'); //重载表格
+                    layer.close(index); //执行关闭 
+                  }
+                });
+
+              });
+
+            });
+          }
+        });
+      }
+    };
+
+    $('.layui-btn.layuiadmin-btn-list').on('click', function () {
+      var type = $(this).data('type');
+      active[type] ? active[type].call(this) : '';
+    });
+
+  });
+</script>

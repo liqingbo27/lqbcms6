@@ -1,0 +1,422 @@
+<title>设置我的资料</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>设置</cite></a>
+    <a><cite>基础设置</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">基础设置</div>
+        <div class="layui-card-body" pad15>
+
+          <div class="layui-form" lay-filter="setmyinfo">
+            <div class="layui-form-item">
+              <label class="layui-form-label">网站名称</label>
+              <div class="layui-input-inline" style="width: 350px;">
+                <input type="text" name="system_name" value="" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux"></div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">公司名称</label>
+              <div class="layui-input-inline" style="width: 350px;">
+                <input type="text" name="company" value="" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux"></div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">联系人</label>
+              <div class="layui-input-inline">
+                <input type="text" name="linkman" value="" autocomplete="off" placeholder="" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">热线电话</label>
+              <div class="layui-input-inline">
+                <input type="text" name="tel" value="" autocomplete="off" placeholder="" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">手机</label>
+              <div class="layui-input-inline">
+                <input type="text" name="cellphone" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">QQ</label>
+              <div class="layui-input-inline">
+                <input type="text" name="qq" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">微信</label>
+              <div class="layui-input-inline">
+                <input type="text" name="wechat" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">微博</label>
+              <div class="layui-input-inline">
+                <input type="text" name="microblog" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮箱</label>
+              <div class="layui-input-inline">
+                <input type="text" name="email" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">地址</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input type="text" name="address" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮编</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input type="text" name="postcode" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">经度</label>
+              <div class="layui-input-inline" style="width: 120px;">
+                <input type="text" name="longitude" value="" autocomplete="off" class="layui-input">
+              </div>
+              <label class="layui-form-label">纬度</label>
+              <div class="layui-input-inline" style="width: 120px;">
+                <input type="text" name="latitude" value="" autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">百度地图</div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">备案号</label>
+              <div class="layui-input-inline">
+                <input type="text" name="beianhao" value="" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">备注</label>
+              <div class="layui-input-block">
+                <textarea name="remarks" placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">微信二维码</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input name="qrcode" id="LAY_avatarSrc" placeholder="" value="" class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primary" id="LAY_avatarUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview">查看图片</button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">微博二维码</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input name="microblog" id="LAY_microblogSrc" placeholder="" value="" class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primary" id="LAY_microblogUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="microblogPreview">查看图片</button>
+              </div>
+            </div>
+
+            <!-- <div class="layui-form-item">
+              <label class="layui-form-label">LOGO</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input name="logo" id="LAY_logoSrc" placeholder="" value="" class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primary" id="LAY_logoUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="logoPreview">查看图片</button>
+              </div>
+            </div> -->
+
+
+            <!-- <div class="layui-form-item">
+              <label class="layui-form-label">性别</label>
+              <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+              </div>
+            </div> -->
+
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="setmyinfo">提交</button>
+                <!-- <button type="reset" class="layui-btn layui-btn-primary">重新填写</button> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  layui.use(['form', 'upload'], function (exports) {
+    var $ = layui.$
+      , layer = layui.layer
+      , laytpl = layui.laytpl
+      , setter = layui.setter
+      , view = layui.view
+      , admin = layui.admin
+      , form = layui.form
+      , upload = layui.upload
+      , lang = layui.data('lang').lang;
+
+    var $body = $('body');
+
+    group = lang;
+
+
+    /**
+     *  为form表单初始赋值
+     */
+    var index = layer.load({ shade: [0.4, '#def'], icon: '&#xe63d' });
+    $(".layui-form").hide();
+
+    $.ajax({
+      url: '/api/setting/getSettingList',
+      type: "GET",
+      dataType: 'json',
+      data: {
+        group: group,
+      },
+      success: function (res) {
+        if (res.code == 0) {
+          console.log(res.data);
+          form.val("setmyinfo", res.data);
+          // form.render();
+          $(".layui-form").show();
+          layer.close(index);
+        }
+      }
+    });
+
+    form.render();
+
+    //自定义验证
+    form.verify({
+      nickname: function (value, item) { //value：表单的值、item：表单的DOM对象
+        if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+          return '用户名不能有特殊字符';
+        }
+        if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+          return '用户名首尾不能出现下划线\'_\'';
+        }
+        if (/^\d+\d+\d$/.test(value)) {
+          return '用户名不能全为数字';
+        }
+      }
+
+      //我们既支持上述函数式的方式，也支持下述数组的形式
+      //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+      , pass: [
+        /^[\S]{6,12}$/
+        , '密码必须6到12位，且不能出现空格'
+      ]
+
+      //确认密码
+      , repass: function (value) {
+        if (value !== $('#LAY_password').val()) {
+          return '两次密码输入不一致';
+        }
+      }
+    });
+
+    //网站设置
+    form.on('submit(set_website)', function (obj) {
+      layer.msg(JSON.stringify(obj.field));
+
+      //提交修改
+      /*
+      admin.req({
+        url: ''
+        ,data: obj.field
+        ,success: function(){
+          
+        }
+      });
+      */
+      return false;
+    });
+
+    //邮件服务
+    form.on('submit(set_system_email)', function (obj) {
+      layer.msg(JSON.stringify(obj.field));
+
+      //提交修改
+      /*
+      admin.req({
+        url: ''
+        ,data: obj.field
+        ,success: function(){
+          
+        }
+      });
+      */
+      return false;
+    });
+
+
+    //设置我的资料
+    form.on('submit(setmyinfo)', function (obj) {
+      var buttonObj = $(this);
+      // layer.msg(JSON.stringify(obj.field));
+
+      //提交修改
+      console.log(obj);
+      console.log(JSON.stringify(obj.field));
+
+      $(this).html('正在提交...').addClass('layui-btn-disabled');
+
+      admin.req({
+        url: '/api/Setting/myUpdate/group/' + layui.data('lang').lang
+        , data: obj.field
+        , success: function (res) {
+          layer.msg(res.msg, { icon: 1, time: 800 });
+          if (res.code == 0) {
+            buttonObj.html('提交').removeClass('layui-btn-disabled');
+          } else {
+
+          }
+        }
+      });
+
+      return false;
+    });
+
+    var avatarSrc = $('#LAY_avatarSrc'); // 微信二维码
+    var microblogSrc = $('#LAY_microblogSrc'); // 微博二维码
+    var logoSrc = $('#LAY_logoSrc'); // LOGO
+
+    // 微信二维码
+    upload.render({
+      url: '/api/uploads/thumb/column/base'
+      , elem: '#LAY_avatarUpload'
+      , done: function (res) {
+        console.log(res);
+        if (res.code == 0) {
+          avatarSrc.val(res.data.src);
+        } else {
+          layer.msg(res.msg, { icon: 5 });
+        }
+      }
+    });
+    // 微博二维码
+    upload.render({
+      url: '/api/uploads/thumb/column/base'
+      , elem: '#LAY_microblogUpload'
+      , done: function (res) {
+        console.log(res);
+        if (res.code == 0) {
+          microblogSrc.val(res.data.src);
+        } else {
+          layer.msg(res.msg, { icon: 5 });
+        }
+      }
+    });
+    // LOGO
+    upload.render({
+      url: '/api/uploads/thumb/column/base'
+      , elem: '#LAY_logoUpload'
+      , done: function (res) {
+        console.log(res);
+        if (res.code == 0) {
+          logoSrc.val(res.data.src);
+        } else {
+          layer.msg(res.msg, { icon: 5 });
+        }
+      }
+    });
+
+    //查看微信二维码
+    admin.events.avartatPreview = function (othis) {
+      var src = avatarSrc.val();
+      layer.photos({
+        photos: {
+          "title": "查看头像" //相册标题
+          , "data": [{
+            "src": src //原图地址
+          }]
+        }
+        , shade: 0.01
+        , closeBtn: 1
+        , anim: 5
+      });
+    };
+    //查看微博二维码 
+    admin.events.microblogPreview = function (othis) {
+      var src = microblogSrc.val();
+      layer.photos({
+        photos: {
+          "title": "查看头像" //相册标题
+          , "data": [{
+            "src": src //原图地址
+          }]
+        }
+        , shade: 0.01
+        , closeBtn: 1
+        , anim: 5
+      });
+    };
+    //查看LOGO
+    admin.events.logoPreview = function (othis) {
+      console.log(1);
+      var src = logoSrc.val();
+      console.log(src);
+      layer.photos({
+        photos: {
+          "title": "查看头像" //相册标题
+          , "data": [{
+            "src": src //原图地址
+          }]
+        }
+        , shade: 0.01
+        , closeBtn: 1
+        , anim: 5
+      });
+    };
+
+
+
+    //设置密码
+    form.on('submit(setmypass)', function (obj) {
+      layer.msg(JSON.stringify(obj.field));
+
+      //提交修改
+      /*
+      admin.req({
+        url: ''
+        ,data: obj.field
+        ,success: function(){
+          
+        }
+      });
+      */
+      return false;
+    });
+
+
+  });
+</script>

@@ -1,0 +1,82 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-23 16:56:47
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-06-15 09:58:20
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="all">
+  <meta name="author" content="Tencent-CP">
+  <meta name="Copyright" content="Tencent">
+  <meta name="Description" content="{$config.system_name}">
+  <meta name="Keywords" content="{$config.system_name}">
+  <title>{$info.title}_招贤纳士 - {$config.system_name}</title>
+  <link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
+  <link rel="stylesheet" href="__STATIC__/css/animate.css">
+  <link rel="stylesheet" href="__STATIC__/css/base.css">
+  <link rel="stylesheet" href="__STATIC__/css/main.css">
+
+</head>
+
+<body>
+  {include file="common:header" /}
+  <div class="box-main">
+    <div class="container">
+      <div class="wrapper box-wrapper">
+        <div class="head">
+          <img src="__STATIC__/img/home.png" alt="">
+          <p>当前位置：</p>
+          <p><a href="/">首页&gt;</a></p>
+          <p><a href="/recruit/">招贤纳士&gt;</a></p>
+          <p><a>{$info.title}</a></p>
+        </div>
+        <div class="hire">
+          <ul>
+            <li>
+              <a href="javascript:;">
+                <div class="head">
+                  <h5>{$info.title}</h5>
+                  {notempty name="info.experience"}<p>工作经验：{$info.experience}</p>{/notempty}
+                  {notempty name="info.education"}<p>最低学历：{$info.education}</p>{/notempty}
+                  {notempty name="info.arrival"}<p>到岗时间：{$info.arrival}</p>{/notempty}
+                  {notempty name="info.age"}<p>年龄要求：{$info.age}</p>{/notempty}
+                  {notempty name="info.money"}<p>薪资待遇：{$info.money}</p>{/notempty}
+                  <p>发布日期：{$info.create_time|strtotime|date='Y-m-d'}</p>
+                </div>
+                <div class="info">
+                  <p>任职要求：</p>
+                  {$info.content|raw}
+                </div>
+                <!-- <div class="info">
+                  <p>其他福利：</p>
+                  <p>有提成 、提供中餐、包住、有高温费 交通补助 全勤奖、转正后购买五险一金、员工生日补助、双休 、周末加班1.5工资等</p>
+                </div> -->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {include file="common:footer" /}
+</body>
+<script src="__STATIC__/js/jquery-3.4.1.min.js"></script>
+<script src="__STATIC__/js/swiper.min.js"></script>
+<script src="__STATIC__/js/main.js"></script>
+<script src="http://api.map.baidu.com/api?key=&v=1.1&services=true" type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=kZi3zOOLjXw2IdsPqVZg4hoSBHbecpgV"></script>
+
+</html>
