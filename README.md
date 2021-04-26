@@ -1,15 +1,15 @@
 # Lqbcms6
 
 #### 介绍
-Lqbcms6是一款采用layui作为前端，基于Thinkphp6框架作为后端开发的极简后台管理系统，非常适合新手学习和站长快速建站，可扩展为博客系统、企业网站、商城平台、客户管理系统等。
-手册地址：https://www.liqingbo.cn/docs/lqbcms6/
-官方博客：https://www.liqingbo.cn
+* Lqbcms6是一款采用layui作为前端，基于Thinkphp6框架作为后端开发的极简后台管理系统，非常适合新手学习和站长快速建站，可扩展为博客系统、企业网站、商城平台、客户管理系统等。
+* 手册地址：https://www.liqingbo.cn/docs/lqbcms6/
+* 官方博客：https://www.liqingbo.cn
 
 #### 环境要求
-支持系统：WinXP/Win2003/Vista/Win7/Win8/Linux
-WEB服务器：iis/apache/nginx
-PHP版本：php >= 7.0（支持8.0）
-数据库：MySQL >= 5.0
+* 支持系统：WinXP/Win2003/Vista/Win7/Win8/Linux
+* WEB服务器：iis/apache/nginx
+* PHP版本：php >= 7.0（支持8.0）
+* 数据库：MySQL >= 5.0
 
 #### 安装教程
 
@@ -36,5 +36,5 @@ PHP版本：php >= 7.0（支持8.0）
 
 #### 更新日志
 
-2021-04-26
+##### 2021-04-26
 部署到Git
