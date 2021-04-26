@@ -1,6 +1,4 @@
 /.idea
 /.vscode
 *.log
-.env
 /runtime/*
-database.php
