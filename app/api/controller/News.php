@@ -32,6 +32,20 @@ class News extends Common
         return json(['code'=>0,'msg'=>'删除成功']);
     }
 
+	public function recommending(){
+		$ids = $this->request->param('ids');
+		$status = $this->request->param('status',1);
+		NewsModel::recommending($ids,$status);
+		return json(['code'=>0,'msg'=>'操作成功']);
+	}
+
+	public function topping(){
+		$ids = $this->request->param('ids');
+		$status = $this->request->param('status',1);
+		NewsModel::topping($ids,$status);
+		return json(['code'=>0,'msg'=>'操作成功']);
+	}
+
     public function add(){
         $data = $this->request->param('data');
         if(!empty($data['create_time'])){

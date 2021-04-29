@@ -10,7 +10,7 @@ return [
     'auto_rule'     => 1,
     // 模板目录名
     'view_dir_name' => 'view',
-    'view_path' => './view/cn/',
+    'view_path' => './view/',
     // 模板后缀
     'view_suffix'   => 'html',
     // 模板文件名分隔符
@@ -24,9 +24,9 @@ return [
     // 标签库标签结束标记
     'taglib_end'    => '}',
     'tpl_replace_string'  =>  [
-        '__STATIC__'=>'/static/index',
-        '__JS__' => '/static/index/js',
-        '__CSS__' => '/static/index/js',
-        '__IMAGES__' => '/static/index/images',
+        '__STATIC__'=>'/static/default',
+        '__JS__' => '/static/default/js',
+        '__CSS__' => '/static/default/js',
+        '__IMAGES__' => '/static/default/images',
     ]
 ];

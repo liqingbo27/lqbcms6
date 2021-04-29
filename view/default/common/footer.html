@@ -1,58 +1,64 @@
-<!--
- * @Author: 莫卓才
- * @eMail: handsome.mo@foxmail.com
- * @Descripttion: 描述
- * @version: 1.0.0
- * @Date: 2020-03-24 16:03:16
- * @LastEditors: 莫卓才
- * @LastEditTime: 2020-06-15 09:12:50
- -->
-<div class="footer">
-  <div class="container">
-    <div class="logo">
-      <img src="__STATIC__/img/0logo.png" alt="">
-    </div>
-    <div class="links">
-      <ul>
-        <li><a href="/about/">研究院概况</a></li>
-        <!-- <li><a href="/about/">党群工作</a></li> -->
-        <li><a href="/news/index/cid/1">新闻动态</a></li>
-        <li><a href="/news/index/cid/6">成果展示</a></li>
-        <li><a href="/news/index/cid/12">交流合作</a></li>
-        <li><a href="/notice/">研究院公告</a></li>
-        <li><a href="/recruit/">招贤纳士</a></li>
-        <li><a href="/about/contact/">联系我们</a></li>
-      </ul>
-    </div>
-    <div class="contact">
-      <p>地址：{$config.address}</p>
-      <p>电话：{$config.tel}</p>
-      <p>邮编：{$config.postcode}</p>
-      <div class="image">
-        <img src="__STATIC__/img/wx.png" alt="" class="image-logo">
-        <img src="{$config.qrcode}" alt="" class="image-code">
-      </div>
-      <div class="image">
-        <img src="__STATIC__/img/wb.png" alt="" class="imagelogo">
-        <img src="{$config.microblog}" alt="" class="image-code">
-      </div>
-    </div>
-  </div>
-  <div class="info">
+<footer class="mainfooter">
     <div class="container">
-      <script
-        type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278992385'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278992385%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-      <p>Copyright © 2020 {$config.company}</p>
-      <p>地址：{$config.address}</p>
-      <p>备案号：<a href="http://www.beian.miit.gov.cn/" target="_blank">{$config.beianhao}</a></p>
-      <!-- <p><a href="javascript:;">技术支持：待君科技</a></p> -->
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="footer_block">
+                    <h4 class="widget_title">About Blog</h4>
+                    <div class="textwidget">
+                        <p>Lorem ipsum dolor sit amet, consectetur
+                            <br>adipiscing elit. Cras tincidunt cursus leo
+                            <br>nec placerat. Praesent facilisis elit libero,
+                            <br>eget ornare turpis ultricies a.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="footer_block widget_tag_cloud">
+                    <h4 class="widget_title">Tags</h4>
+                    <div class="tagcloud"><a href="#">Travel</a><a href="#">Furniture</a><a href="#">Sport</a><a href="#">Yoga</a><a href="#">Food</a><a href="#">Interior</a>
+                        <br><a href="#">Helth</a><a href="#">House</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="footer_block widget_categories">
+                    <h4 class="widget_title">Categories</h4>
+                    <ul>
+                        <li><a href="#">Travel</a>
+                        </li>
+                        <li><a href="#">Furniture</a>
+                        </li>
+                        <li><a href="#">Sport</a>
+                        </li>
+                        <li><a href="#">Yoga</a>
+                        </li>
+                        <li><a href="#">Food</a>
+                        </li>
+                        <li><a href="#">Helth</a>
+                        </li>
+                        <li><a href="#">Interior</a>
+                        </li>
+                        <li><a href="#">House</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="footer_block">
+                    <h4 class="widget_title">Subscribe</h4>
+                    <div class="wp_subscribe">
+                        <form action="#">
+                            <input type="text" name="email" placeholder="Your email" required>
+                            <button class="btn_gurd"><i class="icon-mail-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="socials_footer"><a href="#"><span class="icon-facebook"></span></a><a href="#"><span class="icon-instagram"></span></a><a href="#"><span class="icon-twitter"></span></a>
+        </div>
+        <div class="site_copy">Copyright © 2018. Gutengurd All rights <a href="http://www.bootstrapmb.com/" title="bootstrapmb">Reserved</a>
+        </div>
     </div>
-  </div>
-</div>
-<div class="footer-mobile">
-  <div>
-    <p>联系人：{$config.linkman}</p>
-    <a href="tel:{$config.tel}">电话：{$config.tel}</a>
-    <p>公司地址：{$config.address}</p>
-  </div>
-</div>
+</footer>

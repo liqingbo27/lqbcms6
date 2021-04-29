@@ -37,14 +37,20 @@
           <button class="layui-btn layuiadmin-btn-list" lay-submit lay-filter="LAY-app-contlist-search">
             <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
           </button>
+
+          <button class="layui-btn layuiadmin-btn-list" data-type="add">添加</button>
         </div>
       </div>
     </div>
 
     <div class="layui-card-body">
       <div style="padding-bottom: 10px;">
-        <button class="layui-btn layuiadmin-btn-list" data-type="batchdel">删除</button>
-        <button class="layui-btn layuiadmin-btn-list" data-type="add">添加</button>
+        <!-- <button class="layui-btn layuiadmin-btn-list" data-type="batchdel">删除</button> -->
+        
+        <button class="layui-btn layuiadmin-btn-list" data-type="recommending">推荐</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="cancelRecommend">取消推荐</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="topping">置顶</button>
+        <button class="layui-btn layuiadmin-btn-list" data-type="cancelTop">取消置顶</button>
       </div>
       <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
       <script type="text/html" id="buttonTpl">
@@ -117,6 +123,98 @@
 
         });
 
+      },
+      recommending: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        var ids = [];   //声明数组
+        for (var i = 0; i < checkData.length; i++) {
+          ids.push(checkData[i].id);
+        }
+        admin.req({
+            type: "POST",
+            url: '/api/news/recommending',
+            data: { ids: ids },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              table.reload('LAY-app-content-list');
+            }
+          });
+      },
+      cancelRecommend: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        var ids = [];   //声明数组
+        for (var i = 0; i < checkData.length; i++) {
+          ids.push(checkData[i].id);
+        }
+        admin.req({
+            type: "POST",
+            url: '/api/news/recommending',
+            data: { ids: ids,status: 0 },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              table.reload('LAY-app-content-list');
+            }
+          });
+      },
+      topping: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        var ids = [];   //声明数组
+        for (var i = 0; i < checkData.length; i++) {
+          ids.push(checkData[i].id);
+        }
+        admin.req({
+            type: "POST",
+            url: '/api/news/topping',
+            data: { ids: ids },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              table.reload('LAY-app-content-list');
+            }
+          });
+      },
+      cancelTop: function () {
+        var checkStatus = table.checkStatus('LAY-app-content-list')
+          , checkData = checkStatus.data; //得到选中的数据
+
+        if (checkData.length === 0) {
+          return layer.msg('请选择数据');
+        }
+
+        var ids = [];   //声明数组
+        for (var i = 0; i < checkData.length; i++) {
+          ids.push(checkData[i].id);
+        }
+        admin.req({
+            type: "POST",
+            url: '/api/news/topping',
+            data: { ids: ids,status: 0 },
+            dataType: "json",
+            success: function (res) {
+              layer.msg(res.msg);
+              table.reload('LAY-app-content-list');
+            }
+          });
       }
 
       //添加

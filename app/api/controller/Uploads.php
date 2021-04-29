@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace app\api\controller;
 use app\BaseController;
 
+use app\common\model\UserfilesModel;
 use think\facade\Db;
 use app\api\model\MenuModel;
 
@@ -34,7 +35,7 @@ class Uploads extends BaseController
 	    $file = request()->file('file');
 	    $column = input('column','pool');
 
-	    $savename = \think\facade\Filesystem::disk('storage')->putFile( $column, $file);
+	    $savename = \think\facade\Filesystem::disk('public')->putFile( $column, $file);
 
 	    $path = env('filesystem.storage','/storage').'/'.str_replace("\\","/",$savename);
 	    $fullpath = $this->request->scheme().'://'.$this->request->host().$path;
@@ -42,6 +43,8 @@ class Uploads extends BaseController
 	    $data['src'] = $path;
 	    $data['fullpath'] = $fullpath;
 	    $data['title'] = '图片';
+
+	    UserfilesModel::add($path);
 
 	    return json(['code'=>0, 'msg'=>'登入成功', 'data'=>$data]);
     }

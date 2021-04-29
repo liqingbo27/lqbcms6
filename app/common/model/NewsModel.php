@@ -16,7 +16,7 @@ class NewsModel extends Model
     //
     public static function pageList($map = [],$limit=25){
         $limit = Request::param('limit',$limit);
-        $list = self::where($map)->order(['sort'=>'ASC','update_time'=>'DESC'])->paginate([
+        $list = self::where($map)->order(['update_time'=>'DESC'])->paginate([
             'list_rows'=> $limit,
             'var_page' => 'page',
         ])->each(function($item, $key){
@@ -29,6 +29,9 @@ class NewsModel extends Model
 	        }
             $item->admin_name = AdminModel::where('id',$item->admin_id)->value('username');
             $item->url = '/news/show/id/'.$item->id;
+
+	        $item->recommended_text = $item->recommended==1 ? '推荐' : '';
+	        $item->topped_text = $item->topped==1 ? '推荐' : '';
 
         });
         return $list;
@@ -62,6 +65,45 @@ class NewsModel extends Model
 	    }
     	return $list;
     }
+
+	/**
+	 * 前端获取
+	 */
+	public static function getToppedList($limit=10){
+		$map = [
+			['topped','=',1]
+		];
+
+		$list = self::where($map)
+			->limit($limit)
+			->order(['update_time'=>'DESC'])
+			->select()
+			->toArray();
+		if(!empty($limit)){
+			foreach ($list as $key=>$val){
+				$list[$key]['url'] = self::getShowUrl($val['id']);
+			}
+		}
+		return $list;
+	}
+
+	public static function getRecommendedList($limit=10){
+		$map = [
+			['recommended','=',1]
+		];
+
+		$list = self::where($map)
+			->limit($limit)
+			->order(['update_time'=>'DESC'])
+			->select()
+			->toArray();
+		if(!empty($limit)){
+			foreach ($list as $key=>$val){
+				$list[$key]['url'] = self::getShowUrl($val['id']);
+			}
+		}
+		return $list;
+	}
 
     /**
      * 上一篇
@@ -102,4 +144,13 @@ class NewsModel extends Model
             return '<a href="javascript:;">无</a>';
         }
     }
+
+    public static function recommending($ids,$status=1){
+    	return self::where('id','in',$ids)->update(['recommended' => $status]);
+    }
+
+	public static function topping($ids,$status=1){
+		return self::where('id','in',$ids)->update(['topped' => $status]);
+	}
+
 }

@@ -1,216 +1,63 @@
-<div class="header">
-  <div class="hea-title">
-    <div class="container">
-      <a href="/" class="logo">
-        <h1>{$config.system_name}</h1>
-      </a>
-      <div class="right">
-        <form class="search" action="/news/search" method="GET">
-          <div class="search_input">
-            <input name="keyword" type="text" placeholder="请输入关键词">
-          </div>
-          <div class="search_btn"><button type="submit"></button></div>
-        </form>
-        <a href="/?lang={$switchLang}">
-          EN
-        </a>
-      </div>
+<!-- main header -->
+<header class="main_header transparen_bg_head">
+    <div class="container-fluid no_padding clearfix">
+        <div class="logo_head">
+            <a href="index.html">
+                <img src="__STATIC__/picture/logo.png" alt="">
+            </a>
+        </div>
+        <div class="righthead_block">
+            <div class="navbar-expand-lg nav_btn_toggle">
+                <button class="navbar-toggler open_mobile_menu" type="button" data-target="#mobile_nav"><span class="butline"></span><span class="butline"></span><span class="butline"></span>
+                </button>
+            </div>
+            <nav class="top_nav_links navbar navbar-expand-lg">
+                    <div class="collapse navbar-collapse" id="topNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="current-menu-item"><a href="/"><span>首页</span></a>
+                            </li>
+                            <li><a href="author.html"><span>博主</span></a>
+                            </li>
+                            <li class="menu-item-has-children"><a href="page-about.html"><span>关于我</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="page-photo.html"><span>Photo</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><a href="single.html"><span>Post</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="single-sidebar.html"><span>Post Sidebar</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><a href="category.html"><span>分类</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="category.html"><span>Travel</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Furniture</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Sport</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Yoga</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Food</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Helth</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>Interior</span></a>
+                                    </li>
+                                    <li><a href="category.html"><span>House</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <div class="search_btn"><a href="#" data-target="#search_widow" class="search_show"><i class="fas fa-search"></i></a>
+            </div>
+            <div class="sidebar_btn"><a href="#" data-target="#float_bar_site" class="floatsidebar_show"><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="nav">
-    <div class="container">
-      <ul>
-        <li>
-          <a href="/" {:setNavAvctive('index',$controllerName)}>首页</a>
-        </li>
-        <li>
-          <a>研究院概况</a>
-          <div class="nav_list">
-            <ul>
-              <li>
-                <a href="/about/">研究院简介</a>
-              </li>
-              <li>
-                <a href="/about/show/var/zhici/">{$singlepageArr['zhici']}</a>
-              </li>
-              <li>
-                <a href="/about/show/var/jiyu/">{$singlepageArr['jiyu']}</a>
-              </li>
-              <li> <a href="/team/lishihui/">理事会成员</a> </li>
-              <li> <a href="/team/zhuanjia">专家团队</a> </li>
-              <li>
-                <a href="/about/show/var/dashiji/">{$singlepageArr['dashiji']}</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a>{$newsCategoryArr[1]}</a>
-          <div class="nav_list">
-            <ul>
-              {volist name=":news_category_list(1)" id="vo"}
-              <li><a href="/news/index/cid/{$vo.id}">
-                  <p>{$vo.name}</p>
-                </a></li>
-              {/volist}
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a>{$newsCategoryArr[6]}</a>
-          <div class="nav_list">
-            <ul>
-              {volist name=":news_category_list(6)" id="vo"}
-              <li><a href="/news/index/cid/{$vo.id}">
-                  <p>{$vo.name}</p>
-                </a></li>
-              {/volist}
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a>{$newsCategoryArr[12]}</a>
-          <div class="nav_list">
-            <ul>
-              {volist name=":news_category_list(12)" id="vo"}
-              <li><a href="/news/index/cid/{$vo.id}">
-                  <p>{$vo.name}</p>
-                </a></li>
-              {/volist}
-            </ul>
-          </div>
-        </li>
-
-        <li>
-          <a {:setNavAvctive('notice',$controllerName)}>研究院公告</a>
-          <div class="nav_list">
-            <ul>
-              {volist name=":notice_category_list(3)" id="vo"}
-              <li><a href="/notice/index/cid/{$vo.id}">
-                  <p>{$vo.name}</p>
-                </a></li>
-              {/volist}
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a href="/recruit/" {:setNavAvctive('recruit',$controllerName)}>招贤纳士</a>
-        </li>
-        <li>
-          <a href="/about/contact/" {:setNavAvctive('contact',$controllerName)}>联系我们</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<div class="header-mobile">
-  <h3><img src="__STATIC__/img/logo.png" alt=""></h3>
-  <a href="javascript:;" class="right_btn click-sidebar">
-    <img src="__STATIC__/img/icons-dark-menu.png" alt=""></a>
-  <div class="menu_box">
-    <div class="mask2"></div>
-    <div class="sidebar">
-      <a href="/" class="mobile-logo">
-        <h1>{$config.system_name}</h1>
-      </a>
-      <a href="javascript:;" class="close-btn">
-        <img src="__STATIC__/img/close_icon.png" alt=""></a>
-      <div class="menu-list">
-        <ul>
-          <li>
-            <a href="/" {:setNavAvctive('index',$controllerName)}>首页</a>
-          </li>
-          <li>
-            <a>研究院概况</a>
-            <div class="nav_list">
-              <ul>
-                <li>
-                  <a href="/about/">研究院简介</a>
-                </li>
-                <li>
-                  <a href="/about/show/var/zhici/">{$singlepageArr['zhici']}</a>
-                </li>
-                <li>
-                  <a href="/about/show/var/jiyu/">{$singlepageArr['jiyu']}</a>
-                </li>
-                <li> <a href="/team/lishihui/">理事会成员</a> </li>
-                <li> <a href="/team/zhuanjia">专家团队</a> </li>
-                <li>
-                  <a href="/about/show/var/dashiji/">{$singlepageArr['dashiji']}</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a>{$newsCategoryArr[1]}</a>
-            <div class="nav_list">
-              <ul>
-                {volist name=":news_category_list(1)" id="vo"}
-                <li><a href="/news/index/cid/{$vo.id}">
-                    <p>{$vo.name}</p>
-                  </a></li>
-                {/volist}
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a>{$newsCategoryArr[6]}</a>
-            <div class="nav_list">
-              <ul>
-                {volist name=":news_category_list(6)" id="vo"}
-                <li><a href="/news/index/cid/{$vo.id}">
-                    <p>{$vo.name}</p>
-                  </a></li>
-                {/volist}
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a>{$newsCategoryArr[12]}</a>
-            <div class="nav_list">
-              <ul>
-                {volist name=":news_category_list(12)" id="vo"}
-                <li><a href="/news/index/cid/{$vo.id}">
-                    <p>{$vo.name}</p>
-                  </a></li>
-                {/volist}
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a {:setNavAvctive('notice',$controllerName)}>研究院公告</a>
-            <div class="nav_list">
-              <ul>
-                {volist name=":notice_category_list(3)" id="vo"}
-                <li><a href="/notice/index/cid/{$vo.id}">
-                    <p>{$vo.name}</p>
-                  </a></li>
-                {/volist}
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a href="/recruit/" {:setNavAvctive('recruit',$controllerName)}>招贤纳士</a>
-          </li>
-          <li>
-            <a href="/about/contact/" {:setNavAvctive('contact',$controllerName)}>联系我们</a>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <a href="/?lang={$switchLang}">
-          EN
-        </a>
-        <form class="search" action="/news/search" method="GET">
-          <div class="search_input">
-            <input name="keyword" type="text" placeholder="请输入关键词">
-          </div>
-          <div class="search_btn"><button type="submit"></button></div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+</header>
+<!--END main header -->

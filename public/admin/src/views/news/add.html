@@ -28,11 +28,7 @@
         <select name="category_id" id="category_id" required>
              <option value="">请选择</option>
               {{# layui.each(d.data,function(index,item){ }}
-                {{# if(item.pid == 0 ){ }}
-                <option value="{{ item.id }}" disabled>{{ item.name }}</option>
-                {{# } else { }}
                 <option value="{{ item.id }}" {{ item.name === d.params.category_name ? 'selected' : '' }}>{{ item.name }}</option>
-                {{# } }}
               {{# }); }}
         </select>
        </script>
@@ -86,14 +82,14 @@
     <div class="layui-input-inline" style="margin-bottom: 20px; width: 80%;">
       <script id="editor" type="text/plain"></script>
     </div>
-    <div class="layui-form-item">
+    <!-- <div class="layui-form-item">
       <label class="layui-form-label">排序</label>
       <div class="layui-input-inline">
         <script type="text/html" template>
           <input type="text" name="sort" value="{{ d.params.sort || '' }}" placeholder="排序" autocomplete="off" class="layui-input">
         </script>
       </div>
-    </div>
+    </div> -->
 
     <div class="layui-form-item">
       <label class="layui-form-label">状态</label>

@@ -28,7 +28,7 @@ class Common extends BaseController
 
 	    $this->lang = 'default';
 
-	    View::config(['view_path' => './view/'.$this->lang.'/']);
+	    View::config(['view_path' => '../view/'.$this->lang.'/']);
 
 
 		if(!empty($lang)){

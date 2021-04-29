@@ -31,24 +31,14 @@ class Index extends Common
 	    $friendlinkList = FriendlinkModel::allList([],14);
 	    View::assign('friendlinkList',$friendlinkList);
 
-	    $newsList2 = NewsModel::listByCategory(2,8);
-	    $newsList1 = NewsModel::listByCategory(1,3);
-	    $newsList3 = NewsModel::listByCategory(3,12);
-	    $newsList4 = NewsModel::listByCategory(4,12);
-	    $teamList = TeamModel::where('status',1)
-		    ->where('category_id','=',1)
-		    ->limit(8)
-		    ->order('create_time DESC')
-		    ->select()
-		    ->each(function($item, $key){
-			    $item->url = '/team/show/id/'.$item->id;
-		    });
+	    $newsToppedList = NewsModel::getToppedList(6);
+	    $newsRecommendedList = NewsModel::getRecommendedList(8);
+	    $newsList = NewsModel::pageList([],12);
+
         return view('',[
-        	'newsList1' => $newsList1,
-        	'newsList2' => $newsList2,
-        	'newsList3' => $newsList3,
-        	'newsList4' => $newsList4,
-        	'teamList' => $teamList,
+        	'newsToppedList' => $newsToppedList,
+        	'newsRecommendedList' => $newsRecommendedList,
+        	'newsList3' => $newsList
         ]);
     }
 

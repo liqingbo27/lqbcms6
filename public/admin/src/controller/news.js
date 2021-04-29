@@ -33,13 +33,13 @@ layui.define(['table', 'form', 'layedit'], function (exports) {
     , cols: [[
       { type: 'checkbox', fixed: 'left' }
       , { type: 'numbers', width: 80, title: '序号', align: 'center' }
-      , { field: 'title', title: '标题', minWidth: 160 }
+      , { field: 'title', title: '标题', minWidth: 240 }
       , { field: 'category_name', title: '所属分类', width: 120 }
-      , { field: 'lang', title: '语言', width: 120 }
+      , { field: 'recommended_text', title: '推荐', minWidth: 80 }
+      , { field: 'topped_text', title: '置顶', minWidth: 80 }
       , { field: 'admin_name', title: '作者', width: 120 }
       , { field: 'status', title: '发布状态', templet: '#buttonTpl', width: 100, align: 'center' }
       , { field: 'create_time', title: '发布时间', sort: true }
-      , { field: 'sort', title: '排序', sort: true, width: 80, align: 'center' }
       , { title: '操作', minWidth: 200, align: 'center', fixed: 'right', toolbar: '#table-content-list' }
     ]]
     , page: true

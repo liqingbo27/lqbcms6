@@ -128,4 +128,6 @@ class News extends Common
 
 		return view('',['list'=>$list,'page'=>$page]);
 	}
+
+
 }
