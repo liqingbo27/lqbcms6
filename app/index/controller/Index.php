@@ -35,70 +35,39 @@ class Index extends Common
 	    $newsRecommendedList = NewsModel::getRecommendedList(8);
 	    $newsList = NewsModel::pageList([],12);
 
+	    $i = 1;
+	    $up = 0;
+	    $newsRecommendedTree = [];
+	    foreach ($newsRecommendedList as $key => $val) {
+		    $newsRecommendedTree[$i]['sub'][] = $val;
+		    if($up>=1){
+				$up=0;
+			    $i++;
+		    }else{
+			    $up++;
+		    }
+	    }
+
+	    $i = 0;
+	    $up = 0;
+	    $newsTree = [];
+	    foreach ($newsList as $key => $val) {
+		    $newsTree[$i]['sub'][] = $val;
+		    if($up==1){
+			    $up=0;
+			    $i++;
+		    }else{
+			    $up++;
+		    }
+	    }
+
         return view('',[
         	'newsToppedList' => $newsToppedList,
         	'newsRecommendedList' => $newsRecommendedList,
-        	'newsList3' => $newsList
+        	'newsRecommendedTree' => $newsRecommendedTree,
+        	'newsList' => $newsList,
+        	'newsTree' => $newsTree
         ]);
-    }
-
-    public function baidutuisong(){
-
-        $urls = array(
-		    'http://www.hnhzykj.com',
-		    'http://www.hnhzykj.com/news',
-		    'http://www.hnhzykj.com/service',
-		    'http://www.hnhzykj.com/cases',
-		    'http://www.hnhzykj.com/report/show/id/9',
-		    'http://www.hnhzykj.com/report/show/id/10',
-		    'http://www.hnhzykj.com/recruit/',
-		    'http://www.hnhzykj.com/contact/',
-		);
-        $api = 'http://data.zz.baidu.com/urls?site=www.hnhzykj.com&token=TjvIBK2dRt1eFlOm';
-        $ch = curl_init();
-        $options =  array(
-            CURLOPT_URL => $api,
-            CURLOPT_POST => true,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS => implode("\n", $urls),
-            CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
-        );
-        curl_setopt_array($ch, $options);
-        $result = curl_exec($ch); //json格式
-        $result = json_decode($result,true); //数组格式
-
-        if(isset($result['success'])){
-            return json(['code' => 0,  'msg' => '推送'.$result['success'].'条,剩余'.$result['remain'].'条。']);
-        }else{
-            return json(['code' => 1,  'msg' => '推送：'.$result['message']]);
-        }
-        exit;
-
-
-    	$urls = array(
-		    'http://www.hnhzykj.com',
-		    'http://www.hnhzykj.com/news',
-		    'http://www.hnhzykj.com/service',
-		    'http://www.hnhzykj.com/cases',
-		    'http://www.hnhzykj.com/report/show/id/9',
-		    'http://www.hnhzykj.com/report/show/id/10',
-		    'http://www.hnhzykj.com/recruit/',
-		    'http://www.hnhzykj.com/contact/',
-		);
-		// update urls
-		$api = 'http://data.zz.baidu.com/urls
-		site=www.hnhzykj.com&token=TjvIBK2dRt1eFlOm';
-		$ch = curl_init();
-		$options =  array(
-		    CURLOPT_URL => $api,
-		    CURLOPT_POST => true,
-		    CURLOPT_RETURNTRANSFER => true,
-		    CURLOPT_POSTFIELDS => implode("\n", $urls),
-		    CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
-		);
-		curl_setopt_array($ch, $options);
-		$result = curl_exec($ch);
-		print_r($result);
     }
 
     public function test(){

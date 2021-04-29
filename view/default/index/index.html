@@ -52,10 +52,10 @@
                         <div class="short_desc_post">
                             <p>{$vo.description}</p>
                         </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
+                        <div class="seea_more"><a href="{$vo.url}">View More <i class="icon-right-open-big"></i></a>
                         </div>
                     </div>
-                    <img src="{$vo.thumb}" alt="">
+                    <img src="{$vo.thumb}" alt="{$vo.title}">
                 </div>
                 <!--END Slider Latest Post-->
                 {/volist}
@@ -65,348 +65,60 @@
 
         <div class="categories_wrapper">
             <div class="categories_slides owl-carousel">
+                {volist name="newsRecommendedTree" id="vo" offset="0" length='4'}
                 <div class="item">
+                    {volist name="vo.sub" id="v"}
                     <div class="category_box catbg1">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Sport</span>
+                        <a href="{$v.url}" title="{$v.title}">
+                            <img src="{$v.thumb}" alt="{$v.title}"><span class="name_cat">{$v.title}</span>
                         </a>
                     </div>
-                    <div class="category_box catbg3">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Travel</span>
-                        </a>
-                    </div>
+                    {/volist}
                 </div>
-                <div class="item">
-                    <div class="category_box catbg2">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Interior</span>
-                        </a>
-                    </div>
-                    <div class="category_box catbg4">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Food</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="category_box catbg5">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Health</span>
-                        </a>
-                    </div>
-                    <div class="category_box catbg6">
-                        <a href="category.html">
-                            <img src="static/default/picture/postimagebox.png" alt=""><span class="name_cat">Building</span>
-                        </a>
-                    </div>
-                </div>
+                {/volist}
+
             </div>
         </div>
     </div>
     <!--END Big SLider-->
+
     <div class="page_container_wrapper">
         <div class="container-fluid no_padding scrollanimation" data-animation="fadeIn" data-timeout="200">
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Coral Bay: My Beach Paradise</a></h2>
-                        <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>7</span><span class="reviews_count"><i class="fas fa-eye"></i>27</span>
+
+            {volist name="newsTree" id="vo" mod="2"}
+                
+                    <div class="blog_list_post clearfix">
+                        {volist name="vo.sub" id="v"}
+                        <!--Post Box-->
+                        <div class="blog_post_box clearfix">
+                            <div class="blog_post_item">
+                                <h2 class="post_name"><a href="{$v.url}" title="{$v.title}">{$v.title}</a></h2>
+                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>7</span><span class="reviews_count"><i class="fas fa-eye"></i>27</span>
+                                </div>
+                                <div class="short_desc_post">
+                                    <p>{$v.description}</p>
+                                </div>
+                                <div class="seea_more"><a href="{$v.url}">View More <i class="icon-right-open-big"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog_post_item_image {eq name='mod' value='0'} postbg10 {else /} postbg11 {/eq}">
+                                <div class="post_data_cr"><span class="day">{$v.update_time|date='m'}</span>
+                                    <div class="month">{$v.update_time|date='m'}</div>
+                                    <div class="year">{$v.update_time|date='m'}</div>
+                                </div>
+                                <a href="{$v.url}" class="post_link_image">
+                                    <img src="{$v.thumb}" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
+                        <!--END Post Box-->
+                        {/volist}
                     </div>
-                    <div class="blog_post_item_image postbg10">
-                        <div class="post_data_cr"><span class="day">11</span>
-                            <div class="month">Jun</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">WHERE I FIND THE BEST TRAVEL DEALS</a></h2>
-                        <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>11</span><span class="reviews_count"><i class="fas fa-eye"></i>1010</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg11">
-                        <div class="post_data_cr"><span class="day">1</span>
-                            <div class="month">May</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Hot Sand Tunisia</a></h2>
-                        <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>27</span><span class="reviews_count"><i class="fas fa-eye"></i>793</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg12">
-                        <div class="post_data_cr"><span class="day">3</span>
-                            <div class="month">May</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">The food heaven mission</a></h2>
-                        <div class="post_data"><span class="category">Food</span><span class="comments_count"><i class="fas fa-comments"></i>27</span><span class="reviews_count"><i class="fas fa-eye"></i>103</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg1">
-                        <div class="post_data_cr"><span class="day">20</span>
-                            <div class="month">Dec</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">8 Alternative Budget Bacation Deals</a></h2>
-                        <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>173</span><span class="reviews_count"><i class="fas fa-eye"></i>7007</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg3">
-                        <div class="post_data_cr"><span class="day">5</span>
-                            <div class="month">Aug</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Choose The Training That’s Right For You</a></h2>
-                        <div class="post_data"><span class="category">Sport</span><span class="comments_count"><i class="fas fa-comments"></i>7</span><span class="reviews_count"><i class="fas fa-eye"></i>27</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg2">
-                        <div class="post_data_cr"><span class="day">11</span>
-                            <div class="month">Jun</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Incredible places for photos</a></h2>
-                        <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>10</span><span class="reviews_count"><i class="fas fa-eye"></i>170</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg4">
-                        <div class="post_data_cr"><span class="day">18</span>
-                            <div class="month">Dec</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Clean Eating or Whole-Food Focused</a></h2>
-                        <div class="post_data"><span class="category">Food</span><span class="comments_count"><i class="fas fa-comments"></i>17</span><span class="reviews_count"><i class="fas fa-eye"></i>73</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg5">
-                        <div class="post_data_cr"><span class="day">12</span>
-                            <div class="month">Sep</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">How to make a morning happy and healthy</a></h2>
-                        <div class="post_data"><span class="category">Food</span><span class="comments_count"><i class="fas fa-comments"></i>33</span><span class="reviews_count"><i class="fas fa-eye"></i>1003</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg6">
-                        <div class="post_data_cr"><span class="day">12</span>
-                            <div class="month">Sep</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Consider hiring a designer</a></h2>
-                        <div class="post_data"><span class="category">Interior</span><span class="comments_count"><i class="fas fa-comments"></i>11</span><span class="reviews_count"><i class="fas fa-eye"></i>1010</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg7">
-                        <div class="post_data_cr"><span class="day">1</span>
-                            <div class="month">May</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
-            <div class="blog_list_post clearfix">
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">THE HOUSE BUILD</a></h2>
-                        <div class="post_data"><span class="category">Interior</span><span class="comments_count"><i class="fas fa-comments"></i>27</span><span class="reviews_count"><i class="fas fa-eye"></i>103</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg8">
-                        <div class="post_data_cr"><span class="day">3</span>
-                            <div class="month">May</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-                <!--Post Box-->
-                <div class="blog_post_box clearfix">
-                    <div class="blog_post_item">
-                        <h2 class="post_name"><a href="single.html">Your creative place</a></h2>
-                        <div class="post_data"><span class="category">Interior</span><span class="comments_count"><i class="fas fa-comments"></i>27</span><span class="reviews_count"><i class="fas fa-eye"></i>103</span>
-                        </div>
-                        <div class="short_desc_post">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra
-                                diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                        </div>
-                        <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog_post_item_image postbg9">
-                        <div class="post_data_cr"><span class="day">17</span>
-                            <div class="month">Apr</div>
-                            <div class="year">2018</div>
-                        </div>
-                        <a href="single.html" class="post_link_image">
-                            <img src="static/default/picture/postimagebox.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <!--END Post Box-->
-            </div>
+  
+
+            {/volist}
+
+
         </div>
         <div class="text-center btn_loadmore"><a href="#" class="btn_gurd btn_gurd_trp btn_gurd_i loadmore_btn">Load More <i class="fas fa-spinner"></i></a>
         </div>

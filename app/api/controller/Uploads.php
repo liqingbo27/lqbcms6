@@ -6,7 +6,6 @@ use app\BaseController;
 
 use app\common\model\UserfilesModel;
 use think\facade\Db;
-use app\api\model\MenuModel;
 
 class Uploads extends BaseController
 {
@@ -43,6 +42,10 @@ class Uploads extends BaseController
 	    $data['src'] = $path;
 	    $data['fullpath'] = $fullpath;
 	    $data['title'] = '图片';
+
+	    //$image = \think\Image::open('./image.jpg');
+	    //$image->thumb(600,40,3)->save('');
+
 
 	    UserfilesModel::add($path);
 
