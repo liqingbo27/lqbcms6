@@ -1,0 +1,279 @@
+<!--
+ * @Author: 莫卓才
+ * @eMail: handsome.mo@foxmail.com
+ * @Descripttion: 描述
+ * @version: 1.0.0
+ * @Date: 2020-03-20 09:20:36
+ * @LastEditors: 莫卓才
+ * @LastEditTime: 2020-07-30 17:24:21
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="robots" content="all">
+  <meta name="author" content="Tencent-CP">
+  <meta name="Copyright" content="Tencent">
+  <meta name="Description" content="{$config.system_name}">
+  <meta name="Keywords" content="{$config.system_name}">
+  <title>{$config.system_name}</title>
+  <link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
+  <link rel="stylesheet" href="__STATIC__/css/animate.css">
+  <link rel="stylesheet" href="__STATIC__/css/base.css">
+  <link rel="stylesheet" href="__STATIC__/css/main.css">
+
+</head>
+
+<body class="EN">
+  {include file="common:header" /}
+  <div class="swiper">
+    <div class="container">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {volist name="advertList" id="vo"}
+          <div class="swiper-slide">
+            <a href="{$vo.url}" target="_blank">
+              <img src="{$vo.filepath}" alt="">
+              <p class="bot-text">{$vo.title}</p>
+            </a>
+          </div>
+          {/volist}
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-news">
+    <div class="container">
+      <div class="news">
+        <div class="news-content">
+          <div class="news-left">
+            <div class="title">
+              <!-- <h3>视频新闻</h3> -->
+              <h3>VIDEO NEWS</h3>
+              <a href="{:news_list_url(3)}">MORE</a>
+              <img src="__STATIC__/img/MORE.png" alt="">
+            </div>
+            {volist name="newsList3" id="vo" offset="0" length='1'}
+            <video controls class="video-player">
+              <source src="{$vo.thumb}" type="video/mp4">
+            </video>
+
+            <a href="{$vo.url}" title="{$vo.title}">
+              <div class="news-info">
+                <h5>{$vo.title}</h5>
+                <p>{$vo.description}</p>
+              </div>
+            </a>
+            {/volist}
+          </div>
+
+          <div class="news-right">
+            <div class="title">
+              <!-- <h3>研究院动态</h3> -->
+              <h3>HINP NEWS</h3>
+              <a href="{:news_list_url(2)}">MORE</a>
+              <img src="__STATIC__/img/MORE.png" alt="">
+            </div>
+            <!-- <div class="content">
+              <ul>
+                {volist name="newsList3" id="vo" offset="0" length='7'}
+                <li>
+                  <a href="{$vo.url}" title="{$vo.title}">
+                    <p><b>●</b>{$vo.title}</p>
+                    <span>{$vo.create_time|strtotime|date='m/d'}</span>
+                  </a>
+                </li>
+                {/volist}
+              </ul>
+            </div> -->
+            <div class="dynamic-content">
+              <ul>
+                {volist name="newsList2" id="vo" offset="0" length='3'}
+                <li>
+                  <a href="{$vo.url}" title="{$vo.title}">
+                    <img src="{$vo.thumb|default_thumb}" alt="{$vo.title}">
+                    <div class="dynamic-info">
+                      <h5>{$vo.title}</h5>
+                      <!-- <p>{$vo.description}</p> -->
+                    </div>
+                  </a>
+                </li>
+                {/volist}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dynamic">
+        <div class="title">
+          <!-- <h3>行业资讯</h3> -->
+          <h3>INDUSTRIAL NEWS</h3>
+          <a href="{:news_list_url(4)}">MORE</a>
+          <img src="__STATIC__/img/MORE.png" alt="">
+        </div>
+        <!-- <div class="dynamic-content">
+          <ul>
+            {volist name="newsList2" id="vo" offset="0" length='3'}
+            <li>
+              <a href="{$vo.url}" title="{$vo.title}">
+                <img src="{$vo.thumb}" alt="{$vo.title}">
+                <div class="dynamic-info">
+                  <h5>{$vo.title}</h5>
+                  <p>{$vo.description}</p>
+                </div>
+              </a>
+            </li>
+            {/volist}
+          </ul>
+        </div> -->
+        <div class="content">
+          <ul>
+            {volist name="newsList4" id="vo" offset="0" length='7'}
+            <li>
+              <a href="{$vo.url}" title="{$vo.title}">
+                <p><b>●</b>{$vo.title}</p>
+                <span>{$vo.create_time|strtotime|date='m/d'}</span>
+              </a>
+            </li>
+            {/volist}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bg">
+    <div class="container">
+      <div class="message">
+        <div class="title">
+          <!-- <h3>研究院简介</h3> -->
+          <h3>ABOUT HINP</h3>
+        </div>
+        <div class="content">
+          <a href="/about/">
+            <div class="info">
+              <p>
+                {:get_singlepage_info('intro','description')}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="message">
+        <div class="title">
+          <!-- <h3>理事长致辞</h3> -->
+          <h3>MESSAGE FROM THE CHAIRMAN</h3>
+        </div>
+        <div class="content">
+          <a href="/about/show/var/zhici/">
+            <div class="info">
+              <div class="avatar">
+                <img src="{:get_singlepage_info('zhici','thumb')}" alt="">
+              </div>
+              <div class="text">
+                <h5>海南国家公园研究院</h5>
+                <h5>理事长</h5>
+                <h5>IUCN总裁兼理事会主席</h5>
+                <h4>章新胜</h4>
+              </div>
+              <p>建设海南热带雨林国家公园，保护海南长臂猿等珍稀物种，打造全球生态环境最优美的自贸港和生态岛</p>
+            </div>
+
+          </a>
+        </div>
+      </div>
+      <div class="academic">
+        <div class="title">
+          <!-- <h3>研究院公告</h3> -->
+          <h3>ANNOUNCEMENTS</h3>
+          <a href="{:notice_list_url(0)}">MORE</a>
+          <img src="__STATIC__/img/MORE.png" alt="">
+        </div>
+        <div class="content">
+          <ul>
+            {volist name=":get_notice_list(0,6)" id="vo"}
+            <li>
+              <a href="{$vo.url}">
+                <div class="time">
+                  <p>{$vo.create_time|strtotime|date='Y/m/d'}</p>
+                </div>
+                <div class="text">
+                  <p>{$vo.title}</p>
+                </div>
+              </a>
+            </li>
+            {/volist}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="research">
+      <div class="container">
+        <div class="title">
+          <!-- <h3>专家团队</h3> -->
+          <h3>EXPERTS</h3>
+          <a href="/team/zhuanjia">MORE</a>
+          <img src="__STATIC__/img/MORE.png" alt="">
+        </div>
+        <div class="content">
+          <ul>
+            {volist name="teamList" id="vo"}
+            <li>
+              <a href="{$vo.url}" target="_blank">
+                <div class="img-wrapper">
+                  <img src="{$vo.thumb}" alt="{$vo.title}">
+                </div>
+                <h5>{$vo.title}</h5>
+                <p>{$vo.position}</p>
+              </a>
+            </li>
+            {/volist}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="main">
+    <div class="links">
+      <div class="container">
+        <div class="title">
+          <!-- <h3>友情链接</h3> -->
+          <h3>RELATED LINKS</h3>
+        </div>
+        <div class="content">
+          <table>
+            <tr>
+              {volist name="friendlinkList" id="vo" offset="0" length='7'}
+              <td><a href="{$vo.url}" title="{$vo.title}" target="_blank">{$vo.title}</a></td>
+              {/volist}
+            </tr>
+            <tr>
+              {volist name="friendlinkList" id="vo" offset="7" length='7'}
+              <td><a href="{$vo.url}" title="{$vo.title}" target="_blank">{$vo.title}</a></td>
+              {/volist}
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {include file="common:footer" /}
+  </div>
+</body>
+<script src="__STATIC__/js/jquery-3.4.1.min.js"></script>
+<script src="__STATIC__/js/swiper.min.js"></script>
+<script src="__STATIC__/js/main.js"></script>
+
+</html>

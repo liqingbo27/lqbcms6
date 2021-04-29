@@ -11,7 +11,7 @@
  Target Server Version : 50553
  File Encoding         : 65001
 
- Date: 26/04/2021 19:25:31
+ Date: 29/04/2021 15:29:13
 */
 
 SET NAMES utf8mb4;
@@ -256,7 +256,7 @@ CREATE TABLE `lqbcms_menu`  (
   `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
   `sort` smallint(6) UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lqbcms_menu
@@ -275,7 +275,8 @@ INSERT INTO `lqbcms_menu` VALUES (13, 6, '案例分类', 'cases', '', '/cases/ca
 INSERT INTO `lqbcms_menu` VALUES (14, 5, '新闻分类', 'service', 'layui-icon-list', '/news/category', '', 1, 2);
 INSERT INTO `lqbcms_menu` VALUES (16, 0, '友情链接', 'recruit', 'layui-icon-list', '/friendlink/list', '', 1, 91);
 INSERT INTO `lqbcms_menu` VALUES (18, 0, '广告管理', 'advert', 'layui-icon-list', '/advert/list', NULL, 1, 91);
-INSERT INTO `lqbcms_menu` VALUES (20, 10, '菜单设置', 'menu', '', '/menu/list', NULL, 1, 2);
+INSERT INTO `lqbcms_menu` VALUES (20, 10, '菜单设置', 'menu', '', '/menu/list', NULL, 1, 3);
+INSERT INTO `lqbcms_menu` VALUES (25, 10, 'SEO设置', 'seo', '', '/set/seo', NULL, 1, 2);
 
 -- ----------------------------
 -- Table structure for lqbcms_messages
@@ -312,21 +313,22 @@ CREATE TABLE `lqbcms_news`  (
   `like` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `tag` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `r` tinyint(1) NOT NULL DEFAULT 0,
-  `h` tinyint(1) NOT NULL DEFAULT 0,
-  `t` tinyint(1) NOT NULL DEFAULT 0,
+  `recommended` tinyint(1) NOT NULL DEFAULT 0,
+  `hotted` tinyint(1) NOT NULL DEFAULT 0,
+  `topped` tinyint(1) NOT NULL DEFAULT 0,
   `sort` int(11) NOT NULL DEFAULT 0,
   `update_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `delete_time` int(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '新闻表' ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '新闻表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lqbcms_news
 -- ----------------------------
-INSERT INTO `lqbcms_news` VALUES (1, 'zh', 1, 7, 0, 'test', '', 'test', '', 'test', '<p>test</p>', 0, 0, 1, '', 0, 0, 0, 1, 1619435364, 1619366400, 0);
-INSERT INTO `lqbcms_news` VALUES (2, 'zh', 1, 7, 0, 'test2', '', 'a', '', 'aa', '<p>aa</p>', 1, 0, 1, '', 0, 0, 0, 0, 1619435395, 1619435395, 0);
+INSERT INTO `lqbcms_news` VALUES (1, 'zh', 1, 2, 0, 'How to make a nice morning?', '/storage/news/20210429/0970afd276832b0f88a2eecd5b39987c.jpg', 'How to make a nice morning?', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 1, '', 1, 0, 1, 1, 1619681021, 1619366400, 0);
+INSERT INTO `lqbcms_news` VALUES (2, 'zh', 1, 1, 0, 'Hot sand tunisia', '/storage/news/20210429/6626aa3cfa1b6c4eaa31892e89bc394f.jpg', 'a', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 1, 0, 1, '', 1, 0, 1, 0, 1619680630, 1619435395, 0);
+INSERT INTO `lqbcms_news` VALUES (3, 'zh', 1, 1, 0, 'Where i find the best travel deals', '/storage/news/20210429/532cc90ad67c46df1ebbf7651946366b.jpg', '', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 1, '', 0, 0, 1, 0, 1619680606, 1619679307, 0);
 
 -- ----------------------------
 -- Table structure for lqbcms_news_category
@@ -345,25 +347,13 @@ CREATE TABLE `lqbcms_news_category`  (
   `status` tinyint(1) UNSIGNED NULL DEFAULT 1,
   `tag` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '新闻分类表' ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '新闻分类表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lqbcms_news_category
 -- ----------------------------
-INSERT INTO `lqbcms_news_category` VALUES (2, 1, 0, '研究院动态', 'HINP News', NULL, NULL, 0, 2, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (3, 1, 0, '视频新闻', 'Video news', NULL, NULL, 0, 1, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (4, 1, 0, '行业资讯', 'Industrial News', NULL, NULL, 0, 3, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (6, 0, 0, '成果展示', 'Achievements', NULL, NULL, 0, 0, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (7, 6, 0, '智库报告', 'Thinktank Report', NULL, NULL, 0, 1, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (8, 6, 0, '著作', 'Specialist Publications', NULL, NULL, 0, 3, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (9, 6, 0, '专刊', 'Journals', NULL, NULL, 0, 4, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (10, 6, 0, '论文', 'Theses', NULL, NULL, 0, 2, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (11, 6, 0, '成果转化', 'Achievements Transformation', NULL, NULL, 0, 5, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (12, 0, 0, '交流合作', 'Collaboration', NULL, NULL, 0, 0, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (13, 12, 0, '国际交流', 'International Cooperation', NULL, NULL, 0, 0, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (14, 12, 0, '国内交流', 'Domestic Communication', NULL, NULL, 0, 0, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (15, 12, 0, '会议论坛', 'HINP Conferences', NULL, NULL, 0, 0, 1, NULL);
-INSERT INTO `lqbcms_news_category` VALUES (1, 0, 0, '新闻动态', 'News', NULL, NULL, 0, 0, 1, NULL);
+INSERT INTO `lqbcms_news_category` VALUES (1, 0, 0, '生活随笔', NULL, NULL, NULL, 0, 1, 1, NULL);
+INSERT INTO `lqbcms_news_category` VALUES (2, 0, 0, '美文欣赏', NULL, NULL, NULL, 0, 2, 1, NULL);
 
 -- ----------------------------
 -- Table structure for lqbcms_notice
@@ -555,7 +545,7 @@ CREATE TABLE `lqbcms_setting`  (
   `sort` int(11) UNSIGNED NOT NULL DEFAULT 0 COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `name`(`name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统设置' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统设置' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of lqbcms_setting
@@ -601,24 +591,9 @@ INSERT INTO `lqbcms_setting` VALUES (38, 'en', 'remarks', '', '', 0);
 INSERT INTO `lqbcms_setting` VALUES (39, 'en', 'qrcode', '/storage/base/20200323/637eb960d7cdf3f6bb55f1875be4e805.jpg', '', 0);
 INSERT INTO `lqbcms_setting` VALUES (40, 'en', 'logo', '/storage/base/20200429/517ad37f0eef9981819c7843851a9d4e.png', '', 0);
 INSERT INTO `lqbcms_setting` VALUES (41, 'en', 'access_token', 'my_access_token', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (42, 'undefined', 'system_name', '海南国家公园研究院', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (43, 'undefined', 'company', '海南国家公园研究院', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (44, 'undefined', 'linkman', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (45, 'undefined', 'tel', '0898-66513021', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (46, 'undefined', 'cellphone', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (47, 'undefined', 'qq', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (48, 'undefined', 'wechat', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (49, 'undefined', 'microblog', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (50, 'undefined', 'email', 'xiao@hinp.org.cn', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (51, 'undefined', 'address', '海南省海口市龙华区大同路38号财富中心1905', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (52, 'undefined', 'postcode', '570100', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (53, 'undefined', 'longitude', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (54, 'undefined', 'latitude', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (55, 'undefined', 'beianhao', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (56, 'undefined', 'remarks', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (57, 'undefined', 'qrcode', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (58, 'undefined', 'logo', '', '', 0);
-INSERT INTO `lqbcms_setting` VALUES (59, 'undefined', 'access_token', 'my_access_token', '', 0);
+INSERT INTO `lqbcms_setting` VALUES (60, 'zh', 'index_title', '李清波个人博客 - 不积跬步，无以至千里，不积小流，无以成江海。', '', 0);
+INSERT INTO `lqbcms_setting` VALUES (61, 'zh', 'index_keywords', '李清波个人博客,不积跬步，无以至千里，不积小流，无以成江海。', '', 0);
+INSERT INTO `lqbcms_setting` VALUES (62, 'zh', 'index_description', '李清波个人博客 - 不积跬步，无以至千里，不积小流，无以成江海。', '', 0);
 
 -- ----------------------------
 -- Table structure for lqbcms_singlepage
@@ -710,5 +685,32 @@ CREATE TABLE `lqbcms_team`  (
   `delete_time` int(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '科研团队' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for lqbcms_userfiles
+-- ----------------------------
+DROP TABLE IF EXISTS `lqbcms_userfiles`;
+CREATE TABLE `lqbcms_userfiles`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件ID',
+  `admin_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT '会员编号',
+  `admin_name` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '会员名称',
+  `filename` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
+  `savepath` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'URL链接',
+  `savename` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `path` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '缩略图',
+  `ext` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文件后缀',
+  `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '1为图片',
+  `create_time` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '创建日期',
+  `size` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '大小',
+  `category` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文件分类 只能用小写英文字符表示',
+  `sort` smallint(6) UNSIGNED NOT NULL DEFAULT 1 COMMENT '排序',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of lqbcms_userfiles
+-- ----------------------------
+INSERT INTO `lqbcms_userfiles` VALUES (2, 0, NULL, '', '/storage/news/20210429/0970afd276832b0f88a2eecd5b39987c.jpg', '', '/storage/news/20210429/0970afd276832b0f88a2eecd5b3', '', '', 1619681008, 0, '', 1, '');
 
 SET FOREIGN_KEY_CHECKS = 1;
