@@ -35,10 +35,10 @@ class Author extends Common
 
 	    $map[] = ['lang','=',$this->lang];
 	    $map[] = ['status','=',1];
-        $list = NewsModel::pageList($map,5);
+        $list = NewsModel::pageList($map,10);
         // 获取分页显示
         $page = $list->render();
-
+	    $count = $list->total();
 
 	    $currentCategory = NewsCategoryModel::where('id',$cid)->find();
 	    if($this->lang=='en'){
@@ -59,7 +59,7 @@ class Author extends Common
 	    $currentCategoryList = NewsCategoryModel::where('pid',$categoryPid)->whereOr('id',$categoryPid)->order('sort','ASC')->select();
 	    View::assign('currentCategoryList',$currentCategoryList);
 
-        return view('author',['list'=>$list,'page'=>$page]);
+        return view('author',['list'=>$list,'page'=>$page,'count'=>$count]);
     }
 
 }

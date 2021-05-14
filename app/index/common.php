@@ -1,5 +1,6 @@
 <?php
 // 这是系统自动生成的公共文件
+use app\common\model\NewsModel;
 use think\facade\Db;
 
 function get_current_lang(){
@@ -87,4 +88,8 @@ function get_singlepage_info($var,$field='')
    	// return \app\common\model\SinglepageModel::where('varname',$var)->value($field);
    }
    return $info;
+}
+
+function get_news_count(){
+	return $newsList = NewsModel::pageList([],12);
 }

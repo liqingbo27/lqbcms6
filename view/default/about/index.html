@@ -1,67 +1,255 @@
-<!--
- * @Author: 莫卓才
- * @eMail: handsome.mo@foxmail.com
- * @Descripttion: 描述
- * @version: 1.0.0
- * @Date: 2020-03-23 11:10:21
- * @LastEditors: 莫卓才
- * @LastEditTime: 2020-06-11 19:52:23
- -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
-  <meta name="viewport"
-    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-  <meta name="format-detection" content="telephone=no">
-  <meta name="robots" content="all">
-  <meta name="author" content="Tencent-CP">
-  <meta name="Copyright" content="Tencent">
-  <meta name="Description" content="{$config.system_name}">
-  <meta name="Keywords" content="{$info.title},{$config.system_name}">
-  <title>{$info.title} - {$config.system_name}</title>
-  <link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
-  <link rel="stylesheet" href="__STATIC__/css/animate.css">
-  <link rel="stylesheet" href="__STATIC__/css/base.css">
-  <link rel="stylesheet" href="__STATIC__/css/main.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>博主 - {$config.system_name}</title>
+    <!--Main style css-->
+    <link rel="stylesheet" href="__STATIC__/css/style.css">
+    <!--Active Color css-->
+    <link rel="stylesheet" href="__STATIC__/css/default-colors.css">
+    <!--Responsive style css-->
+    <link rel="stylesheet" href="__STATIC__/css/responsive.css">
 </head>
 
-<body>
-  {include file="common:header" /}
-  <div class="box-main">
-    <div class="container">
-      {include file="about:about_column" /}
-      <div class="wrapper">
-        <div class="head">
-          <img src="__STATIC__/img/home.png" alt="">
-          <p>当前位置：</p>
-          <p><a href="/">首页&gt;</a></p>
-          <p>{$info.title}</p>
-        </div>
-        <div class="singlepage-info">
-          <h3>{$info.title}</h3>
-          <div>
-            <!-- <p>时间：{$info.update_time|dates_to_date} </p> -->
-            <!-- <p>来源：{$info.source} </p> -->
-            <!-- <p>供稿人：{$info.creater}</p> -->
-            <p>浏览：{$info.clicks}</p>
-          </div>
-          <div class="content">
-            {$info.content|raw}
-          </div>
-        </div>
-
-      </div>
+<body class="bodypadding">
+    <!--Preloader-->
+    <div class="preloader"><i class="icon-spin2"></i>
     </div>
-  </div>
-  {include file="common:footer" /}
+    <!--END Preloader-->
+    <!--ScrollTop Btn-->
+    <!--END ScrollTop Btn-->
+    <div class="scroll_up gutengard_btn"><i class="icon-up-open-big"></i>
+    </div>
+    <!--Mobile Menu-->
+    {include file="common:mobile_nav" /}
+    <!--END Mobile Menu-->
+    <!--Search-->
+    {include file="common:searchform" /}
+    <!--END Search-->
+    <!--Float Sidebar-->
+    {include file="common:float_bar_site" /}
+    <!--END Float Sidebar-->
+    {include file="common:header" /}
+
+
+    <!--END main header -->
+    <!--Page header-->
+    <div class="page_header header_image box_overlay d-flex align_items_center justify_content_center aboutbg1">
+        <h1 class="cat_title">About</h1>
+        <div class="breadcrumbs">
+            <ul class="page-list">
+                <li class="first-item"><a href="index.html">Home</a>
+                </li>
+                <li><i class="icon-right-open-big"></i>
+                </li>
+                <li>About</li>
+            </ul>
+        </div>
+    </div>
+    <!--END Page header-->
+
+    <div class="page_container_wrapper">
+        <div class="container no_padding">
+            <div class="row">
+                <div class="col-lg-5 text-center">
+                    <a href="__STATIC__/picture/aboutpick.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="200">
+                        <img src="__STATIC__/picture/aboutpick.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-7 align-self-center">
+                    <div class="about_box">
+                        <!-- <div class="heading-title">Author blog</div>
+                        <h2>My Story</h2> -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="before_footer_area">
+        <div class="container-fluid no_padding">
+            <!--Widhet-->
+            <div class="sidebar_block float_sidebar_widget">
+                <div class="instagram-fee">
+                    <ul class="instagram-pics instagram-size-large">
+                        <li>
+                            <a href="assets/images/instthumblarge1.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="200">
+                                <img src="static/picture/instthumblarge1.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/images/instthumblarge2.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="300">
+                                <img src="static/picture/instthumblarge2.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/images/instthumblarge3.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="400">
+                                <img src="static/picture/instthumblarge3.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/images/instthumblarge4.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="500">
+                                <img src="static/picture/instthumblarge4.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/images/instthumblarge5.jpg" class="popupimg hover_light scrollanimation" data-animation="fadeInUp" data-timeout="600">
+                                <img src="static/picture/instthumblarge5.jpg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--END Widhet-->
+        </div>
+    </div>
+	{include file="common:footer" /}
+    <!-- JS -->
+    <!--jQuery 1.12.4 google link-->
+    <script src="__STATIC__/js/jquery.min.js"></script>
+    <!--Bootstrap 4.1.0-->
+    <script src="__STATIC__/js/bootstrap.min.js"></script>
+    <!--jquery.magnific-popup-->
+    <script src="__STATIC__/js/jquery.magnific-popup.min.js"></script>
+    <!--OWL Carousel-->
+    <script src="__STATIC__/js/owl.carousel.min.js"></script>
+    <!--Custom js-->
+    <script src="__STATIC__/js/custom.js"></script>
+    <div class="colorpicker">
+        <div class="btncoloropen"><i class="fas fa-palette"></i>
+        </div>
+        <div class="pickername">Active Theme Color</div>
+        <div class="colbtn active" data-color="default-colors"></div>
+        <div class="colbtn" data-color="blue-colors"></div>
+        <div class="colbtn" data-color="green-colors"></div>
+        <div class="colbtn" data-color="pink-colors"></div>
+        <div class="colbtn" data-color="purple2-colors"></div>
+        <div class="colbtn" data-color="purple-colors"></div>
+        <div class="colbtn" data-color="sky-colors"></div>
+        <div class="colbtn" data-color="yellow-colors"></div>
+        <style>
+            .btncoloropen {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    color: #000;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.colorpicker {
+    position: fixed;
+    top: 130px;
+    right: -200px;
+    background-color: #fff;
+    padding: 17px 20px;
+    max-width: 200px;
+    z-index: 1000;
+    transition: all .3s;
+}
+
+.colorpicker.opened {
+    right: 0;
+    transition: all .3s;
+}
+
+.pickername {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.colbtn {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.colbtn.active {
+    box-shadow: inset 0 0 0 8px #ffffff8c;
+}
+
+.colbtn[data-color="default-colors"] {
+    background-color: #FBCB47;
+}
+
+.colbtn[data-color="blue-colors"] {
+    background-color: #70b0ff;
+}
+
+.colbtn[data-color="pink-colors"] {
+    background-color: #fe2fd1;
+}
+
+.colbtn[data-color="green-colors"] {
+    background-color: #45f718;
+}
+
+.colbtn[data-color="purple2-colors"] {
+    background-color: #dcb5ff;
+}
+
+.colbtn[data-color="purple-colors"] {
+    background-color: #ff6bbd;
+}
+
+.colbtn[data-color="sky-colors"] {
+    background-color: #2ffeeb;
+}
+
+.colbtn[data-color="yellow-colors"] {
+    background-color: #f3ec0a;
+}
+        </style>
+        <script>
+            $(window).on('load', function() {
+                $('.btncoloropen').on('click', function() {
+                    $(this).parent().toggleClass('opened');
+                });
+                $('.colbtn').on('click', function() {
+                    $('.colbtn').removeClass('active');
+                    $(this).addClass('active');
+                    if ($(this).data('color') != 'default-colors') {
+                        $('#customizercss').remove();
+                        $('link[href="assets/css/colors/default-colors.css"]').after('<link id="customizercss" rel="stylesheet" href="static/css/fa3b73d24f06457e90f73bcf2e9f88f7.css' + jQuery(this).data('color') + '.css">');
+                    } else {
+                        $('head #customizercss').remove();
+                    } if ($(this).data('color') == 'green-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/greenlogo.png');
+                    }
+                    if ($(this).data('color') == 'blue-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/bluelogo.png');
+                    }
+                    if ($(this).data('color') == 'pink-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/pinklogo.png');
+                    }
+                    if ($(this).data('color') == 'purple2-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/purplelogo.png');
+                    }
+                    if ($(this).data('color') == 'purple-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/purplelogo.png');
+                    }
+                    if ($(this).data('color') == 'sky-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/skylogo.png');
+                    }
+                    if ($(this).data('color') == 'yellow-colors') {
+                        $('.logo_head img').attr('src', 'demoimg/yellowlogo.png');
+                    }
+                    if ($(this).data('color') == 'default-colors') {
+                        $('.logo_head img').attr('src', 'assets/images/logo.png');
+                    }
+                })
+            });
+        </script>
+    </div>
 </body>
-<script src="__STATIC__/js/jquery-3.4.1.min.js"></script>
-<script src="__STATIC__/js/swiper.min.js"></script>
-<script src="__STATIC__/js/main.js"></script>
 
 </html>

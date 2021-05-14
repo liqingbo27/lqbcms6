@@ -33,5 +33,16 @@ return [
     'show_error_msg'   => true,
     'tpl_replace_string'  =>  [
         '__STATIC__'=>'/static/index'
-    ]
+    ],
+    'template'               => [
+	    // 模板引擎类型 支持 php think 支持扩展
+	    'type'         => 'Think',
+	    // 模板路径
+	    'view_path'    => '',
+	    // 模板后缀
+	    'view_suffix'  => '.html',
+	    // 预先加载的标签库
+	    'taglib_pre_load'     =>    'app\common\taglib\Demo',
+
+    ],
 ];

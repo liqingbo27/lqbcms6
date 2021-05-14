@@ -41,124 +41,61 @@
                             <div class="author_card_imag">
                                 <img src="__STATIC__/picture/autorcard2.jpg" alt="">
                             </div>
-                            <div class="author_name">Lesya Gopko</div>
-                            <div class="author_articles">147 Articles</div>
+                            <div class="author_name">{$config.system_name}</div>
+                            <div class="author_articles">{$count} 篇</div>
                             <div class="author_socials"><a href="#"><span class="icon-facebook"></span></a><a href="#"><span class="icon-twitter"></span></a>
                             </div>
                         </div>
                         <div class="short_autord_desc">
-                            <h5 class="author_about">About</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros.</p>
+                            <!-- <h5 class="author_about">简介</h5> -->
+                            <p>{$config.remarks}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9">
+                    {volist name="list" id="vo"}
                     <div class="blog_list_post one_col_post clearfix">
                         <!--Post Box-->
                         <div class="blog_post_box clearfix">
                             <div class="blog_post_item">
-                                <h2 class="post_name"><a href="single.html">Hot sand Tunisia</a></h2>
-                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>7</span><span class="reviews_count"><i class="fas fa-eye"></i>27</span>
+                                <h2 class="post_name"><a href="{$vo.url}">{$vo.title}</a></h2>
+                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>0</span><span class="reviews_count"><i class="fas fa-eye"></i>{$vo.clicks}</span>
                                 </div>
                                 <div class="short_desc_post">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer
-                                        ac viverra diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
+                                    <p>{$vo.description}</p>
                                 </div>
-                                <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
+                                <div class="seea_more"><a href="{$vo.url}">View More <i class="icon-right-open-big"></i></a>
                                 </div>
                             </div>
                             <div class="blog_post_item_image postbg12">
-                                <div class="post_data_cr"><span class="day">11</span>
-                                    <div class="month">Jun</div>
-                                    <div class="year">2018</div>
+                                <div class="post_data_cr"><span class="day">{$vo.update_time|date='d'}</span>
+                                    <div class="month">{$vo.update_time|date='m'}</div>
+                                    <div class="year">{$vo.update_time|date='Y'}</div>
                                 </div>
-                                <a href="single.html" class="post_link_image">
-                                    <img src="__STATIC__/picture/postimagebox.png" alt="">
+                                <a href="{$vo.url}" class="post_link_image">
+                                    <img src="{$vo.thumb}" alt="">
                                 </a>
                             </div>
                         </div>
                         <!--END Post Box-->
                     </div>
-                    <div class="blog_list_post one_col_post clearfix">
-                        <!--Post Box-->
-                        <div class="blog_post_box clearfix">
-                            <div class="blog_post_item">
-                                <h2 class="post_name"><a href="single.html">Coral Bay: My Beach Paradise</a></h2>
-                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>11</span><span class="reviews_count"><i class="fas fa-eye"></i>1010</span>
-                                </div>
-                                <div class="short_desc_post">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer
-                                        ac viverra diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                                </div>
-                                <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog_post_item_image postbg10">
-                                <div class="post_data_cr"><span class="day">1</span>
-                                    <div class="month">May</div>
-                                    <div class="year">2018</div>
-                                </div>
-                                <a href="single.html" class="post_link_image">
-                                    <img src="__STATIC__/picture/postimagebox.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <!--END Post Box-->
-                    </div>
-                    <div class="blog_list_post one_col_post clearfix">
-                        <!--Post Box-->
-                        <div class="blog_post_box clearfix">
-                            <div class="blog_post_item">
-                                <h2 class="post_name"><a href="single.html">Where i find the best travel deals</a></h2>
-                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>11</span><span class="reviews_count"><i class="fas fa-eye"></i>1010</span>
-                                </div>
-                                <div class="short_desc_post">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer
-                                        ac viverra diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                                </div>
-                                <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog_post_item_image postbg11">
-                                <div class="post_data_cr"><span class="day">21</span>
-                                    <div class="month">Apr</div>
-                                    <div class="year">2018</div>
-                                </div>
-                                <a href="single.html" class="post_link_image">
-                                    <img src="__STATIC__/picture/postimagebox.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <!--END Post Box-->
-                    </div>
-                    <div class="blog_list_post one_col_post clearfix">
-                        <!--Post Box-->
-                        <div class="blog_post_box clearfix">
-                            <div class="blog_post_item">
-                                <h2 class="post_name"><a href="single.html">Incredible places for photos</a></h2>
-                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>11</span><span class="reviews_count"><i class="fas fa-eye"></i>1010</span>
-                                </div>
-                                <div class="short_desc_post">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer
-                                        ac viverra diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p>
-                                </div>
-                                <div class="seea_more"><a href="single.html">View More <i class="icon-right-open-big"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog_post_item_image postbg4">
-                                <div class="post_data_cr"><span class="day">21</span>
-                                    <div class="month">Apr</div>
-                                    <div class="year">2018</div>
-                                </div>
-                                <a href="single.html" class="post_link_image">
-                                    <img src="__STATIC__/picture/postimagebox.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <!--END Post Box-->
-                    </div>
-                    <div class="text-center btn_loadmore"><a href="#" class="btn_gurd btn_gurd_trp btn_gurd_i loadmore_btn">Load More <i class="fas fa-spinner"></i></a>
-                    </div>
+                    {/volist}
+
+
+                    <!-- <div class="text-center btn_loadmore"><a href="#" class="btn_gurd btn_gurd_trp btn_gurd_i loadmore_btn">Load More <i class="fas fa-spinner"></i></a>
+
+                    </div> -->
+
+                    <!--Pagination-->
+        <div class="text-center">
+            <nav class="page_pagination_wrapper margin50_0_0_0">
+                {$page|raw}
+            </nav>
+        </div>
+        <!--END Pagination-->
+
+        
+
                 </div>
             </div>
         </div>

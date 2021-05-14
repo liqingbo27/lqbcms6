@@ -52,4 +52,5 @@ class Uploads extends BaseController
 	    return json(['code'=>0, 'msg'=>'登入成功', 'data'=>$data]);
     }
 
+
 }
