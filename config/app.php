@@ -9,7 +9,7 @@ return [
     // 应用的命名空间
     'app_namespace'    => '',
     // 是否启用路由
-    'with_route'       => true,
+    'with_route'       => true, 
     // 是否启用事件
     'with_event'       => true,
     // 开启应用快速访问
