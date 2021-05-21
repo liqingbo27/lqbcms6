@@ -18,7 +18,7 @@ class Author extends Common
 
 	public function index()
     {
-        $cid = input('cid',1);
+        $cid = input('cid',0);
         $map = [];
         if(!empty($cid)){
 	        $categoryInfo = NewsCategoryModel::where('id',$cid)->find();
@@ -33,7 +33,6 @@ class Author extends Common
         }
 
 
-	    $map[] = ['lang','=',$this->lang];
 	    $map[] = ['status','=',1];
         $list = NewsModel::pageList($map,10);
         // 获取分页显示
@@ -41,23 +40,22 @@ class Author extends Common
 	    $count = $list->total();
 
 	    $currentCategory = NewsCategoryModel::where('id',$cid)->find();
-	    if($this->lang=='en'){
+	    if(!empty($currentCategory)){
 		    View::assign('currentCategoryName',$currentCategory->ename);
-	    }else{
-		    View::assign('currentCategoryName',$currentCategory->name);
-
+		    if(!empty($currentCategory->pid)){
+			    $categoryPid = $currentCategory->pid;
+		    }else{
+			    $categoryPid = $currentCategory->id;
+		    }
+		    $currentCategoryList = NewsCategoryModel::where('pid',$categoryPid)->whereOr('id',$categoryPid)->order('sort','ASC')->select();
+		    View::assign('currentCategoryList',$currentCategoryList);
 	    }
 	    View::assign('cid',$cid);
 
 
-	    if(!empty($currentCategory->pid)){
-		    $categoryPid = $currentCategory->pid;
-	    }else{
-		    $categoryPid = $currentCategory->id;
 
-	    }
-	    $currentCategoryList = NewsCategoryModel::where('pid',$categoryPid)->whereOr('id',$categoryPid)->order('sort','ASC')->select();
-	    View::assign('currentCategoryList',$currentCategoryList);
+
+
 
         return view('author',['list'=>$list,'page'=>$page,'count'=>$count]);
     }

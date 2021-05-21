@@ -104,6 +104,13 @@ class News extends Common
     }
 
 
+	/**
+	 * Created by LQBCSM.
+	 * Site：https://www.lqbcms.com
+	 * Author: 李清波
+	 * Date: 2021-5-21 15:57
+	 *
+	 */
     public function changeStatus(){
 	    $id = $this->request->param('id');
 	    $info = NewsModel::find($id);

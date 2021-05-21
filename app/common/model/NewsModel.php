@@ -39,6 +39,9 @@ class NewsModel extends Model
 
     public static function info($id){
         $info = self::find($id);
+        if(!empty($info)){
+        	$info->content = NewsContentModel::where('id',$info->id)->value('content');
+        }
         return $info;
     }
 
@@ -109,13 +112,19 @@ class NewsModel extends Model
      * 上一篇
      * 2020-01-14 10:45:38 李清波
      */
-    public static function prev($info){
+    public static function prev($info,$type=0){
         $info = self::where('id','>',$info['id'])
 	        ->where('category_id','=',$info['category_id'])
 	        ->where('lang','=',$info['lang'])
-	        ->field('id,title')
+	        ->field('id,title,thumb')
 	        ->order('id','ASC')
 	        ->find();
+        if(!empty($info)){
+	        $info->url = self::getShowUrl($info->id);
+        }
+        if($type==1){
+        	return $info;
+        }
         return self::aHtml($info);
     }
 
@@ -123,18 +132,28 @@ class NewsModel extends Model
      * 下一篇
      * 2020-01-14 10:45:56 李清波
      */
-    public static function next($info){
+    public static function next($info,$type=0){
         $info = self::where('id','<',$info['id'])
 	        ->where('category_id','=',$info['category_id'])
 	        ->where('lang','=',$info['lang'])
-	        ->field('id,title')
+	        ->field('id,title,thumb')
 	        ->order('id','DESC')
 	        ->find();
+	    if(!empty($info)){
+		    $info->url = self::getShowUrl($info->id);
+	    }
+	    if($type==1){
+		    return $info;
+	    }
         return self::aHtml($info);
     }
 
     public static function getShowUrl($id){
-        return '/news/show/id/'.$id;
+        return '/news/show-'.$id.'.html';
+	    /*return url('news/show/read', ['id'=>$id])
+		    ->suffix('html')
+		    ->domain(true)
+		    ->root('');*/
     }
 
     public static function aHtml($info){

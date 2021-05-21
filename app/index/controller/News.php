@@ -76,16 +76,15 @@ class News extends Common
         $act = input('act','');
 
         $info = NewsModel::info($id);
-
-        if($info->status==0&&$act!='view'){
-        	echo '没有权限';
-        	exit;
-        }
+		if(empty($info)){
+			echo '暂无数据';
+			exit;
+		}
 
         NewsModel::where('id', $id)->inc('clicks', 1)->update();
 
-        $prev = NewsModel::prev($info);
-        $next = NewsModel::next($info);
+        $prev = NewsModel::prev($info,1);
+        $next = NewsModel::next($info,1);
 
         View::assign('info',$info);
         View::assign('prev',$prev);
@@ -111,7 +110,7 @@ class News extends Common
 		    View::assign('currentCategoryList',$currentCategoryList);
 	    }
 
-        return view('info');
+        return view('show');
     }
 
 	public function search(){

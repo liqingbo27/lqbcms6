@@ -20,7 +20,7 @@ layui.define(['table', 'form', 'layedit'], function (exports) {
 
   table.set({
     where: {
-      lang: lang
+
     }
   })
 
@@ -32,8 +32,8 @@ layui.define(['table', 'form', 'layedit'], function (exports) {
     , url: '/api/news/getList' //模拟接口
     , cols: [[
       { type: 'checkbox', fixed: 'left' }
-      , { type: 'numbers', width: 80, title: '序号', align: 'center' }
-      , { field: 'title', title: '标题', minWidth: 240 }
+      , { field: 'id', width: 80, title: '序号', align: 'center' }
+      , { field: 'title', title: '标题', minWidth: 360 }
       , { field: 'category_name', title: '所属分类', width: 120 }
       , { field: 'recommended_text', title: '推荐', minWidth: 80 }
       , { field: 'topped_text', title: '置顶', minWidth: 80 }

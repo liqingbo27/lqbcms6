@@ -15,12 +15,14 @@ Route::get('think', function () {
 });
 
 
-/*// 绑定当前的URL到 index模块
+// 绑定当前的URL到 index模块
 Route::bind('index');
 
-Route::get('/','index/index');
-Route::rule('news/','news/index');
-Route::get('news/:id','news/read');
+//Route::get('/','index/index');
+//Route::rule('news/','news/index');
+Route::get('news/show-:id','news/show');
+Route::get('news/list-:cid','news/index');
+Route::get('news/list-:cid','news/index');
 
 
-*/
+
