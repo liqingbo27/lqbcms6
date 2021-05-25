@@ -80,13 +80,14 @@ layui.define(['table', 'form', 'layedit'], function (exports) {
       var h = $(window).height() - 60;
       var w = $(window).width() - 10;
 
+      console.log(data);
+
       admin.popup({
         title: '编辑'
         , area: ['1000px', h + 'px']
         , id: 'LAY-popup-content-edit'
         , success: function (layero, index) {
           view(this.id).render('news/add', data).done(function () {
-            console.log(1);
 
             layedit.set({
               uploadImage: {
@@ -136,7 +137,7 @@ layui.define(['table', 'form', 'layedit'], function (exports) {
         }
       });
     } else if (obj.event === 'show') {
-      window.open("/news/show/id/" + data.id + '/act/view');
+      window.open("/news/show-" + data.id + '.html');
     } else if (obj.event === 'toggle') {
       admin.req({
         type: "POST",

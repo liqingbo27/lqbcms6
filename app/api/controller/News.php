@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace app\api\controller;
 
 use app\common\model\NewsCategoryModel;
+use app\common\model\NewsContentModel;
 use app\common\model\NewsModel;
 use think\console\Input;
 
@@ -54,10 +55,12 @@ class News extends Common
 
         if(!empty($data['id'])){
             NewsModel::update($data);
+            NewsContentModel::updateByMain($data['id'],$data['content']);
         }else{
             unset($data['id']);
             $data['admin_id'] = session('admin_id');
-            NewsModel::create($data);
+            $Info = NewsModel::create($data);
+	        NewsContentModel::updateByMain($Info->id,$data['content']);
         }
         return json(['code'=>0,'msg'=>'操作成功']);
     }

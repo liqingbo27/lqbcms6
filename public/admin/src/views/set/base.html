@@ -134,6 +134,18 @@
                 <button class="layui-btn layui-btn-primary" layadmin-event="microblogPreview">查看图片</button>
               </div>
             </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">头像</label>
+              <div class="layui-input-inline" style="width: 360px;">
+                <input name="portrait" id="LAY_portrait" placeholder="" value="" class="layui-input">
+              </div>
+              <div class="layui-input-inline layui-btn-container" style="width: auto;">
+                <button type="button" class="layui-btn layui-btn-primry" id="LAY_portraaitUpload">
+                  <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <button class="layui-btn layui-btn-primary" layadmin-event="portraitPreview">查看图片</button>
+              </div>
+            </div>
 
             <!-- <div class="layui-form-item">
               <label class="layui-form-label">LOGO</label>
@@ -309,6 +321,7 @@
     var avatarSrc = $('#LAY_avatarSrc'); // 微信二维码
     var microblogSrc = $('#LAY_microblogSrc'); // 微博二维码
     var logoSrc = $('#LAY_logoSrc'); // LOGO
+    var portraitSrc = $('#LAY_portrait'); // LOGO
 
     // 微信二维码
     upload.render({
@@ -350,6 +363,19 @@
       }
     });
 
+    // 头像
+    upload.render({
+      url: '/api/uploads/portrait'
+      , elem: '#LAY_portraitUpload'
+      , done: function (res) {
+        if (res.code == 0) {
+          portraitSrc.val(res.data.src);
+        } else {
+          layer.msg(res.msg, { icon: 5 });
+        }
+      }
+    });
+
     //查看微信二维码
     admin.events.avartatPreview = function (othis) {
       var src = avatarSrc.val();
@@ -365,6 +391,7 @@
         , anim: 5
       });
     };
+
     //查看微博二维码 
     admin.events.microblogPreview = function (othis) {
       var src = microblogSrc.val();
@@ -380,11 +407,28 @@
         , anim: 5
       });
     };
+
     //查看LOGO
     admin.events.logoPreview = function (othis) {
       console.log(1);
       var src = logoSrc.val();
       console.log(src);
+      layer.photos({
+        photos: {
+          "title": "查看头像" //相册标题
+          , "data": [{
+            "src": src //原图地址
+          }]
+        }
+        , shade: 0.01
+        , closeBtn: 1
+        , anim: 5
+      });
+    };
+
+    //
+    admin.events.portraitPreview = function (othis) {
+      var src = portraitSrc.val();
       layer.photos({
         photos: {
           "title": "查看头像" //相册标题

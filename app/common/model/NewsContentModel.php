@@ -16,4 +16,22 @@ class NewsContentModel extends Model
 	protected $autoWriteTimestamp = false;
 
 
+	public static function getContentById($id){
+		return self::where('id',$id)->value('content');
+	}
+
+	public static function updateByMain($id,$content){
+		$cInfo = self::find($id);
+		if(!empty($cInfo)){
+			self::where('id',$id)->update([
+				'content' => $content
+			]);
+		}else{
+			self::create([
+				'id' => $id,
+				'content' => $content
+			]);
+		}
+
+	}
 }

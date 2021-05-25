@@ -52,5 +52,20 @@ class Uploads extends BaseController
 	    return json(['code'=>0, 'msg'=>'登入成功', 'data'=>$data]);
     }
 
+    public function portrait(){
+	    $file = request()->file('file');
+
+	    $savename = \think\facade\Filesystem::disk('public')->putFileAs( 'images', $file,'portrait.jpg');
+
+	    $path = env('filesystem.storage','/storage').'/'.str_replace("\\","/",$savename);
+	    $fullpath = $this->request->scheme().'://'.$this->request->host().$path;
+
+	    $data['src'] = $path;
+	    $data['fullpath'] = $fullpath;
+	    $data['title'] = '图片';
+	    UserfilesModel::add($path);
+	    return json(['code'=>0, 'msg'=>'登入成功', 'data'=>$data]);
+    }
+
 
 }

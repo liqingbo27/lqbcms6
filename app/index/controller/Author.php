@@ -33,8 +33,9 @@ class Author extends Common
         }
 
 
+	    $map[] = ['category_id','=',1];
 	    $map[] = ['status','=',1];
-        $list = NewsModel::pageList($map,10);
+        $list = NewsModel::pageList($map,6);
         // 获取分页显示
         $page = $list->render();
 	    $count = $list->total();

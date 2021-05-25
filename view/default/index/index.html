@@ -52,7 +52,7 @@
                         <div class="short_desc_post">
                             <p>{$vo.description}</p>
                         </div>
-                        <div class="seea_more"><a href="{$vo.url}">View More <i class="icon-right-open-big"></i></a>
+                        <div class="seea_more"><a href="{$vo.url}">查看详情<i class="icon-right-open-big"></i></a>
                         </div>
                     </div>
                     <img src="{$vo.thumb}" alt="{$vo.title}">
@@ -93,12 +93,11 @@
                         <div class="blog_post_box clearfix">
                             <div class="blog_post_item">
                                 <h2 class="post_name"><a href="{$v.url}" title="{$v.title}">{$v.title}</a></h2>
-                                <div class="post_data"><span class="category">Travel</span><span class="comments_count"><i class="fas fa-comments"></i>7</span><span class="reviews_count"><i class="fas fa-eye"></i>27</span>
-                                </div>
+                                <div class="post_data"><span class="category">{$v.category_name}</span><span class="comments_count"><i class="fas fa-comments"></i>{$v.comments}</span><span class="reviews_count"><i class="fas fa-eye"></i>{$v.clicks}</span></div>
                                 <div class="short_desc_post">
                                     <p>{$v.description}</p>
                                 </div>
-                                <div class="seea_more"><a href="{$v.url}">View More <i class="icon-right-open-big"></i></a>
+                                <div class="seea_more"><a href="{$v.url}">查看详情<i class="icon-right-open-big"></i></a>
                                 </div>
                             </div>
                             <div class="blog_post_item_image {eq name='mod' value='0'} postbg10 {else /} postbg11 {/eq}">
@@ -120,7 +119,7 @@
 
 
         </div>
-        <div class="text-center btn_loadmore"><a href="/news.html" class="btn_gurd btn_gurd_trp btn_gurd_i loadmore_btn">Load More <i class="fas fa-spinner"></i></a>
+        <div class="text-center btn_loadmore"><a href="/news/" class="btn_gurd btn_gurd_trp btn_gurd_i loadmore_btn">加载更多 <i class="fas fa-spinner"></i></a>
         </div>
         <!--Pagination-->
         <!-- <div class="text-center"><nav class="page_pagination_wrapper margin50_0_0_0"><ul class="page-numbers"><li><a class="prev page-numbers" href="#"><i class="icon-left-open-big"></i></a></li><li><span aria-current="page" class="page-numbers current">1</span></li><li><a class="page-numbers" href="#">2</a></li><li><a class="page-numbers" href="#">3</a></li><li><a class="next page-numbers" href="#"><i class="icon-right-open-big"></i></a></li></ul></nav></div> -->
@@ -175,139 +174,7 @@
     <script src="static/default/js/owl.carousel.min.js"></script>
     <!--Custom js-->
     <script src="static/default/js/custom.js"></script>
-    <div class="colorpicker">
-        <div class="btncoloropen"><i class="fas fa-palette"></i>
-        </div>
-        <div class="pickername">Active Theme Color</div>
-        <div class="colbtn active" data-color="default-colors"></div>
-        <div class="colbtn" data-color="blue-colors"></div>
-        <div class="colbtn" data-color="green-colors"></div>
-        <div class="colbtn" data-color="pink-colors"></div>
-        <div class="colbtn" data-color="purple2-colors"></div>
-        <div class="colbtn" data-color="purple-colors"></div>
-        <div class="colbtn" data-color="sky-colors"></div>
-        <div class="colbtn" data-color="yellow-colors"></div>
-        <style>
-            .btncoloropen {
-    position: absolute;
-    left: -50px;
-    top: 0;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    color: #000;
-    line-height: 50px;
-    font-size: 20px;
-    text-align: center;
-    background-color: #fff;
-}
 
-.colorpicker {
-    position: fixed;
-    top: 130px;
-    right: -200px;
-    background-color: #fff;
-    padding: 17px 20px;
-    max-width: 200px;
-    z-index: 1000;
-    transition: all .3s;
-}
-
-.colorpicker.opened {
-    right: 0;
-    transition: all .3s;
-}
-
-.pickername {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.colbtn {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
-
-.colbtn.active {
-    box-shadow: inset 0 0 0 8px #ffffff8c;
-}
-
-.colbtn[data-color="default-colors"] {
-    background-color: #FBCB47;
-}
-
-.colbtn[data-color="blue-colors"] {
-    background-color: #70b0ff;
-}
-
-.colbtn[data-color="pink-colors"] {
-    background-color: #fe2fd1;
-}
-
-.colbtn[data-color="green-colors"] {
-    background-color: #45f718;
-}
-
-.colbtn[data-color="purple2-colors"] {
-    background-color: #dcb5ff;
-}
-
-.colbtn[data-color="purple-colors"] {
-    background-color: #ff6bbd;
-}
-
-.colbtn[data-color="sky-colors"] {
-    background-color: #2ffeeb;
-}
-
-.colbtn[data-color="yellow-colors"] {
-    background-color: #f3ec0a;
-}
-        </style>
-        <script>
-            $(window).on('load', function() {
-                $('.btncoloropen').on('click', function() {
-                    $(this).parent().toggleClass('opened');
-                });
-                $('.colbtn').on('click', function() {
-                    $('.colbtn').removeClass('active');
-                    $(this).addClass('active');
-                    if ($(this).data('color') != 'default-colors') {
-                        $('#customizercss').remove();
-                        $('link[href="assets/css/colors/default-colors.css"]').after('<link id="customizercss" rel="stylesheet" href="static/default/css/98d6b700b8d94afa956b60120a3d4b0a.css' + jQuery(this).data('color') + '.css">');
-                    } else {
-                        $('head #customizercss').remove();
-                    } if ($(this).data('color') == 'green-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/greenlogo.png');
-                    }
-                    if ($(this).data('color') == 'blue-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/bluelogo.png');
-                    }
-                    if ($(this).data('color') == 'pink-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/pinklogo.png');
-                    }
-                    if ($(this).data('color') == 'purple2-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/purplelogo.png');
-                    }
-                    if ($(this).data('color') == 'purple-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/purplelogo.png');
-                    }
-                    if ($(this).data('color') == 'sky-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/skylogo.png');
-                    }
-                    if ($(this).data('color') == 'yellow-colors') {
-                        $('.logo_head img').attr('src', 'demoimg/yellowlogo.png');
-                    }
-                    if ($(this).data('color') == 'default-colors') {
-                        $('.logo_head img').attr('src', 'static/default/images/logo.png');
-                    }
-                })
-            });
-        </script>
-    </div>
 </body>
 
 </html>

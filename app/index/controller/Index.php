@@ -33,7 +33,14 @@ class Index extends Common
 
 	    $newsToppedList = NewsModel::getToppedList(6);
 	    $newsRecommendedList = NewsModel::getRecommendedList(8);
-	    $newsList = NewsModel::pageList([],12);
+
+
+	    $nMap = [];
+	    $nMap[] = ['recommended','=',0];
+	    $nMap[] = ['hotted','=',0];
+	    $nMap[] = ['topped','=',0];
+	    $nMap[] = ['status','=',1];
+	    $newsList = NewsModel::pageList($nMap,6);
 
 	    $i = 1;
 	    $up = 0;

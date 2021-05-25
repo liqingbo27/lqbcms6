@@ -25,7 +25,6 @@ class Common extends BaseController
 
         View::assign('controllerName',$controllerName);
         View::assign('actionName',$actionName);
-
 	    $this->lang = 'default';
 
 	    View::config(['view_path' => '../view/'.$this->lang.'/']);

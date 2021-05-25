@@ -20,18 +20,13 @@ class NewsModel extends Model
             'list_rows'=> $limit,
             'var_page' => 'page',
         ])->each(function($item, $key){
-        	if($item->lang=='en'){
-
-		        $item->category_name = NewsCategoryModel::where('id',$item->category_id)->value('ename');
-	        }else{
-
-		        $item->category_name = NewsCategoryModel::where('id',$item->category_id)->value('name');
-	        }
+	        $item->category_name = NewsCategoryModel::where('id',$item->category_id)->value('name');
             $item->admin_name = AdminModel::where('id',$item->admin_id)->value('username');
-            $item->url = '/news/show/id/'.$item->id;
+            $item->url = self::getShowUrl($item->id);
 
 	        $item->recommended_text = $item->recommended==1 ? '推荐' : '';
 	        $item->topped_text = $item->topped==1 ? '推荐' : '';
+	        $item->content = NewsContentModel::getContentById($item->id);
 
         });
         return $list;

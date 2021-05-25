@@ -42,20 +42,13 @@ class News extends Common
         }
 
 
-	    $map[] = ['lang','=',$this->lang];
 	    $map[] = ['status','=',1];
-        $list = NewsModel::pageList($map,5);
+        $list = NewsModel::pageList($map,12);
         // 获取分页显示
         $page = $list->render();
 
 
 	    $currentCategory = NewsCategoryModel::where('id',$cid)->find();
-	    if($this->lang=='en'){
-		    View::assign('currentCategoryName',$currentCategory->ename);
-	    }else{
-		    View::assign('currentCategoryName',$currentCategory->name);
-
-	    }
 	    View::assign('cid',$cid);
 
 
@@ -67,6 +60,8 @@ class News extends Common
 	    }
 	    $currentCategoryList = NewsCategoryModel::where('pid',$categoryPid)->whereOr('id',$categoryPid)->order('sort','ASC')->select();
 	    View::assign('currentCategoryList',$currentCategoryList);
+
+
 
         return view('index',['list'=>$list,'page'=>$page]);
     }

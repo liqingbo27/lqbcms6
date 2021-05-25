@@ -22,7 +22,7 @@ class Login extends BaseController
 
 
         if( !Captcha::check($vercode)) {
-            return json(['code'=>1001, 'msg'=>'验证码错误', 'vercode'=>$vercode]);
+            return json(['code'=>1001, 'msg'=>'验证码错误']);
         }
 
         $userinfo = AdminModel::where('username',$username)->find();
@@ -31,7 +31,7 @@ class Login extends BaseController
         }
 
         if(!password_verify( $password, $userinfo->password)){
-            return json(['code'=>1001, 'msg'=>'密码错误'.$password.$userinfo->password]);
+            return json(['code'=>1001, 'msg'=>'密码错误']);
         }
 
         Session::set('admin_id', $userinfo->id);

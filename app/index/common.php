@@ -93,3 +93,30 @@ function get_singlepage_info($var,$field='')
 function get_news_count(){
 	return $newsList = NewsModel::pageList([],12);
 }
+
+function get_news_category_list(){
+	$list = \app\common\model\NewsCategoryModel::where('status',1)->order('sort','asc')->select();
+	foreach($list as $key=>$val){
+		$val->url = '/news/list-'.$val->id.'.html';
+	}
+	return $list;
+}
+
+function regroup_list($list){
+	$data = [];
+	$i = 0;
+	$forKey = 0;
+	foreach ($list as $key => $val) {
+		$data[$forKey][] = $val;
+		if($i>0){
+			$forKey++;
+		}
+		if($i>0){
+			$i=0;
+		}else{
+			$i++;
+		}
+
+	}
+	return $data;
+}
