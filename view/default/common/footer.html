@@ -21,8 +21,9 @@
                 <div class="footer_block widget_categories">
                     <h4 class="widget_title">友情链接</h4>
                     <ul>
-                        <li><a href="https://www.liqingbo.cn/">PHP博客</a></li>
-                        <li><a href="https://www.liqingbo.com/">李清波个人博客</a></li>
+                        {volist name=":get_link_list()" id="vo"}
+                        <li><a href="{$vo.url}" title="{$vo.title}" target="_blank">{$vo.title}</a></li>
+                        {/volist}
                     </ul>
                 </div>
             </div>

@@ -50,26 +50,10 @@ class About extends Common
     }
 
 	public function show(){
-		$var = input('var');
-		$info = SinglepageModel::where('varname',$var)->where('lang','=',$this->lang)->find();
-		if(!empty($info)){
-			$info->creater = 'editor';
-			$info->source = $info->source ? $info->source : 'internet';
-		}else{
-			SinglepageModel::create([
-				'varname' => $var,
-				'lang' => $this->lang,
-				'title' => SinglepageModel::$varArr[$var]
-			]);
-		}
-		if($info->status==0){
-			$info->content = '';
-			$info->description = '';
-		}
-
+		$var = input('var','');
+		$info = SinglepageModel::where('varname',$var)->find();
 		View::assign('info',$info);
 
-		SinglepageModel::where('id', $info->id)->inc('clicks', 1)->update();
 		return view();
 	}
 

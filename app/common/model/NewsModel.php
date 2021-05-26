@@ -16,7 +16,7 @@ class NewsModel extends Model
     //
     public static function pageList($map = [],$limit=25){
         $limit = Request::param('limit',$limit);
-        $list = self::where($map)->order(['update_time'=>'DESC'])->paginate([
+        $list = self::where($map)->order(['create_time'=>'DESC'])->paginate([
             'list_rows'=> $limit,
             'var_page' => 'page',
         ])->each(function($item, $key){

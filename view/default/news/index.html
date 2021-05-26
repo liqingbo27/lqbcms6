@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Gutengurd - Category</title>
+    <title>文章列表 - {$config.system_name}</title>
+    <meta name="keywords" content="文章列表,{$config.system_name}"/>
+    <meta name="description" content="李清波个人博客的文章列表页"/>
+
     <!--Main style css-->
     <link rel="stylesheet" href="__STATIC__/css/style.css">
     <!--Active Color css-->
@@ -58,7 +61,7 @@
                     <!--Post Box-->
                     <div class="blog_post_box clearfix">
                         <div class="blog_post_item">
-                            <h2 class="post_name"><a href="{$subVal.url}" title="{$subVal.title}">{$subVal.title|cut_str=12}</a></h2>
+                            <h2 class="post_name"><a href="{$subVal.url}" title="{$subVal.title}">{$subVal.title|cut_str=26}</a></h2>
                             <div class="post_data"><span class="category">{$subVal.category_name}</span><span class="comments_count"><i class="fas fa-comments"></i>{$subVal.comments}</span><span class="reviews_count"><i class="fas fa-eye"></i>{$subVal.clicks}</span></div>
                             <div class="short_desc_post">
                                 <p title="{$subVal.description}">{$subVal.description|cut_str=60}</p>

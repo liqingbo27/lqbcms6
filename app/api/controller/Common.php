@@ -22,9 +22,5 @@ class Common extends BaseController
             abort(1, '登录失效，请重新登录');
         }
 
-        $lang = input('lang');
-        if(!empty($lang)){
-        	$this->comMap[] = ['lang','=',$lang];
-        }
     }
 }

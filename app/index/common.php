@@ -94,12 +94,20 @@ function get_news_count(){
 	return $newsList = NewsModel::pageList([],12);
 }
 
+function get_news_new_list(){
+	return $newsList = NewsModel::pageList([],6);
+}
+
 function get_news_category_list(){
 	$list = \app\common\model\NewsCategoryModel::where('status',1)->order('sort','asc')->select();
 	foreach($list as $key=>$val){
 		$val->url = '/news/list-'.$val->id.'.html';
 	}
 	return $list;
+}
+
+function get_link_list(){
+	return \app\common\model\FriendlinkModel::where('status',1)->order('sort','ASC')->select();
 }
 
 function regroup_list($list){

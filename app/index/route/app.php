@@ -23,6 +23,7 @@ Route::bind('index');
 Route::get('news/show-:id','news/show');
 Route::get('news/list-:cid','news/index');
 Route::get('news/list-:cid','news/index');
+Route::get('xiuxing','about/show')->pattern(['var' => 'xiuxing']);
 
 
 

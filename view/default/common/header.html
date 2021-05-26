@@ -2,8 +2,8 @@
 <header class="main_header transparen_bg_head">
     <div class="container-fluid no_padding clearfix">
         <div class="logo_head">
-            <a href="index.html">
-                <img src="__STATIC__/picture/logo.png" alt="">
+            <a href="/">
+                <img src="__STATIC__/picture/logo.png" alt="{$config.system_name}">
             </a>
         </div>
         <div class="righthead_block">
@@ -14,7 +14,7 @@
             <nav class="top_nav_links navbar navbar-expand-lg">
                     <div class="collapse navbar-collapse" id="topNav">
                         <ul class="navbar-nav mr-auto">
-                            <li class="{$controllerName=='INDEX' ? 'current-menu-item' : ''}"><a href="/"><span>首页</span></a></li>
+                            <li class="{$controllerName=='INDEX' ? 'current-menu-item' : ''}"><a href="/" title="{$config.system_name}"><span>首页</span></a></li>
                             <li><a href="/author"><span>博主</span></a></li>
                             <li><a href="/about"><span>关于我</span></a></li>
                             <li class="menu-item-has-children"><a href="/news/"><span>分类</span></a>
