@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50553
  Source Host           : 127.0.0.1:3306
- Source Schema         : lqbcms_demo
+ Source Schema         : lqbcms6
 
  Target Server Type    : MySQL
  Target Server Version : 50553
  File Encoding         : 65001
 
- Date: 29/04/2021 15:29:13
+ Date: 26/05/2021 17:54:57
 */
 
 SET NAMES utf8mb4;
@@ -49,7 +49,7 @@ CREATE TABLE `lqbcms_admin`  (
 -- ----------------------------
 -- Records of lqbcms_admin
 -- ----------------------------
-INSERT INTO `lqbcms_admin` VALUES (1, 1, 'admin', 'admin', '$2y$10$cppkARXh/YjWB1gTP0iOMO/XPr184LtSL3MTpuBdqDq77KxX.0nU2', '', '', NULL, NULL, 0, NULL, '18888888888', '', '', '', 1578990973, 1578990973, 0, 0, 0);
+INSERT INTO `lqbcms_admin` VALUES (1, 1, 'adsfasdf', 'admin', '$2y$10$duVANeYIgNybAgEPVTiieecPAVVFJo2B65gkdYms6EiOefLI7GHGK', '', '', NULL, NULL, 0, NULL, '18888888888', '', '', '', 1622021823, 1622021823, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for lqbcms_advert
@@ -310,6 +310,7 @@ CREATE TABLE `lqbcms_news`  (
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '文章描述',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `clicks` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+  `comments` int(11) NULL DEFAULT 0,
   `like` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `tag` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
@@ -326,9 +327,9 @@ CREATE TABLE `lqbcms_news`  (
 -- ----------------------------
 -- Records of lqbcms_news
 -- ----------------------------
-INSERT INTO `lqbcms_news` VALUES (1, 'zh', 1, 2, 0, 'How to make a nice morning?', '/storage/news/20210429/0970afd276832b0f88a2eecd5b39987c.jpg', 'How to make a nice morning?', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 1, '', 1, 0, 1, 1, 1619681021, 1619366400, 0);
-INSERT INTO `lqbcms_news` VALUES (2, 'zh', 1, 1, 0, 'Hot sand tunisia', '/storage/news/20210429/6626aa3cfa1b6c4eaa31892e89bc394f.jpg', 'a', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 1, 0, 1, '', 1, 0, 1, 0, 1619680630, 1619435395, 0);
-INSERT INTO `lqbcms_news` VALUES (3, 'zh', 1, 1, 0, 'Where i find the best travel deals', '/storage/news/20210429/532cc90ad67c46df1ebbf7651946366b.jpg', '', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 1, '', 0, 0, 1, 0, 1619680606, 1619679307, 0);
+INSERT INTO `lqbcms_news` VALUES (1, 'zh', 1, 2, 0, 'How to make a nice morning?', '/storage/news/20210429/0970afd276832b0f88a2eecd5b39987c.jpg', 'How to make a nice morning?', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 0, 1, '', 1, 0, 1, 1, 1619681021, 1619366400, 0);
+INSERT INTO `lqbcms_news` VALUES (2, 'zh', 1, 1, 0, 'Hot sand tunisia', '/storage/news/20210429/6626aa3cfa1b6c4eaa31892e89bc394f.jpg', 'a', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 1, 0, 0, 1, '', 1, 0, 1, 0, 1619680630, 1619435395, 0);
+INSERT INTO `lqbcms_news` VALUES (3, 'zh', 1, 1, 0, 'Where i find the best travel deals', '/storage/news/20210429/532cc90ad67c46df1ebbf7651946366b.jpg', '', '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra\n                         ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt cursus leo nec placerat. Praesent facilisis elit libero, eget ornare turpis ultricies a. In in ex vel metus dignissim blandit non et eros. Integer ac viverra</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; diam, nec euismod est. Sed sed nisl sit amet massa convallis dapibus...</p><p><br/></p>', 0, 0, 0, 1, '', 0, 0, 1, 0, 1619680606, 1619679307, 0);
 
 -- ----------------------------
 -- Table structure for lqbcms_news_category
@@ -354,6 +355,15 @@ CREATE TABLE `lqbcms_news_category`  (
 -- ----------------------------
 INSERT INTO `lqbcms_news_category` VALUES (1, 0, 0, '生活随笔', NULL, NULL, NULL, 0, 1, 1, NULL);
 INSERT INTO `lqbcms_news_category` VALUES (2, 0, 0, '美文欣赏', NULL, NULL, NULL, 0, 2, 1, NULL);
+
+-- ----------------------------
+-- Table structure for lqbcms_news_content
+-- ----------------------------
+DROP TABLE IF EXISTS `lqbcms_news_content`;
+CREATE TABLE `lqbcms_news_content`  (
+  `id` int(11) UNSIGNED NULL DEFAULT 0,
+  `content` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '新闻表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for lqbcms_notice
