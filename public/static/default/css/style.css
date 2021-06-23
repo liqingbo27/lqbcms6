@@ -10,7 +10,9 @@
 
 @import 'all.css';
 
-@import 'animate.css';/* [Master Stylesheet] *//* --------------------------------------------最新最全最好的Bootstrap模板：http://www.bootstrapmb.com:: Version: v1.0.0:: Last Updated: 05/11/2018.-------------------------------------------- *//* =========== [Master Stylesheet] ============1. :: BUTTONS1. :: FORMS2. ::MOBILE MENU3. ::SEARCH POPUP4. ::FLOAT SIDEBAR5. ::MAIN HEADER6. ::HEADER IMAGE7. ::SCROLL UP BTN8. ::WIDGETS9. ::POST SIDEBAR10. ::PAGE CONTAINER WRAPPER11. ::PAGINATION12. ::BLOG POSTS13. ::BREADCRUMBS14. ::CATEGORY15. ::SINGLE NOSIDEBAR16. ::COMMENTS17. ::COMMENT FORM18. ::AUTHOR PAGE19. ::PAGE DEFAULT20. ::PHOTOT PAGE21. ::FOOTER===================================== *//**************************************************//**************SPECIAL CLASSES*********************//**************************************************//*More detail in description file*//*----------.scrollanimation - Class for scroll animation, work with two special data attributes:data-animation="fadeInUp" and data-timeout="200"--------------------.popupimg - for popup image--------------------.popupimg_gall - for popup image with list navigation--------------------.hover_light - add if you need add hover light effect with zoom icon--------------------.btn_gurd - for simple button--------------------.btn_gurd.btn_gurd_trp - for transparent button--------------------.btn_gurd.btn_gurd_trp.btn_gurd_i - for icon in button----------#Align element vertical and horizontal#.d-flex.align_items_center.justify_content_center ----------.d-flex  = display: flex!important;--------------------.align_items_center  = align-items: center!important;--------------------.justify_content_center  =     justify-content: center!important;----------*//* Animations Linear*/.scrollanimation {
+@import 'animate.css';
+
+.scrollanimation {
     opacity: 0;
 }
 
@@ -21,9 +23,11 @@
 .fadeInUp {
     animation-duration: .6s;
     animation-timing-function: linear;
-}/*popup Image ZoomIN effect*/.mfp-zoom-in {
-                                  /* start state */  /* animate in */  /* animate out */;
-                              }
+}
+
+.mfp-zoom-in {
+;
+}
 
 .mfp-zoom-in .mfp-with-anim {
     opacity: 0;
@@ -52,13 +56,15 @@
 
 .mfp-zoom-in.mfp-removing.mfp-bg {
     opacity: 0;
-}/** * ---------------------------------------------------------------------------------------- * Variables * ---------------------------------------------------------------------------------------- *//**************************************************//****************RESSET STYLE***********************//**************************************************/a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video {
-                                                                                                                                                                                                                                                                                                                                                                          margin: 0;
-                                                                                                                                                                                                                                                                                                                                                                          padding: 0;
-                                                                                                                                                                                                                                                                                                                                                                          border: 0;
-                                                                                                                                                                                                                                                                                                                                                                          font: inherit;
-                                                                                                                                                                                                                                                                                                                                                                          vertical-align: baseline;
-                                                                                                                                                                                                                                                                                                                                                                      }
+}
+
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
 
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
     display: block;
@@ -89,19 +95,21 @@ table {
 img {
     max-width: 100%;
     height: auto;
-}/**************************************************//*****************TYPOGRPHY************************//**************************************************/body {
-                                                                                                                                                                 font-family: 'Lato', sans-serif;
-                                                                                                                                                                 font-size: 18px;
-                                                                                                                                                                 line-height: 1.48;
-                                                                                                                                                                 font-weight: 300;
-                                                                                                                                                                 color: #073b43;
-                                                                                                                                                                 background-color: #f5f4f0;
-                                                                                                                                                                 margin: 0;
-                                                                                                                                                             }
+}
+
+body {
+    font-family: 'Lato',sans-serif;
+    font-size: 18px;
+    line-height: 1.48;
+    font-weight: 300;
+    color: #073b43;
+    background-color: #f5f4f0;
+    margin: 0;
+}
 
 h1,h2,h3,h4,h5,h6 {
     line-height: 1.2;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito',sans-serif;
     font-weight: 400;
     text-transform: uppercase;
 }
@@ -131,7 +139,7 @@ h6 {
 }
 
 strong {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     font-weight: 800;
 }
 
@@ -158,7 +166,7 @@ strong {
 blockquote {
     position: relative;
     padding: 25px 30px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     font-size: 16px;
     font-weight: 400;
     font-style: italic;
@@ -199,9 +207,11 @@ table td:hover,table th:hover {
 table td:hover a,table th:hover a {
     color: #073b43;
     transition: all 0.3s linear;
-}/**************************************************//**********DEFAULT SETTINGS STYLES*****************//**************************************************/.no_padding {
-                                                                                                                                                                 padding: 0;
-                                                                                                                                                             }
+}
+
+.no_padding {
+    padding: 0;
+}
 
 .bodypadding {
     padding: 80px 50px 50px 50px;
@@ -241,15 +251,17 @@ table td:hover a,table th:hover a {
     box-pack: center!important;
     -ms-flex-pack: center!important;
     justify-content: center!important;
-}/*Preloader*/.preloader {
-                  position: fixed;
-                  left: 0;
-                  top: 0;
-                  right: 0;
-                  bottom: 0;
-                  background-color: #fff;
-                  z-index: 999;
-              }
+}
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 999;
+}
 
 .preloader i {
     position: absolute;
@@ -269,17 +281,19 @@ table td:hover a,table th:hover a {
     to {
         transform: rotate(359deg);
     }
-}/****************************************************//********************BUTTONS************************//***************************************************/.btn_gurd {
-                                                                                                                                                                     display: inline-block;
-                                                                                                                                                                     font-family: 'Lato', sans-serif;
-                                                                                                                                                                     font-size: 14px;
-                                                                                                                                                                     color: #073b43;
-                                                                                                                                                                     padding: 11px 30px;
-                                                                                                                                                                     border: none;
-                                                                                                                                                                     outline: none!important;
-                                                                                                                                                                     text-transform: uppercase;
-                                                                                                                                                                     cursor: pointer;
-                                                                                                                                                                 }
+}
+
+.btn_gurd {
+    display: inline-block;
+    font-family: 'Lato',sans-serif;
+    font-size: 14px;
+    color: #073b43;
+    padding: 11px 30px;
+    border: none;
+    outline: none!important;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
 .btn_send {
     padding: 14px 40px;
@@ -318,18 +332,20 @@ table td:hover a,table th:hover a {
 .btn_gurd_i:hover i {
     opacity: 1;
     max-width: 3em;
-    will-change: opacity, max-width;
+    will-change: opacity,max-width;
     transition: all 0.3s linear;
-}/****************************************************//******************HOVER LIGHT**********************//***************************************************/.hover_light {
-                                                                                                                                                                     display: inline-block;
-                                                                                                                                                                     position: relative;
-                                                                                                                                                                     overflow: hidden;
-                                                                                                                                                                 }
+}
+
+.hover_light {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
 
 .hover_light img {
     display: block;
     object-fit: cover;
-    transform: scale(1, 1);
+    transform: scale(1,1);
     transition: all 0.7s linear;
 }
 
@@ -373,14 +389,16 @@ table td:hover a,table th:hover a {
 }
 
 .hover_light:hover img {
-    transform: scale(1.2, 1.2);
+    transform: scale(1.2,1.2);
     transition: all 0.7s linear;
-}/****************************************************//*********************FORMS*************************//***************************************************/form {
-                                                                                                                                                                     position: relative;
-                                                                                                                                                                 }
+}
+
+form {
+    position: relative;
+}
 
 input[type="text"],input[type="tel"],input[type="password"],input[type="email"],input[type="search"],textarea {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     font-size: 14px;
     color: #073b43;
     background-color: #f5f4f0;
@@ -393,15 +411,17 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 input[type="text"],input[type="tel"],input[type="password"],input[type="email"],input[type="search"] {
     height: 45px;
-}/****************************************************//******************MOBILE MENU**********************//***************************************************/.mobile_nav {
-                                                                                                                                                                     display: none;
-                                                                                                                                                                     position: fixed;
-                                                                                                                                                                     width: 100%;
-                                                                                                                                                                     left: 0;
-                                                                                                                                                                     top: 0;
-                                                                                                                                                                     height: 100%;
-                                                                                                                                                                     z-index: 990;
-                                                                                                                                                                 }
+}
+
+.mobile_nav {
+    display: none;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 990;
+}
 
 .cover_mobile_menu {
     position: absolute;
@@ -409,7 +429,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
     z-index: 990;
 }
 
@@ -444,7 +464,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 }
 
 .mobile_nav a {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     padding: 0 10px;
@@ -463,18 +483,20 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     right: 10px;
     top: 12px;
     width: 17px;
-}/****************************************************//******************SEARCH POPUP*********************//***************************************************/.search_popup_window {
-                                                                                                                                                                     display: none;
-                                                                                                                                                                     position: fixed;
-                                                                                                                                                                     left: 0;
-                                                                                                                                                                     top: 0;
-                                                                                                                                                                     height: 465px;
-                                                                                                                                                                     width: 100%;
-                                                                                                                                                                     background-color: rgba(0, 0, 0, 0.7);
-                                                                                                                                                                     transform: translateY(-700px);
-                                                                                                                                                                     transition: all 0.2s linear;
-                                                                                                                                                                     z-index: 980;
-                                                                                                                                                                 }
+}
+
+.search_popup_window {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 465px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    transform: translateY(-700px);
+    transition: all 0.2s linear;
+    z-index: 980;
+}
 
 .search_popup_window.show {
     transform: translateY(0px);
@@ -495,7 +517,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     background-color: transparent!important;
     border: none;
     font-size: 34px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     color: #fff;
     font-weight: 300;
     padding-right: 30px;
@@ -511,15 +533,17 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 15px;
     opacity: .8;
     color: #fff;
-}/****************************************************//******************FLOAT SIDEBAR********************//***************************************************/.float_bar {
-                                                                                                                                                                     display: none;
-                                                                                                                                                                     position: fixed;
-                                                                                                                                                                     width: 100%;
-                                                                                                                                                                     left: 0;
-                                                                                                                                                                     top: 0;
-                                                                                                                                                                     height: 100%;
-                                                                                                                                                                     z-index: 990;
-                                                                                                                                                                 }
+}
+
+.float_bar {
+    display: none;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 990;
+}
 
 .close_float_sidebar {
     cursor: pointer;
@@ -539,7 +563,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 }
 
 .cover_float_sidebar {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
     position: absolute;
     width: 100%;
     left: 0;
@@ -575,16 +599,18 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .float_sidebar_widget {
     direction: ltr;
-}/****************************************************//******************MAIN HEADER**********************//***************************************************/.main_header {
-                                                                                                                                                                     position: absolute;
-                                                                                                                                                                     left: 0;
-                                                                                                                                                                     top: 0;
-                                                                                                                                                                     padding: 26px 50px;
-                                                                                                                                                                     width: 100%;
-                                                                                                                                                                     background-color: #f5f4f0;
-                                                                                                                                                                     z-index: 900;
-                                                                                                                                                                     transition: all 0.2s linear;
-                                                                                                                                                                 }
+}
+
+.main_header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 26px 50px;
+    width: 100%;
+    background-color: #f5f4f0;
+    z-index: 900;
+    transition: all 0.2s linear;
+}
 
 .fixed_header.fixed {
     position: fixed;
@@ -609,9 +635,11 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .righthead_block .nav_btn_toggle {
     margin-right: 15px;
     margin-top: 1px;
-}/*Search btn and Bar Float*/.search_btn {
-                                 margin-left: 15px;
-                             }
+}
+
+.search_btn {
+    margin-left: 15px;
+}
 
 .sidebar_btn {
     margin-left: 30px;
@@ -628,14 +656,16 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .sidebar_btn a {
     font-size: 18px;
-}/*Nav Bar Toggle*/.navbar-toggler {
-                       cursor: pointer;
-                       width: 25px;
-                       border: none;
-                       margin: 1px 0 0 0;
-                       padding: 0;
-                       outline: none!important;
-                   }
+}
+
+.navbar-toggler {
+    cursor: pointer;
+    width: 25px;
+    border: none;
+    margin: 1px 0 0 0;
+    padding: 0;
+    outline: none!important;
+}
 
 .navbar-toggler .butline,.sub_menu_btn .butline {
     display: block;
@@ -665,10 +695,12 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .navbar-toggler.showm .butline:last-child,.sub_menu_btn.close_sub_menu .butline:last-child {
     transform: translateY(-7px) rotate(-45deg);
-}/*Top Nav*/.top_nav_links {
-                padding: 0;
-                margin-top: -5px;
-            }
+}
+
+.top_nav_links {
+    padding: 0;
+    margin-top: -5px;
+}
 
 .top_nav_links .navbar-nav li {
     position: relative;
@@ -698,7 +730,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .top_nav_links .navbar-nav li a {
     display: block;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     color: #073b43;
     padding: 5px 20px;
     font-size: 16px;
@@ -774,15 +806,17 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     right: 130px;
     left: auto;
     top: 0;
-}/****************************************************//******************HEADER IMAGE*********************//***************************************************/.header_image {
-                                                                                                                                                                     position: relative;
-                                                                                                                                                                     min-height: 630px;
-                                                                                                                                                                     margin-bottom: 50px;
-                                                                                                                                                                     text-align: center;
-                                                                                                                                                                     background-repeat: no-repeat;
-                                                                                                                                                                     background-position: center center;
-                                                                                                                                                                     background-size: cover;
-                                                                                                                                                                 }
+}
+
+.header_image {
+    position: relative;
+    min-height: 130px;
+    margin-bottom: 50px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
 
 .header_image h1 {
     position: relative;
@@ -803,11 +837,13 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0,0,0,0.05);
     z-index: 1;
-}/****************************************************//*******************Big Slider***********************//***************************************************//*Demo background image slider*/.postbgslide1 {
-                                                                                                                                                                                                      background-image: url(../images/postslide1.jpg);
-                                                                                                                                                                                                  }
+}
+
+.postbgslide1 {
+    background-image: url(../images/postslide1.jpg);
+}
 
 .postbgslide2 {
     background-image: url(../images/post12.jpg);
@@ -839,9 +875,11 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .catbg6 {
     background-image: url(../images/building.jpg);
-}/*END Demo background image slider*/.main_slider_post_cat {
-                                         margin-bottom: 50px;
-                                     }
+}
+
+.main_slider_post_cat {
+    margin-bottom: 50px;
+}
 
 .main_slider_post_cat,.categories_slides .item {
     display: flex;
@@ -849,12 +887,14 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .lateps_postslides,.categories_wrapper {
     width: 50%;
-}/*Latest Post Slides*/.lateps_postslides .item {
-                           position: relative;
-                           background-size: cover;
-                           background-position: center center;
-                           background-repeat: no-repeat;
-                       }
+}
+
+.lateps_postslides .item {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 
 .lateps_postslides .item:after {
     position: absolute;
@@ -863,14 +903,14 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0,0,0,0.3);
     z-index: 1;
     transition: all 0.3s linear;
 }
 
 .lateps_postslides .item:hover:after {
     transition: all 0.3s linear;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
 }
 
 .lateps_postslides .item .post_data_cr {
@@ -948,11 +988,13 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .latestposts_slider .owl-prev span,.latestposts_slider .owl-next span {
     color: #fff;
     font-size: 28px;
-}/*Categories Slides*/.categories_slides .item {
-                          flex-wrap: wrap;
-                          align-items: stretch;
-                          column-count: 2;
-                      }
+}
+
+.categories_slides .item {
+    flex-wrap: wrap;
+    align-items: stretch;
+    column-count: 2;
+}
 
 .categories_slides .category_box {
     position: relative;
@@ -969,13 +1011,13 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0,0,0,0.3);
     z-index: 1;
     transition: all 0.3s linear;
 }
 
 .categories_slides .category_box:hover:after {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
     transition: all 0.3s linear;
 }
 
@@ -989,7 +1031,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 }
 
 .categories_slides .category_box .name_cat {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito',sans-serif;
     font-weight: 400;
     position: absolute;
     right: 50px;
@@ -1022,23 +1064,27 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .categories_slides .owl-prev span,.categories_slides .owl-next span {
     color: #fff;
     font-size: 28px;
-}/****************************************************//*****************SCROLL UP BTN*********************//***************************************************/.gutengard_btn {
-                                                                                                                                                                     display: none;
-                                                                                                                                                                     cursor: pointer;
-                                                                                                                                                                     opacity: .9;
-                                                                                                                                                                     position: fixed;
-                                                                                                                                                                     width: 45px;
-                                                                                                                                                                     height: 45px;
-                                                                                                                                                                     right: 50px;
-                                                                                                                                                                     bottom: 50px;
-                                                                                                                                                                     font-size: 14px;
-                                                                                                                                                                     text-align: center;
-                                                                                                                                                                     line-height: 43px;
-                                                                                                                                                                     z-index: 990;
-                                                                                                                                                                 }/****************************************************//********************WIDGETS************************//***************************************************/.sidebar_block {
-                                                                                                                                                                                                                                                                                                                                      color: #073b43;
-                                                                                                                                                                                                                                                                                                                                      margin-bottom: 30px;
-                                                                                                                                                                                                                                                                                                                                  }
+}
+
+.gutengard_btn {
+    display: none;
+    cursor: pointer;
+    opacity: .9;
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    right: 50px;
+    bottom: 50px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 43px;
+    z-index: 990;
+}
+
+.sidebar_block {
+    color: #073b43;
+    margin-bottom: 30px;
+}
 
 .sidebar_block a {
     text-decoration: none;
@@ -1064,12 +1110,14 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: -1px;
     width: 3px;
     height: 18px;
-}/*widget recent post*/.widget_recent_post ul li {
-                           overflow: hidden;
-                           padding-bottom: 15px;
-                           padding-top: 15px;
-                           border-top: 1px solid #efefef;
-                       }
+}
+
+.widget_recent_post ul li {
+    overflow: hidden;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #efefef;
+}
 
 .widget_recent_post ul li:first-child {
     border-top: none;
@@ -1117,9 +1165,11 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .widget_recent_post .post_data i {
     font-size: 10px;
     margin-right: 4px;
-}/*Widget Instagramm*/.instagram-pics {
-                          overflow: hidden;
-                      }
+}
+
+.instagram-pics {
+    overflow: hidden;
+}
 
 .instagram-pics li {
     float: left;
@@ -1147,9 +1197,11 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .instagram-pics li img {
     width: 100%;
     margin: auto;
-}/*Widget Search*/.widget_search form {
-                      position: relative;
-                  }
+}
+
+.widget_search form {
+    position: relative;
+}
 
 .widget_search form input[name="s"] {
     padding-right: 55px;
@@ -1164,11 +1216,13 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     width: 50px;
     font-size: 13px;
     text-align: center;
-}/*Widget Categories*/.widget_categories ul li {
-                          position: relative;
-                          padding-left: 12px;
-                          margin-bottom: 7px;
-                      }
+}
+
+.widget_categories ul li {
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 7px;
+}
 
 .widget_categories ul li:last-child {
     margin-bottom: 0;
@@ -1197,44 +1251,54 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     font-size: 16px;
     color: #073b43;
     text-decoration: none;
-}/*Widget Subscribe*/.wp_subscribe form button {
-                         position: absolute;
-                         right: 0;
-                         top: 0;
-                         padding: 14px 18px;
-                         height: 100%;
-                         width: 50px;
-                         font-size: 13px;
-                         text-align: center;
-                     }
+}
+
+.wp_subscribe form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 14px 18px;
+    height: 100%;
+    width: 50px;
+    font-size: 13px;
+    text-align: center;
+}
 
 .wp_subscribe form button i {
     margin-left: -2px;
-}/*widget tag cloud*/.widget_tag_cloud .tagcloud a {
-                         display: inline-block;
-                         color: #073b43;
-                         font-size: 14px;
-                         padding: 3px 10px;
-                         margin-right: 3px;
-                         margin-bottom: 5px;
-                         text-decoration: none;
-                         transition: all 0.2s linear;
-                     }
+}
+
+.widget_tag_cloud .tagcloud a {
+    display: inline-block;
+    color: #073b43;
+    font-size: 14px;
+    padding: 3px 10px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
 
 .widget_tag_cloud .tagcloud a:hover {
     transition: all 0.2s linear;
-}/*****************************************************//*****************POST SIDEBAR***********************//***************************************************/.sidebar_post .sidebar_block {
-                                                                                                                                                                       padding: 45px 50px;
-                                                                                                                                                                       background-color: #fff;
-                                                                                                                                                                   }
+}
+
+.sidebar_post .sidebar_block {
+    padding: 45px 50px;
+    background-color: #fff;
+}
 
 .sidebar_post .sidebar_block:last-child {
     margin-bottom: 30px;
-}/*****************************************************//*************Page Container Wrapper*****************//***************************************************/.page_container_wrapper {
-                                                                                                                                                                       padding: 0 0 50px 0;
-                                                                                                                                                                   }/*****************************************************//*******************PAGINATION***********************//***************************************************/.page_pagination_wrapper {
-                                                                                                                                                                                                                                                                                                                                          height: 45px;
-                                                                                                                                                                                                                                                                                                                                      }
+}
+
+.page_container_wrapper {
+    padding: 0 0 50px 0;
+}
+
+.page_pagination_wrapper {
+    height: 45px;
+}
 
 .page-numbers {
     display: inline-block;
@@ -1261,61 +1325,65 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .page-numbers li a:hover {
     transition: all 0.3s linear;
-}/*****************************************************//*******************BLOG POSTS***********************//***************************************************//*Demo background image post*/.postbg1 {
-                                                                                                                                                                                                     background-image: url(../images/post1.jpg);
-                                                                                                                                                                                                 }
+}
+
+.postbg1 {
+    background-image: url(../images/post1.jpg);
+}
 
 .postbg2 {
-    /*background-image: url(../images/pos2.jpg);*/
+;
 }
 
 .postbg3 {
-    /*background-image: url(../images/post3.jpg);*/
+;
 }
 
 .postbg4 {
-    /*background-image: url(../images/post13.jpg);*/
+;
 }
 
 .postbg5 {
-    /*background-image: url(../images/post5.jpg);*/
+;
 }
 
 .postbg6 {
-    /*background-image: url(../images/post6.jpg);*/
+;
 }
 
 .postbg7 {
-    /*background-image: url(../images/post7.jpg);*/
+;
 }
 
 .postbg8 {
-    /*background-image: url(../images/post8.jpg);*/
+;
 }
 
 .postbg9 {
-    /*background-image: url(../images/post9.jpg);*/
+;
 }
 
 .postbg10 {
-    /*!*background-image: url(../images/post10.jpg);*!*/
+;
 }
 
 .postbg11 {
-    /*background-image: url(../images/post11.jpg);*/
+;
 }
 
 .postbg12 {
-    /*background-image: url(../images/post12.jpg);*/
+;
 }
 
 .postbg13 {
-    /*background-image: url(../images/catbg3.jpg);*/
-}/*END Demo background image post*/.blog_list_post {
-                                       display: flex;
-                                       flex-wrap: wrap;
-                                       align-items: stretch;
-                                   }
+;
+}
+
+.blog_list_post {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
 
 .blog_post_box .blog_post_item_image,.blog_post_box .blog_post_item {
     width: 50%;
@@ -1356,7 +1424,7 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .blog_post_item_image:hover a {
     transition: all 0.3s linear;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
 }
 
 .blog_post_item {
@@ -1430,19 +1498,21 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     right: 0;
     font-size: 14px;
     top: 0;
-}/*Post Data Box*/.post_data_cr {
-                      position: absolute;
-                      font-family: 'Lato', sans-serif;
-                      text-align: center;
-                      right: 50px;
-                      top: 50px;
-                      width: 70px;
-                      height: 70px;
-                      box-sizing: border-box;
-                      padding-top: 5px;
-                      background-color: rgba(255, 255, 255, 0.8);
-                      transition: all 0.3s linear;
-                  }
+}
+
+.post_data_cr {
+    position: absolute;
+    font-family: 'Lato',sans-serif;
+    text-align: center;
+    right: 50px;
+    top: 50px;
+    width: 70px;
+    height: 70px;
+    box-sizing: border-box;
+    padding-top: 5px;
+    background-color: rgba(255,255,255,0.8);
+    transition: all 0.3s linear;
+}
 
 .blog_post_item_image:hover .post_data_cr {
     opacity: .8;
@@ -1468,14 +1538,16 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .blog_list_post:nth-child(even) .blog_post_box {
     flex-direction: row-reverse;
-}/*****************************************************//******************BREADCRUMBS***********************//***************************************************/.header_image .breadcrumbs .page-list {
-                                                                                                                                                                       position: absolute;
-                                                                                                                                                                       left: 0;
-                                                                                                                                                                       bottom: 20px;
-                                                                                                                                                                       width: 100%;
-                                                                                                                                                                       text-align: center;
-                                                                                                                                                                       z-index: 3;
-                                                                                                                                                                   }
+}
+
+.header_image .breadcrumbs .page-list {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
 
 .breadcrumbs .page-list li {
     display: inline-block;
@@ -1513,13 +1585,19 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .single_post_content .breadcrumbs .page-list {
     display: inline-block;
     margin: 0;
-}/*****************************************************//********************CATEGORY************************//***************************************************//*Demo Category Image*/.categorybg1 {
-                                                                                                                                                                                              background-image: url(../images/categorubg.jpg);
-                                                                                                                                                                                          }/*END Demo Category Image*/.btn_loadmore {
-                                                                                                                                                                                                                          margin-top: 47px;
-                                                                                                                                                                                                                      }/*****************************************************//****************SINGLE NOSIDEBAR********************//***************************************************/.single_nosidebar {
-                                                                                                                                                                                                                                                                                                                                                                                             max-width: 945px;
-                                                                                                                                                                                                                                                                                                                                                                                         }
+}
+
+.categorybg1 {
+    background-image: url(../images/categorubg.jpg);
+}
+
+.btn_loadmore {
+    margin-top: 47px;
+}
+
+.single_nosidebar {
+    max-width: 945px;
+}
 
 .post_single_container {
     position: relative;
@@ -1584,18 +1662,22 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     top: 0;
     margin: 0;
     transition: all 0.3s linear;
-}/*Post data publiс*/.post_data_publiс {
-                         display: inline-block;
-                         font-size: 12px;
-                         padding: 2px 5px;
-                         font-weight: 400;
-                         margin-right: 5px;
-                         text-transform: uppercase;
-                     }/*Autor Box*/.author_box_post {
-                                       padding: 45px 50px 40px 50px;
-                                       margin-bottom: 50px;
-                                       background-color: #fff;
-                                   }
+}
+
+.post_data_publiс {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 5px;
+    font-weight: 400;
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+.author_box_post {
+    padding: 45px 50px 40px 50px;
+    margin-bottom: 50px;
+    background-color: #fff;
+}
 
 .autor_img_wrapp,.author_box_post .short_autord_desc {
     float: left;
@@ -1651,10 +1733,12 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     color: #073b43;
     font-size: 14px;
     text-decoration: none;
-}/*post datainfo*/.post_datainfo {
-                      padding-top: 18px;
-                      font-size: 14px;
-                  }
+}
+
+.post_datainfo {
+    padding-top: 18px;
+    font-size: 14px;
+}
 
 .post_datainfo_item {
     margin-bottom: 10px;
@@ -1704,9 +1788,11 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .action-count >span i {
     margin-right: 5px;
     font-size: 12px;
-}/*Post Navigation*/.post_navigation {
-                        margin-bottom: 45px;
-                    }
+}
+
+.post_navigation {
+    margin-bottom: 45px;
+}
 
 .post_navigation .prevous_post,.post_navigation .next_post {
     overflow: hidden;
@@ -1756,10 +1842,12 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     font-size: 12px;
     padding-bottom: 1px;
     text-transform: uppercase;
-}/*****************************************************//********************COMMENTS************************//***************************************************/.comment_titleform {
-                                                                                                                                                                       text-transform: none;
-                                                                                                                                                                       margin-bottom: 40px;
-                                                                                                                                                                   }
+}
+
+.comment_titleform {
+    text-transform: none;
+    margin-bottom: 40px;
+}
 
 .comment-list .comment {
     position: relative;
@@ -1854,14 +1942,16 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
     font-size: 9px;
     text-transform: uppercase;
     font-weight: 400;
-}/*****************************************************//******************COMMENT FORM**********************//***************************************************/.comment-form {
-                                                                                                                                                                       margin-bottom: 50px;
-                                                                                                                                                                   }
+}
+
+.comment-form {
+    margin-bottom: 50px;
+}
 
 .comment-form input,.comment-form textarea {
     background-color: #fff;
     display: block;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato',sans-serif;
     font-size: 14px;
 }
 
@@ -1871,15 +1961,17 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .comment-form .custom-field {
     margin-bottom: 30px;
-}/*****************************************************//******************AUTHOR PAGE***********************//***************************************************/.author_card {
-                                                                                                                                                                       position: -webkit-sticky;
-                                                                                                                                                                       position: sticky;
-                                                                                                                                                                       top: 0;
-                                                                                                                                                                       padding: 40px 30px 35px 30px;
-                                                                                                                                                                       margin-bottom: 50px;
-                                                                                                                                                                       background-color: #fff;
-                                                                                                                                                                       text-align: center;
-                                                                                                                                                                   }
+}
+
+.author_card {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 40px 30px 35px 30px;
+    margin-bottom: 50px;
+    background-color: #fff;
+    text-align: center;
+}
 
 .author_card:after {
     position: absolute;
@@ -1927,11 +2019,13 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .author_about {
     margin-bottom: 10px;
-}/****************************************************//******************PAGE DEFAULT**********************//***************************************************/.page_dafulet {
-                                                                                                                                                                      margin-top: 15px;
-                                                                                                                                                                      padding: 30px 40px;
-                                                                                                                                                                      background-color: #fff;
-                                                                                                                                                                  }
+}
+
+.page_dafulet {
+    margin-top: 15px;
+    padding: 30px 40px;
+    background-color: #fff;
+}
 
 .page_dafulet h2,h3,h4,h5,h6 {
     margin-bottom: 20px;
@@ -1993,18 +2087,26 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 
 .page_dafulet ol li:before {
     display: none;
-}/****************************************************//*******************ABOUT PAGE**********************//***************************************************//*Demo Image*/.aboutbg1 {
-                                                                                                                                                                                   background-image: url(../images/aboutbg.jpg);
-                                                                                                                                                                               }/*END Demo Image*/.about_box {
-                                                                                                                                                                                                      font-size: 24px;
-                                                                                                                                                                                                      padding: 30px 20px;
-                                                                                                                                                                                                  }/****************************************************//******************PHOTOT PAGE**********************//***************************************************//*Demo Image*/.pafebg1 {
-                                                                                                                                                                                                                                                                                                                                                                                     background-image: url(../images/photoheadbg.jpg);
-                                                                                                                                                                                                                                                                                                                                                                                 }/*END Demo Image*/.shuffle_photos_item {
-                                                                                                                                                                                                                                                                                                                                                                                                        position: relative;
-                                                                                                                                                                                                                                                                                                                                                                                                        width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                                                        overflow: hidden;
-                                                                                                                                                                                                                                                                                                                                                                                                    }
+}
+
+.aboutbg1 {
+    background-image: url(../images/aboutbg.jpg);
+}
+
+.about_box {
+    font-size: 24px;
+    padding: 30px 20px;
+}
+
+.pafebg1 {
+    background-image: url(../images/photoheadbg.jpg);
+}
+
+.shuffle_photos_item {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 
 .shuffle_photos_item a,.shuffle_photos_item img {
     display: block;
@@ -2045,10 +2147,12 @@ input[type="text"],input[type="tel"],input[type="password"],input[type="email"],
 .filter_image_btns .filter.active:after {
     bottom: -5px;
     transition: all 0.3s linear;
-}/*****************************************************//*********************FOOTER*************************//***************************************************/.mainfooter {
-                                                                                                                                                                       padding: 100px 0;
-                                                                                                                                                                       background-color: #fff;
-                                                                                                                                                                   }
+}
+
+.mainfooter {
+    padding: 100px 0;
+    background-color: #fff;
+}
 
 .footer_block .textwidget {
     font-size: 14px;

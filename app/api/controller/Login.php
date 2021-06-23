@@ -9,6 +9,7 @@ use app\api\model\MenuModel;
 use app\common\model\AdminModel;
 
 use think\captcha\facade\Captcha;
+use think\facade\Request;
 use think\facade\Session;
 
 
@@ -65,25 +66,27 @@ class Login extends BaseController
 
     public function verify()
     {
-        //'myverify'
         return Captcha::create();
     }
 
-    public function chushihua(){
-        return 1;
-        $passowrd = password_hash('123456',PASSWORD_DEFAULT);
+    //特殊通道，可以保存当做无密码登录，没办法，懒得输入密码所以只能写这么个函数
+	public function channel(){
+		$userinfo = AdminModel::where('username','admin')->find();
+		if(empty($userinfo)){
+			return json(['code'=>1001, 'msg'=>'用户不存在']);
+		}
 
-        $res = AdminModel::update(['id'=>1,'passowrd'=>$passowrd]);
-        print_r($res);
-        return 1;
-    	AdminModel::create([
-    		'role_id' => 1,
-    		'username' => 'admin',
-    		'nickname' => 'admin',
-    		'password' => password_hash('123456',PASSWORD_DEFAULT),
-    		'phone' => '18888888888'
-    	]);
-    }
+		Session::set('admin_id', $userinfo->id);
+		Session::set('adminInfo', $userinfo);
+
+		$access_token = 'my_access_token';
+		$data = [
+			'access_token' => $access_token
+		];
+		$adminUrl =  Request::scheme().'://'.Request::host().'/admin';
+		return redirect($adminUrl);
+	}
+
 
     public function test(){
         return 1;

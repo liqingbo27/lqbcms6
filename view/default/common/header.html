@@ -16,16 +16,19 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="{$controllerName=='INDEX' ? 'current-menu-item' : ''}"><a href="/" title="{$config.system_name}"><span>首页</span></a></li>
                             <li><a href="/author"><span>博主</span></a></li>
+                            {volist name=':get_news_category_list()' id='vo'}
+                            <li><a href="{$vo.url}" title="{$vo.name}">{$vo.name}</a></li>
+                            {/volist}
                             <li><a href="/about"><span>关于我</span></a></li>
-                            <li class="menu-item-has-children"><a href="/news/"><span>分类</span></a>
+
+
+                            <!--<li class="menu-item-has-children"><a href="/news/"><span>分类</span></a>
                                 <ul class="sub-menu">
                                     {volist name=':get_news_category_list()' id='vo'}
                                         <li><a href="{$vo.url}" title="{$vo.name}"><span>{$vo.name}</span></a></li>
                                     {/volist}
-
-
                                 </ul>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </nav>
