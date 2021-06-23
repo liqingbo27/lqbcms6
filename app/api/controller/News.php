@@ -15,9 +15,8 @@ class News extends Common
         $keyword = input('keyword');
         $category_id = input('category_id');
 
-
         if(!empty($keyword)){
-            $this->comMap[] = ['title','like','%'.$keyword.'%'];
+            $this->comMap[] = ['title|id','like','%'.$keyword.'%'];
         }
         if(!empty($category_id)){
             $this->comMap[] = ['category_id','=',$category_id];

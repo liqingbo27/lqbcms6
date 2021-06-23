@@ -48,11 +48,11 @@
                         <div class="year">{$vo.update_time|date='Y'}</div>
                     </div>
                     <div class="post_info_wrapper">
-                        <h2 class="post_name">{$vo.title}</h2>
+                        <h2 class="post_name"><a href="{$vo.url}" title="{$vo.title}">{$vo.title}</a></h2>
                         <div class="short_desc_post">
                             <p>{$vo.description}</p>
                         </div>
-                        <div class="seea_more"><a href="{$vo.url}">查看详情<i class="icon-right-open-big"></i></a>
+                        <div class="seea_more"><a href="{$vo.url}" title="点击查看详情">查看详情<i class="icon-right-open-big"></i></a>
                         </div>
                     </div>
                     <img src="{$vo.thumb}" alt="{$vo.title}">
